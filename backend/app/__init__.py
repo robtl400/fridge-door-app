@@ -34,4 +34,13 @@ def create_app(config_class=Config):
     from app.api.routes import api_bp
     app.register_blueprint(api_bp, url_prefix="/api")
 
+    # Create tables and seed on first run
+    with app.app_context():
+        from app.models import IngredientLookup, InStock  # noqa: F401
+
+        db.create_all()
+
+        from app.seeds import seed_ingredient_lookup
+        seed_ingredient_lookup()
+
     return app
