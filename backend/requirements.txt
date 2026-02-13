@@ -7,5 +7,4 @@ marshmallow-sqlalchemy
 Flask-SQLAlchemy
 Flask-Migrate
 Flask-CORS
-psycopg2-binary
 python-dotenv
