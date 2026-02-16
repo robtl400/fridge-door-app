@@ -5,24 +5,15 @@ from app.models.ingredient_lookup import IngredientLookup
 
 
 def seed_ingredient_lookup():
-    """Populate ingredient_lookup table from seed JSON if empty."""
+    """Populate ingredient_lookup table from pre-cleaned seed JSON if empty."""
     if IngredientLookup.query.first() is not None:
-        return  # Already seeded
+        return
 
     seed_path = os.path.join(os.path.dirname(__file__), "shelf_life_complete_seed_data.json")
     with open(seed_path, "r") as f:
         data = json.load(f)
 
-    ingredients = data.get("ingredients", [])
-    seen_names = set()
-    added = 0
-
-    for ing in ingredients:
-        name = ing["ingredient_name"]
-        if name.lower() in seen_names:
-            continue
-        seen_names.add(name.lower())
-
+    for ing in data["ingredients"]:
         storage = ing.get("storage_methods", {})
         refrigerated = storage.get("refrigerated", {})
         frozen = storage.get("frozen", {})
@@ -30,7 +21,7 @@ def seed_ingredient_lookup():
         pantry_opened = storage.get("pantry_opened", {})
 
         record = IngredientLookup(
-            ingredient_name=name,
+            ingredient_name=ing["ingredient_name"],
             category=ing.get("category", ""),
             subcategory=ing.get("subcategory", ""),
             default_expiration_days=ing["default_expiration_days"],
@@ -49,7 +40,6 @@ def seed_ingredient_lookup():
             times_added_by_user=0,
         )
         db.session.add(record)
-        added += 1
 
     db.session.commit()
-    print(f"Seeded {added} ingredients into ingredient_lookup (skipped {len(ingredients) - added} duplicates).")
+    print(f"Seeded {len(data['ingredients'])} ingredients into ingredient_lookup.")

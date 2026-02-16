@@ -6,19 +6,20 @@ A full-stack app for tracking what's in your fridge, freezer, and pantry — wit
 
 ```
 fridge-door-app/
-├── backend/          Flask API + SQLite database
+├── backend/            Flask API + SQLite database
 │   ├── app/
-│   │   ├── api/      Route handlers
-│   │   ├── models/   SQLAlchemy models (ingredient_lookup, in_stock)
-│   │   ├── seeds/    Seed data (525 ingredients from USDA + manual additions)
-│   │   └── services/ Business logic
-│   ├── app.py        Entry point
-│   └── config.py     Configuration
-└── frontend/         React + Vite
+│   │   ├── models/     SQLAlchemy models (ingredient_lookup, in_stock)
+│   │   ├── routes/     API route handlers (health, lookup, ingredients)
+│   │   ├── utils/      Business logic (expiration parsing, shelf ordering)
+│   │   └── seed_data/  525 USDA + manual ingredient entries
+│   ├── app.py          Entry point
+│   └── config.py       Configuration
+└── frontend/           React + Vite
     └── src/
         ├── components/
         ├── pages/
-        └── services/
+        ├── services/
+        └── utils/
 ```
 
 ## Quick Start

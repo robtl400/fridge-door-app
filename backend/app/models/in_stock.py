@@ -1,5 +1,5 @@
 from app import db
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 
 
 class InStock(db.Model):
@@ -23,6 +23,15 @@ class InStock(db.Model):
     )
     lookup = db.relationship("IngredientLookup", backref="in_stock_items")
 
+    @property
+    def days_until_expiration(self):
+        if self.expiration_date is None:
+            return None
+        exp = self.expiration_date
+        if hasattr(exp, "date"):
+            exp = exp.date()
+        return (exp - date.today()).days
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -35,6 +44,7 @@ class InStock(db.Model):
             "expiration_date": self.expiration_date.isoformat()
             if self.expiration_date
             else None,
+            "days_until_expiration": self.days_until_expiration,
             "notes": self.notes,
             "lookup_id": self.lookup_id,
         }
