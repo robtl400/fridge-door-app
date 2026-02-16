@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime, timezone
 from collections import OrderedDict
 from app import db
+from app.models.kitchen import Kitchen
 from app.models.ingredient_lookup import IngredientLookup
 from app.models.in_stock import InStock
 from app.utils.expiration import parse_expiration
@@ -11,9 +12,23 @@ from app.utils.ingredients import expiration_for_storage, get_or_create_lookup
 ingredients_bp = Blueprint("ingredients", __name__)
 
 
-@ingredients_bp.route("/ingredients", methods=["GET"])
-def list_ingredients():
-    items = InStock.query.all()
+def _get_kitchen_or_404(kitchen_key):
+    """Look up kitchen by key, update last_accessed, or return None."""
+    kitchen = Kitchen.query.filter_by(kitchen_key=kitchen_key).first()
+    if not kitchen:
+        return None
+    kitchen.last_accessed = datetime.now(timezone.utc)
+    db.session.commit()
+    return kitchen
+
+
+@ingredients_bp.route("/kitchen/<kitchen_key>/ingredients", methods=["GET"])
+def list_ingredients(kitchen_key):
+    kitchen = _get_kitchen_or_404(kitchen_key)
+    if not kitchen:
+        return jsonify({"error": "Kitchen not found"}), 404
+
+    items = InStock.query.filter_by(kitchen_key=kitchen_key).all()
     if not items:
         return jsonify({}), 200
 
@@ -42,8 +57,12 @@ def list_ingredients():
     return jsonify(result), 200
 
 
-@ingredients_bp.route("/ingredients", methods=["POST"])
-def add_ingredients():
+@ingredients_bp.route("/kitchen/<kitchen_key>/ingredients", methods=["POST"])
+def add_ingredients(kitchen_key):
+    kitchen = _get_kitchen_or_404(kitchen_key)
+    if not kitchen:
+        return jsonify({"error": "Kitchen not found"}), 404
+
     body = request.get_json()
     if not body:
         return jsonify({"error": "Request body required"}), 400
@@ -91,6 +110,7 @@ def add_ingredients():
             expiration_date=exp_date,
             notes=notes,
             lookup_id=lookup.id,
+            kitchen_key=kitchen_key,
         )
         db.session.add(record)
         created.append(record)
@@ -99,10 +119,16 @@ def add_ingredients():
     return jsonify([r.to_dict() for r in created]), 201
 
 
-@ingredients_bp.route("/ingredients/<int:item_id>", methods=["PUT"])
-def update_ingredient(item_id):
+@ingredients_bp.route(
+    "/kitchen/<kitchen_key>/ingredients/<int:item_id>", methods=["PUT"]
+)
+def update_ingredient(kitchen_key, item_id):
+    kitchen = _get_kitchen_or_404(kitchen_key)
+    if not kitchen:
+        return jsonify({"error": "Kitchen not found"}), 404
+
     item = db.session.get(InStock, item_id)
-    if item is None:
+    if item is None or item.kitchen_key != kitchen_key:
         return jsonify({"error": "Item not found"}), 404
 
     data = request.get_json()
@@ -140,10 +166,16 @@ def update_ingredient(item_id):
     return jsonify(item.to_dict()), 200
 
 
-@ingredients_bp.route("/ingredients/<int:item_id>", methods=["DELETE"])
-def delete_ingredient(item_id):
+@ingredients_bp.route(
+    "/kitchen/<kitchen_key>/ingredients/<int:item_id>", methods=["DELETE"]
+)
+def delete_ingredient(kitchen_key, item_id):
+    kitchen = _get_kitchen_or_404(kitchen_key)
+    if not kitchen:
+        return jsonify({"error": "Kitchen not found"}), 404
+
     item = db.session.get(InStock, item_id)
-    if item is None:
+    if item is None or item.kitchen_key != kitchen_key:
         return jsonify({"error": "Item not found"}), 404
 
     db.session.delete(item)
@@ -151,10 +183,16 @@ def delete_ingredient(item_id):
     return jsonify({"deleted": item_id}), 200
 
 
-@ingredients_bp.route("/ingredients/<int:item_id>/toss", methods=["PATCH"])
-def toss_ingredient(item_id):
+@ingredients_bp.route(
+    "/kitchen/<kitchen_key>/ingredients/<int:item_id>/toss", methods=["PATCH"]
+)
+def toss_ingredient(kitchen_key, item_id):
+    kitchen = _get_kitchen_or_404(kitchen_key)
+    if not kitchen:
+        return jsonify({"error": "Kitchen not found"}), 404
+
     item = db.session.get(InStock, item_id)
-    if item is None:
+    if item is None or item.kitchen_key != kitchen_key:
         return jsonify({"error": "Item not found"}), 404
 
     data = request.get_json() or {}

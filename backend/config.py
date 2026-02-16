@@ -10,4 +10,3 @@ class Config:
         "DATABASE_URL", "sqlite:///fridge_door.db"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "jwt-secret-change-me")

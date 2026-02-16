@@ -17,6 +17,11 @@ class InStock(db.Model):
     expiration_date = db.Column(db.DateTime, nullable=False)
     notes = db.Column(db.Text)
 
+    # Every item belongs to a kitchen
+    kitchen_key = db.Column(
+        db.String(20), db.ForeignKey("kitchens.kitchen_key"), nullable=False
+    )
+
     # Link back to lookup table (optional — user may add custom items)
     lookup_id = db.Column(
         db.Integer, db.ForeignKey("ingredient_lookup.id"), nullable=True
@@ -47,4 +52,5 @@ class InStock(db.Model):
             "days_until_expiration": self.days_until_expiration,
             "notes": self.notes,
             "lookup_id": self.lookup_id,
+            "kitchen_key": self.kitchen_key,
         }
