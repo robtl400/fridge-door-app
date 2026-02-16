@@ -1,1 +1,0 @@
-from app.seeds.seed_ingredients import seed_ingredient_lookup

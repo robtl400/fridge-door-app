@@ -21,7 +21,6 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
     bcrypt.init_app(app)
@@ -30,9 +29,17 @@ def create_app(config_class=Config):
     ma.init_app(app)
     CORS(app)
 
+    # Preserve key order in JSON responses (for ordered shelf groupings)
+    app.json.sort_keys = False
+
     # Register blueprints
-    from app.api.routes import api_bp
+    from app.routes.routes import api_bp
+    from app.routes.lookup_routes import lookup_bp
+    from app.routes.ingredient_routes import ingredients_bp
+
     app.register_blueprint(api_bp, url_prefix="/api")
+    app.register_blueprint(lookup_bp, url_prefix="/api")
+    app.register_blueprint(ingredients_bp, url_prefix="/api")
 
     # Create tables and seed on first run
     with app.app_context():
@@ -40,7 +47,7 @@ def create_app(config_class=Config):
 
         db.create_all()
 
-        from app.seeds import seed_ingredient_lookup
+        from app.seed_data import seed_ingredient_lookup
         seed_ingredient_lookup()
 
     return app

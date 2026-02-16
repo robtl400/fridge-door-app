@@ -5,8 +5,8 @@
     "license": "USDA data: CC0 Public Domain. Manual additions: Public Domain",
     "date_processed": "2026-02-13",
     "version": "Complete - Granular Shelves",
-    "note": "Combined USDA FoodKeeper data (413 items) with manual additions (134 items) for comprehensive coverage across all shelf categories.",
-    "total_ingredients": 550,
+    "note": "Combined USDA FoodKeeper data with manual additions. Deduplicated and pre-computed avg_days per storage method.",
+    "total_ingredients": 525,
     "usda_ingredients": 413,
     "manual_additions": 137,
     "unique_shelves": 28
@@ -22,11 +22,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "Butter",
@@ -42,11 +44,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Buttermilk",
@@ -62,11 +66,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Cheese,cheddar, swiss,parmesan",
@@ -82,7 +88,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         }
       },
       "keywords": "Coffee creamer,Coffee, creamer,liquid refrigerated",
@@ -98,7 +105,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "Cottage cheese,cheese",
@@ -114,7 +122,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "",
@@ -130,7 +139,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Cream,whipping,ultrapasteurized",
@@ -146,7 +156,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "Dips,sour cream based,sour,cream based,cream,dip",
@@ -162,7 +173,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         }
       },
       "keywords": "Egg substitutes,liquid,egg,substitutes,substitute",
@@ -178,11 +190,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Eggnog,commercial,egg,nog",
@@ -198,7 +212,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 21,
-          "max_days": 35
+          "max_days": 35,
+          "avg_days": 28
         }
       },
       "keywords": "Eggs,in shell,egg,shell",
@@ -214,11 +229,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Egg dishes,egg,dishes",
@@ -234,7 +251,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         }
       },
       "keywords": "Kefir,fermented milk,milk,fermented",
@@ -250,11 +268,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Margarine",
@@ -270,7 +290,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Milk,plain,flavored,flavor",
@@ -286,7 +307,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 2
         }
       },
       "keywords": "Pudding",
@@ -302,7 +324,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 21,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 24
         }
       },
       "keywords": "Whipped cream,cream,aerosol can,can",
@@ -318,7 +341,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Whipped topping,topping,aerosol can,can,whipped",
@@ -334,11 +358,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Yogurt",
@@ -354,11 +380,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 240
         }
       },
       "keywords": "Beef,rib roast,bone-in,roast,bone,rib",
@@ -374,11 +402,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 240
         }
       },
       "keywords": "Lamb,leg,bone-in - small,bone-in,bone",
@@ -394,11 +424,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 240
         }
       },
       "keywords": "Veal,shoulder,boneless,shoulder roast,roast",
@@ -414,11 +446,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 240
         }
       },
       "keywords": "Pork,loin roast,bone-in,roast,bone,loin",
@@ -434,11 +468,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 240
         }
       },
       "keywords": "Goat,tender whole cuts,legs,ribs,shoulder,loin,tender,whole cuts,leg,rib",
@@ -454,11 +490,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 240
         }
       },
       "keywords": "Venison,rump,round,loin,rib,rib roast,roast",
@@ -474,11 +512,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Variety meats,liver,tongue,chitterlings,meats,meat,chitterling",
@@ -494,11 +534,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Bacon",
@@ -514,11 +556,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Corned beef,pouch,pickling juices,juices,juice",
@@ -534,7 +578,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "Ham,canned,keep refrigerated,label,refrigerated",
@@ -550,11 +595,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Hot dogs,hot",
@@ -570,11 +617,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Sausage,raw bulk type,patties,raw,patty",
@@ -590,11 +639,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Stuffed,raw pork chops,chops,raw pork,pork",
@@ -610,11 +661,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Raw kabobs,vegetables,kabobs,kabob",
@@ -630,11 +683,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Jerky,commercially dried,dried",
@@ -650,7 +705,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Meat products,products,canned,meat,product",
@@ -666,7 +722,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Retort pouches,boxes,box,retort,pouch",
@@ -682,11 +739,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Chicken,whole",
@@ -702,11 +761,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Turkey,whole",
@@ -722,11 +783,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Ground turkey,chicken,turkey",
@@ -742,11 +805,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Chicken parts,breast halves,bone-in,halves,bone,breast,chicken,half",
@@ -762,11 +827,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Turkey parts,breast halves,bone-in,halves,bone,breast,half,turkey",
@@ -782,11 +849,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Duckling,domestic,wild,whole",
@@ -802,11 +871,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Goose,domestic,wild,whole",
@@ -822,11 +893,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Pheasant,young,whole",
@@ -842,11 +915,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Quail,whole",
@@ -862,11 +937,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Capon,whole",
@@ -882,11 +959,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Cornish Hens,Hens,whole,Hen",
@@ -902,11 +981,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Giblets,giblet",
@@ -922,11 +1003,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Stuffed,raw chicken breasts,breast,chicken,chicken breasts",
@@ -942,7 +1025,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Turducken",
@@ -958,7 +1042,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 30,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 60
         }
       },
       "keywords": "Chicken nuggets, patties,chicken,nuggets,nugget,patty",
@@ -974,11 +1059,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 150
         }
       },
       "keywords": "Cooked poultry dishes,poultry dishes,poultry",
@@ -994,11 +1081,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Fried chicken,chicken",
@@ -1014,11 +1103,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Poultry pieces,gravy,broth,poultry,pieces,piece",
@@ -1034,11 +1125,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Rotisserie chicken,chicken,Rotisserie",
@@ -1054,7 +1147,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Canned chicken,chicken,canned,can",
@@ -1070,11 +1164,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Lean fish,cod, flounder,haddock,halibut,sole,fish",
@@ -1090,11 +1186,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Fatty fish,bluefish,catfish,mackerel,mullet,salmon,tuna,fish,fatty,blue,cat",
@@ -1110,7 +1208,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 17
         }
       },
       "keywords": "Caviar,fresh,jar",
@@ -1126,11 +1225,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Cooked fish,fish,all",
@@ -1146,7 +1247,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Surimi seafood,surimi,sea,food",
@@ -1162,11 +1264,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 360
         }
       },
       "keywords": "Scallops,scallop",
@@ -1182,11 +1286,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 360
         }
       },
       "keywords": "Shrimp,crayfish,cray,fish",
@@ -1202,11 +1308,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 360
         }
       },
       "keywords": "Squid",
@@ -1222,11 +1330,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 6
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Shucked clams,mussels,oysters,clams,clam,mussels,mussel,oyster",
@@ -1242,11 +1352,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 90
         }
       },
       "keywords": "Crab meat,meat,fresh,crab",
@@ -1262,11 +1374,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         }
       },
       "keywords": "Crab legs,king,dungeness,snow,crab,legs,leg",
@@ -1282,11 +1396,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Live clams,mussels,crab,oysters,clams,clam,mussel,oyster",
@@ -1302,7 +1418,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 1
+          "max_days": 1,
+          "avg_days": 1
         }
       },
       "keywords": "Fresh whole lobster,lobster,live,whole lobster",
@@ -1318,11 +1435,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 14,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 21
         }
       },
       "keywords": "Fresh lobster tails,tails,cooked,lobster tails,tail",
@@ -1338,7 +1457,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 7
         }
       },
       "keywords": "Fresh clams,clams,oysters,clam,mussels,mussel,oyster",
@@ -1354,11 +1474,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 60
         }
       },
       "keywords": "Cooked shellfish,shellfish,fish,cooked",
@@ -1374,7 +1496,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 120,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 150
         }
       },
       "keywords": "Herring,glass packed,wine sauce,packed,glass,wine,sauce",
@@ -1390,11 +1513,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 45
+          "max_days": 45,
+          "avg_days": 29
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         }
       },
       "keywords": "Fish,hot smoked,air pack,hot,smoked,pack",
@@ -1410,11 +1535,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 150,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 150
         }
       },
       "keywords": "Tofu",
@@ -1430,11 +1557,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Soy flour,full fat,soy,flour,fat",
@@ -1450,7 +1579,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Textured soy protein,protein,TSP,soy protein,soy",
@@ -1466,11 +1596,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         },
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Re hydrated textured soy protein,protein,TSP,soy,soy protein,textured soy protein,Re hydrated ",
@@ -1486,11 +1618,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Leftovers,meat,fish,poultry,egg,leftover",
@@ -1506,7 +1640,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "Commercial brand vacuum-packed dinners,brand vacuum packed dinners,USDA seal,USDA,seal,dinners,dinner,vacuum packed,vacuum packed dinner,packed dinner,packed",
@@ -1522,11 +1657,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Cooked pasta,pasta",
@@ -1542,11 +1679,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 6
+          "max_days": 6,
+          "avg_days": 5
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Cooked rice,rice",
@@ -1562,7 +1701,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 4
         }
       },
       "keywords": "Fruit,cut",
@@ -1578,11 +1718,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Guacamole",
@@ -1598,7 +1740,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Hummus,commercial,pasteurized,preservatives,preservative",
@@ -1614,11 +1757,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Luncheon meat,poultry,store sliced,meat,luncheon,store,sliced",
@@ -1634,11 +1779,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Main dishes,meals,hot,refrigerated,dishes,dish,meal",
@@ -1654,11 +1801,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Meats,gravy,broth,meat",
@@ -1674,7 +1823,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "Olives,bar,olive",
@@ -1690,11 +1840,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Pate",
@@ -1710,11 +1862,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Soup,stews,stew",
@@ -1730,7 +1884,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Casseroles,Casserole",
@@ -1746,15 +1901,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 18
+          "max_days": 18,
+          "avg_days": 16
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 120
         }
       },
       "keywords": "Commercial bread products,pan breads,flat breads,rolls,buns,bread products,bread,products,product,pan,breads,bread,flat,roll,bun",
@@ -1770,15 +1928,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Tortillas,Tortilla",
@@ -1794,15 +1955,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 3,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 5
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Commercial cakes,cake,muffin,muffins",
@@ -1818,11 +1982,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "Cheesecake,cake,cheese",
@@ -1838,11 +2004,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Cookies,soft,cookie",
@@ -1858,14 +2026,16 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
-      "keywords": "Dairy filled eclairs,dairy filled,eclairs,\u00e9clair,dairy",
+      "keywords": "Dairy filled eclairs,dairy filled,eclairs,éclair,dairy",
       "is_seed_data": true
     },
     {
@@ -1878,11 +2048,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 2,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 2
         }
       },
       "keywords": "Doughnuts,doughnut,dough,nut",
@@ -1898,15 +2070,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Fruit cake,fruit,cake",
@@ -1922,11 +2097,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 5,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 7
         },
         "refrigerated": {
           "min_days": 420,
-          "max_days": 420
+          "max_days": 420,
+          "avg_days": 420
         }
       },
       "keywords": "Pastries,danish,pastry",
@@ -1942,7 +2119,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Pies,cream,pie, banana, banana cream,coconut,coconut cream,butterscotch",
@@ -1958,7 +2136,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         }
       },
       "keywords": "Pies,chiffon,pie,chocolate,lemon,chocolate pie,lemon pie",
@@ -1974,15 +2153,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Pies,fruit,pie,apple,apple pie,peach,peach pie,blueberry,blueberry pie,cherry,cherry pie,apricot,apricot pie,blackberry,blackberry pie",
@@ -1998,11 +2180,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Pies,mincemeat,pie,meat,mince",
@@ -2018,11 +2202,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Quiche",
@@ -2038,11 +2224,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 360
         },
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "Baking powder,baking,powder",
@@ -2058,7 +2246,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Baking soda,soda,baking",
@@ -2074,7 +2263,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Biscuit,pancake mix,pancake,mix,cake",
@@ -2090,7 +2280,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         }
       },
       "keywords": "Cake,brownie,bread mixes,bread,mixes,mix",
@@ -2106,7 +2297,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Cornmeal,regular,degerminated,germinated,germinate,corn,meal",
@@ -2122,11 +2314,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 630
         },
         "pantry_opened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         }
       },
       "keywords": "Cornstarch,corn,starch",
@@ -2142,11 +2336,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         },
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Flour,white",
@@ -2162,11 +2358,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Frosting,icing,frost,ice",
@@ -2182,11 +2380,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         },
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Gelatin,flavor,flavored",
@@ -2202,15 +2402,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         },
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 120
         },
         "refrigerated": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Oils,olive,vegetable,oil",
@@ -2226,15 +2429,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         },
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 165
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Nut oils,nut,oils,oil",
@@ -2250,7 +2456,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Shortening,solid",
@@ -2266,15 +2473,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         },
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Tamarind paste,paste,tamarind",
@@ -2290,7 +2500,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Flavored,herb mixes,herb,flavor,mixes,mix",
@@ -2306,7 +2517,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Garlic,chopped,jars,commercial jars,jar",
@@ -2322,7 +2534,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 540,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 630
         }
       },
       "keywords": "Sugar,brown",
@@ -2338,11 +2551,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Tapiocas,Tapioca",
@@ -2358,7 +2573,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Ready to bake pie crust,pie,crust,bake,ready",
@@ -2374,7 +2590,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Cookie dough,cookie,dough",
@@ -2390,15 +2607,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         },
         "refrigerated": {
           "min_days": 28,
-          "max_days": 42
+          "max_days": 42,
+          "avg_days": 35
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Apples,apple",
@@ -2414,7 +2634,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 3
         }
       },
       "keywords": "Apricots,Apricot",
@@ -2430,7 +2651,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Avocados,Avocado",
@@ -2446,11 +2668,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Bananas,banana",
@@ -2466,11 +2690,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Berries,berry,cherries,cherry,goose berries,goose berry,lychee,gooseberries",
@@ -2486,11 +2712,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Blueberries,blueberry,berries,berry",
@@ -2506,11 +2734,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Cherimoya",
@@ -2526,11 +2756,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 10,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 10,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 15
         }
       },
       "keywords": "Citrus fruit,fruit,citrus,lemon,lime,orange,grape,grapefruit,tangerines,tangerine,clementines,clementine",
@@ -2546,7 +2778,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Coconut,shredded",
@@ -2562,11 +2795,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Coconuts,Coconut,fresh",
@@ -2582,11 +2817,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Cranberries,cranberry",
@@ -2602,11 +2839,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Dates",
@@ -2622,15 +2861,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 1
+          "max_days": 1,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Grapes,grape",
@@ -2646,7 +2888,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Guava",
@@ -2662,7 +2905,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 6
+          "max_days": 6,
+          "avg_days": 4
         }
       },
       "keywords": "Kiwi fruit,kiwi,fruit",
@@ -2678,11 +2922,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Melons,melon",
@@ -2698,15 +2944,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Papaya,mango,feijoa,passionfruit,casaha melon,melon,fruit,passion",
@@ -2722,11 +2971,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Peaches,nectarines,plums,pears,sapote,peach,nectarine,plum,pear",
@@ -2742,11 +2993,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Pineapple",
@@ -2762,11 +3015,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Plantains,plantain",
@@ -2782,15 +3037,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 3
         },
         "refrigerated": {
           "min_days": 30,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 60
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Pomegranate",
@@ -2806,11 +3064,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Artichokes,artichoke,whole",
@@ -2826,11 +3086,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 150,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 150
         }
       },
       "keywords": "Asparagus",
@@ -2846,7 +3108,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "Bamboo shoots,bamboo,shoots,shoot",
@@ -2862,11 +3125,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Beans,peas,green,fava,lima,soybean,wax,snow,sugar snap,sugar,pea,soya",
@@ -2882,15 +3147,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 1
+          "max_days": 1,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Beets",
@@ -2906,11 +3174,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Bok choy",
@@ -2926,11 +3196,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Broccoli,broccoli raab,rapini,raab",
@@ -2946,11 +3218,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Brussels sprouts,brussels,sprouts,sprout,brussel",
@@ -2966,11 +3240,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Cabbage",
@@ -2986,11 +3262,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Carrots,parsnips,carrot,parsnip",
@@ -3006,11 +3284,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Cauliflower",
@@ -3026,11 +3306,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Celery",
@@ -3046,11 +3328,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Corn,cob",
@@ -3066,7 +3350,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 6
+          "max_days": 6,
+          "avg_days": 5
         }
       },
       "keywords": "Cucumbers,cucumber",
@@ -3082,15 +3367,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 1
+          "max_days": 1,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 4,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 5
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Eggplant,egg",
@@ -3106,15 +3394,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 3
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Ginger root,ginger,root",
@@ -3130,11 +3421,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Greens,green",
@@ -3150,11 +3443,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Leeks,leek",
@@ -3170,7 +3465,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Lettuce,iceberg,romaine",
@@ -3186,11 +3482,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 5
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Mushroom,mushrooms",
@@ -3206,15 +3504,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 1
+          "max_days": 1,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Okra",
@@ -3230,15 +3531,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Onions,yellow,white,red,onion",
@@ -3254,11 +3558,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 9
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Peppers,pepper",
@@ -3274,15 +3580,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Potatoes,potato",
@@ -3298,11 +3607,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 120
         }
       },
       "keywords": "Pumpkins,pumpkin",
@@ -3318,7 +3629,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 10,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 12
         }
       },
       "keywords": "Radishes,radish",
@@ -3334,7 +3646,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 5
         }
       },
       "keywords": "Rhubarb",
@@ -3350,15 +3663,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 300
+          "max_days": 300,
+          "avg_days": 270
         }
       },
       "keywords": "Rutabagas",
@@ -3374,15 +3690,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 3
         },
         "refrigerated": {
           "min_days": 4,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Squash,summer,zucchini",
@@ -3398,11 +3717,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 14
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Tamarind",
@@ -3418,11 +3739,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         }
       },
       "keywords": "Taro",
@@ -3438,7 +3761,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Tomatoes,tomato",
@@ -3454,11 +3778,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 300
+          "max_days": 300,
+          "avg_days": 270
         }
       },
       "keywords": "Turnips,turnip",
@@ -3474,15 +3800,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "refrigerated": {
           "min_days": 3,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Yuca,cassava",
@@ -3498,11 +3827,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Dough,commercial,bread,cookie",
@@ -3518,7 +3849,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Frozen potato products,fries,hashbrowns,tater tots,potato products,products,product,frozen potato,hashbrown,tater tot",
@@ -3534,11 +3866,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Frozen pretzels,frozen,pretzels,pretzel",
@@ -3554,7 +3888,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 300,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 420
         }
       },
       "keywords": "Fruits,berries,melons,berry,melon",
@@ -3570,7 +3905,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Ice cream,ice,cream",
@@ -3586,7 +3922,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Ice pops,ice,pops,pop",
@@ -3602,11 +3939,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Lobster tails,tail,lobster,Lobster tail",
@@ -3622,7 +3961,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Pancakes,waffles,pancake",
@@ -3638,11 +3978,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Sausages,Sausage,uncooked,cooked",
@@ -3658,7 +4000,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Sherbet,sorbet",
@@ -3674,11 +4017,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         }
       },
       "keywords": "Shrimp,shellfish,fish",
@@ -3694,11 +4039,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Soy crumbles,hot dogs,hot dog,soy,soy crumble",
@@ -3714,11 +4061,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         }
       },
       "keywords": "Soy meat substitutes,soy,meat,soy meat,meat substitutes,substitutes,substitute",
@@ -3734,11 +4083,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Tempeh",
@@ -3754,7 +4105,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "TV dinners,entrees,breakfast,dinners,dinner,entry,TV",
@@ -3770,11 +4122,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 420
         }
       },
       "keywords": "Vegetables,vegetable",
@@ -3790,11 +4144,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Fresh pasta,pasta",
@@ -3810,7 +4166,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Dry egg noodles,egg noodles,egg,noodles,noodle,dry",
@@ -3826,7 +4183,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Rice,white,wild",
@@ -3842,7 +4200,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Barbecue sauce,sauce,bottled,Barbecue",
@@ -3858,7 +4217,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Chutney",
@@ -3874,7 +4234,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Cream sauces,milk solids,sauce,solids,cream,sauces,milk,solid",
@@ -3890,7 +4251,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         }
       },
       "keywords": "Dry gravy mixes,gravy,mixes,mix,dry",
@@ -3906,7 +4268,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         }
       },
       "keywords": "Gravy,jars,cans,jar,can",
@@ -3922,7 +4285,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Horseradish,jar",
@@ -3938,11 +4302,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 360
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Jams,jellies,preserves,jam,jelly,preserve",
@@ -3958,7 +4324,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Ketchup,cocktail,chili sauce,sauce,chili",
@@ -3974,7 +4341,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Marinades,marinade",
@@ -3990,11 +4358,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Mayonnaise,commercial",
@@ -4010,7 +4380,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 60
         }
       },
       "keywords": "Pickles,pickle",
@@ -4026,11 +4397,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Pesto,jarred,jar",
@@ -4046,11 +4419,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         },
         "refrigerated": {
           "min_days": 30,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 60
         }
       },
       "keywords": "Salad dressings,dressings,dressing,commercial,bottled,bottle,salad",
@@ -4066,7 +4441,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Salsa,picante,taco sauces,taco,sauces,sauce",
@@ -4082,11 +4458,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         },
         "refrigerated": {
           "min_days": 4,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 4
         }
       },
       "keywords": "Spaghetti sauce,sauce,in jars,jars,jar,spaghetti",
@@ -4102,7 +4480,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Soy sauce,teriyaki sauce,sauce,soy,teriyaki",
@@ -4118,7 +4497,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         }
       },
       "keywords": "Jars,pouches,jar,pouch",
@@ -4134,7 +4514,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 3
         }
       },
       "keywords": "Fruit",
@@ -4150,7 +4531,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 2
         }
       },
       "keywords": "Dinners,dinner",
@@ -4166,7 +4548,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Cereal,dry mixes,mixes,mix,dry",
@@ -4182,7 +4565,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 1
+          "max_days": 1,
+          "avg_days": 1
         }
       },
       "keywords": "Formula,prepared,prepare",
@@ -4198,7 +4582,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 2
         }
       },
       "keywords": "Liquid concentrate,ready to feed formula,concentrate,liquid,formula,feed,ready to feed,feed formula",
@@ -4214,11 +4599,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Applesauce,Apple,sauce,commercial",
@@ -4234,7 +4621,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Canned goods,canned,can,goods,low acid,low,meat,poultry,fish,gravy,stew,soups,soup,beans,bean,carrots,carrot,corn,pasta,peas,pea,potatoes,potato,spinach",
@@ -4250,11 +4638,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         },
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Cereal,ready,eat",
@@ -4270,7 +4660,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Chocolate syrup,Chocolate,syrup",
@@ -4286,19 +4677,23 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         },
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Crackers,cracker",
@@ -4314,7 +4709,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "Graham cracker,animal cracker,Graham,cracker,animal",
@@ -4330,15 +4726,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Fruits,fruit,dried,raisins,raisin,apricots,apricot,mangoes,mangoe,cranberries,cranberry",
@@ -4354,7 +4753,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "fruit snack,gummy,fruit,snacks,snack,gummy snacks,fruit snacks,gummy snack",
@@ -4370,14 +4770,15 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Marshmallows,Marshmallow",
       "is_seed_data": true
     },
     {
-      "ingredient_name": "Marshmallow cr\u00e8me",
+      "ingredient_name": "Marshmallow crème",
       "category": "Shelf Stable Foods",
       "subcategory": "",
       "default_expiration_days": 105,
@@ -4386,14 +4787,16 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 105
         },
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
-      "keywords": "Marshmallow cr\u00e8me,Marshmallow,cr\u00e8me",
+      "keywords": "Marshmallow crème,Marshmallow,crème",
       "is_seed_data": true
     },
     {
@@ -4406,7 +4809,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Molasses",
@@ -4422,15 +4826,18 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 165
         },
         "refrigerated": {
           "min_days": 120,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 150
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Nuts,nut,jar,jars,cans,can",
@@ -4446,11 +4853,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 450
         },
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Peanut butter,butter,commercial,peanut",
@@ -4466,7 +4875,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Pectin",
@@ -4482,11 +4892,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "pantry_opened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Potato chips,potato,chips,chip,potatoes",
@@ -4502,11 +4914,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 195
         },
         "pantry_opened": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         }
       },
       "keywords": "Pretzels,Pretzel",
@@ -4522,7 +4936,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Pudding mixes,Pudding,mixes,mix",
@@ -4538,11 +4953,13 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "Sun dried tomatoes,dried tomatoes,sun,sun dried,dried,tomatoes,tomato",
@@ -4558,7 +4975,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Syrup",
@@ -4574,11 +4992,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         },
         "pantry_opened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Toaster pastries,pastry,Toaster,pastries",
@@ -4594,15 +5014,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 90,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 120
         },
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 120
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "Coffee,whole beans,beans,whole,bean",
@@ -4618,11 +5041,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 630
         },
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 60
         }
       },
       "keywords": "Diet powder mixes,drink mixes,mixes,drink,powder mixes,diet powder,mix",
@@ -4638,15 +5063,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         },
         "pantry_opened": {
           "min_days": 7,
-          "max_days": 12
+          "max_days": 12,
+          "avg_days": 9
         },
         "refrigerated": {
           "min_days": 8,
-          "max_days": 12
+          "max_days": 12,
+          "avg_days": 10
         }
       },
       "keywords": "Fruit Juice in cartons,fruit drinks,punch,fruit,fruit juice,juice in cartons,cartons,carton,drinks,drink",
@@ -4662,7 +5090,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 8,
-          "max_days": 12
+          "max_days": 12,
+          "avg_days": 10
         }
       },
       "keywords": "Juice, boxes,box",
@@ -4678,7 +5107,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         }
       },
       "keywords": "Nectar,papaya,mango,guava,guavabana,mangoes",
@@ -4694,7 +5124,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         }
       },
       "keywords": "Soda,carbonated cola drinks,mixers,diet sodas,bottles,cans,cola drinks,drinks,drink,cola,carbonated,carbonated cola,mixer,diet,sodas,bottle,can",
@@ -4710,7 +5141,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Soy,rice beverage,rice,beverage",
@@ -4726,11 +5158,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 1080
+          "max_days": 1080,
+          "avg_days": 810
         },
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Tea,bags,bag",
@@ -4746,7 +5180,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         }
       },
       "keywords": "Kumquats",
@@ -4762,7 +5197,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         }
       },
       "keywords": "Bagged greens,leaf,spinach,lettuce,bagged,greens,green",
@@ -4778,7 +5214,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         }
       },
       "keywords": "Tahini",
@@ -4794,7 +5231,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Egg salad,egg,salad",
@@ -4810,7 +5248,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         }
       },
       "keywords": "Potato salad,potato,salad",
@@ -4826,7 +5265,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Seafood salads,tuna salad, shrimp salad, salmon salad, mixed seafood salad,seafood,salads,salad,tuna,shrimp,salmon,mixed,mixed seafood,seafood salad,",
@@ -4842,7 +5282,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Chicken salad,chicken,salad",
@@ -4858,7 +5299,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Ham salad,ham,salad",
@@ -4874,7 +5316,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         }
       },
       "keywords": "Pasta salad,pasta,salad",
@@ -4890,7 +5333,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Soy milk,soy,milk",
@@ -4906,7 +5350,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Yams,sweet potatoes,potatoes,potato,yam",
@@ -4922,11 +5367,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Kale",
@@ -4942,7 +5389,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Almond milk,milk,almond",
@@ -4958,7 +5406,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Rice milk,rice,milk",
@@ -4974,7 +5423,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Coconut milk,coconut,milk",
@@ -4990,11 +5440,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 90
         }
       },
       "keywords": "Turkey bacon,turkey,bacon",
@@ -5010,11 +5462,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 630
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "Black bean sauce,sauce,bean,black,black bean,bean sauce",
@@ -5030,11 +5484,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 630
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "Oyster sauce,oyster,sauce",
@@ -5050,11 +5506,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 630
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "Hoisin sauce,sauce,Hoisin",
@@ -5070,7 +5528,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         }
       },
       "keywords": "Pork roll,Pork,roll",
@@ -5086,15 +5545,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "refrigerated": {
           "min_days": 480,
-          "max_days": 480
+          "max_days": 480,
+          "avg_days": 480
         },
         "frozen": {
           "min_days": 600,
-          "max_days": 600
+          "max_days": 600,
+          "avg_days": 600
         }
       },
       "keywords": "Almonds,Almond,shell",
@@ -5110,15 +5572,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 21
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Cashews,Cashew,no shell,shell",
@@ -5134,15 +5599,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 21
         },
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "frozen": {
           "min_days": 720,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 720
         }
       },
       "keywords": "Macadamias,Macadamia,no shell,shell",
@@ -5158,15 +5626,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "frozen": {
           "min_days": 720,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 720
         }
       },
       "keywords": "Peanuts,Peanut,shell,nut",
@@ -5182,15 +5653,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 21
         },
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "frozen": {
           "min_days": 720,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 720
         }
       },
       "keywords": "Pecans,Pecan,shell",
@@ -5206,15 +5680,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 21,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 21
         },
         "refrigerated": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "frozen": {
           "min_days": 720,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 720
         }
       },
       "keywords": "Pistachios,shell,no shell,Pistachio,pista",
@@ -5230,15 +5707,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 21
         },
         "refrigerated": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         },
         "frozen": {
           "min_days": 720,
-          "max_days": 720
+          "max_days": 720,
+          "avg_days": 720
         }
       },
       "keywords": "Walnuts,shell,no shell,walnut",
@@ -5254,11 +5734,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Lime juice,lime,juice",
@@ -5274,11 +5756,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 450
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Lemon juice,lemon,juice",
@@ -5294,11 +5778,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Bagel,fresh baked,baked",
@@ -5314,11 +5800,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 3,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 5
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Muffin,homemade including bran,homemade,bran,blueberry,banana,corn,chocolate chip,including bran,chocolate,chip",
@@ -5334,11 +5822,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Orange juice,commercially packaged carton,orange,juice,commercially,packaged,carton,packaged carton,commercially packaged,commercial",
@@ -5354,7 +5844,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 120,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 150
         }
       },
       "keywords": "Roasted red peppers,roasted,red,peppers,jar,Roasted red,red peppers,pepper",
@@ -5370,7 +5861,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Whole wheat flour,Whole,wheat,flour,wheat flour,whole wheat",
@@ -5386,11 +5878,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Whole wheat bread,Whole,wheat,bread,homemade,whole wheat,wheat bread",
@@ -5406,7 +5900,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         }
       },
       "keywords": "Red wine,red,wine",
@@ -5422,7 +5917,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         }
       },
       "keywords": "White wine,white,wine",
@@ -5438,7 +5934,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         }
       },
       "keywords": "Dry stuffing mix,Dry stuffing,stuffing mix,Dry,stuffing,mix,commercially packaged,packaged,commercially,commercial,pack",
@@ -5454,7 +5951,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Powdered milk,Powdered,milk,powder",
@@ -5470,7 +5968,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Cashew butter,Cashew,butter",
@@ -5486,11 +5985,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Nacho cheese,nacho,cheese,store bought,store",
@@ -5506,15 +6007,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Star fruit,fruit,fruits",
@@ -5530,15 +6034,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 3
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Prickly pear,pear,pickle",
@@ -5554,15 +6061,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 3
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 330
         }
       },
       "keywords": "Pitaya,dragon fruit,fruit,fruits",
@@ -5578,11 +6088,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Strawberries,strawberry",
@@ -5598,11 +6110,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Raspberries,raspberry",
@@ -5618,11 +6132,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Cherries,cherry",
@@ -5638,18 +6154,20 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Broth,homemade",
       "is_seed_data": true
     },
     {
-      "ingredient_name": "Beef broth/stock/consomm\u00e9",
+      "ingredient_name": "Beef broth/stock/consommé",
       "category": "Condiments, Sauces & Canned Goods",
       "subcategory": "",
       "default_expiration_days": 7,
@@ -5658,18 +6176,20 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
-      "keywords": "Beef broth, beef stock,beef consomm\u00e9,consomm\u00e9,commercially produced",
+      "keywords": "Beef broth, beef stock,beef consommé,consommé,commercially produced",
       "is_seed_data": true
     },
     {
-      "ingredient_name": "Chicken broth/stock/consomm\u00e9",
+      "ingredient_name": "Chicken broth/stock/consommé",
       "category": "Condiments, Sauces & Canned Goods",
       "subcategory": "",
       "default_expiration_days": 7,
@@ -5678,14 +6198,16 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
-      "keywords": "Chicken broth,chicken stock,consomm\u00e9,commercially produced",
+      "keywords": "Chicken broth,chicken stock,consommé,commercially produced",
       "is_seed_data": true
     },
     {
@@ -5698,11 +6220,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Vegetable stock,Vegetable broth,broth,commercial vegetable stock,commercial vegetable broth,vegetable",
@@ -5718,7 +6242,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         }
       },
       "keywords": "Ricotta",
@@ -5734,15 +6259,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 4,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 4
         },
         "refrigerated": {
           "min_days": 28,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 28
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Baby carrots, carrot,baby carrot",
@@ -5758,11 +6286,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Jicama,fresh",
@@ -5778,7 +6308,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "Kimchi",
@@ -5794,11 +6325,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 300
         }
       },
       "keywords": "Kohlrabi",
@@ -5814,15 +6347,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Watermelon",
@@ -5838,15 +6374,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "refrigerated": {
           "min_days": 5,
-          "max_days": 15
+          "max_days": 15,
+          "avg_days": 10
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Cantaloupe",
@@ -5862,15 +6401,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 4
         },
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Honeydew",
@@ -5886,7 +6428,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         }
       },
       "keywords": "Refried beans,refried bean",
@@ -5902,11 +6445,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 900,
-          "max_days": 900
+          "max_days": 900,
+          "avg_days": 900
         },
         "refrigerated": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Relish",
@@ -5922,15 +6467,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 810,
-          "max_days": 810
+          "max_days": 810,
+          "avg_days": 810
         },
         "refrigerated": {
           "min_days": 5,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 5
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Tomato paste",
@@ -5946,11 +6494,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         },
         "refrigerated": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Tapenade",
@@ -5966,11 +6516,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 9
+          "max_days": 9,
+          "avg_days": 8
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Lemongrass",
@@ -5986,11 +6538,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Cilantro",
@@ -6006,11 +6560,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Mint",
@@ -6026,7 +6582,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Basil,dried",
@@ -6042,11 +6599,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Oregano",
@@ -6062,11 +6621,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Rosemary",
@@ -6082,11 +6643,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Chives",
@@ -6102,11 +6665,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "Thyme",
@@ -6122,11 +6687,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "Salami,pre-packaged,luncheon meat,deli meat,packaged,luncheon/deli,pre",
@@ -6142,11 +6709,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Canadian bacon,bacon,whole",
@@ -6162,7 +6731,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "Duck fat,duck",
@@ -6178,11 +6748,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Bacon grease,bacon,grease",
@@ -6198,11 +6770,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "Frying oil,re-used oil,oil",
@@ -6218,7 +6792,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Almond extract",
@@ -6234,7 +6809,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Cinnamon extract",
@@ -6250,7 +6826,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Lemon extract,lemon",
@@ -6266,7 +6843,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "vanilla,vanila extract",
@@ -6282,7 +6860,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Butter flavor,butter",
@@ -6298,7 +6877,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Coconut flavor,coconut",
@@ -6314,11 +6894,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 6,
-          "max_days": 6
+          "max_days": 6,
+          "avg_days": 6
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Apple juice,juice,fresh squeezed,squeezed,juices,apple",
@@ -6334,11 +6916,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 6,
-          "max_days": 6
+          "max_days": 6,
+          "avg_days": 6
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Carrot juice,juice,fresh squeezed,squeezed,juices",
@@ -6354,7 +6938,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "Cream liquors,liquors,unopened,liquor",
@@ -6370,11 +6955,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "Macaroons,Macaroon,french",
@@ -6390,7 +6977,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 150,
-          "max_days": 150
+          "max_days": 150,
+          "avg_days": 150
         }
       },
       "keywords": "String Cheese,cheese",
@@ -6406,7 +6994,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Vegan Cheddar Cheese,cheese,cheddar",
@@ -6422,7 +7011,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 8
         }
       },
       "keywords": "Quark,fresh cheese,cheese",
@@ -6438,11 +7028,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 300,
-          "max_days": 300
+          "max_days": 300,
+          "avg_days": 300
         }
       },
       "keywords": "Zucchini,fresh, whole",
@@ -6458,11 +7050,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Hot peppers,pepper",
@@ -6478,7 +7072,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 7
         }
       },
       "keywords": "Bean sprouts,bean,sprouts",
@@ -6494,7 +7089,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Swiss chard,chard",
@@ -6510,7 +7106,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Puff pastry,pastry,pastries,puff",
@@ -6526,7 +7123,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "Pie crust,crust,refrigerated,pie",
@@ -6542,7 +7140,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "Granola",
@@ -6558,7 +7157,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Pork rinds,pork,rinds",
@@ -6574,7 +7174,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 2
         }
       },
       "keywords": "Nutrition supplement drinks,drinks,canned,supplement,Boost,Ensure",
@@ -6590,7 +7191,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Hot sauce,sauce",
@@ -6606,7 +7208,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 5
         }
       },
       "keywords": "Thai red curry paste,red curry paste,curry paste,paste,curry",
@@ -6622,11 +7225,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "Yeast,packaged",
@@ -6642,7 +7247,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Cranberry sauce,sauce,canned",
@@ -6658,7 +7264,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         }
       },
       "keywords": "Vegetable juice,stable,shelf,shelf-stable",
@@ -6674,7 +7281,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "Marinated vegetables,vegetables,oil,vegetable",
@@ -6690,11 +7298,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Pizza,frozen",
@@ -6710,7 +7320,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         }
       },
       "keywords": "Chia seeds,chia,seed,seeds",
@@ -6726,11 +7337,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "Bread,Breads,homemade",
@@ -6746,11 +7359,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Amaranth,whole grain,grain",
@@ -6766,11 +7381,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Barley,whole grain,grain",
@@ -6786,11 +7403,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Buckwheat,whole grain,grain",
@@ -6806,11 +7425,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Farro,whole grain,grain",
@@ -6826,11 +7447,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "Millet,whole grain,grain",
@@ -6846,11 +7469,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Oat,Oats,whole grain,grain",
@@ -6866,11 +7491,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Rye,whole grain,grain",
@@ -6886,11 +7513,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Sorghum,whole grain,grain",
@@ -6906,11 +7535,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "frozen": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "Spelt,whole grain,grain",
@@ -6926,11 +7557,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         },
         "frozen": {
           "min_days": 240,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 240
         }
       },
       "keywords": "Teff,whole grain,grain",
@@ -6946,11 +7579,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "Rabbit,whole, fresh",
@@ -6966,11 +7601,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         },
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": "Spaghetti squash,squash,whole",
@@ -6986,7 +7623,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         }
       },
       "keywords": "Tomato sauce,sauce,spaghetti, pizza",
@@ -7002,11 +7640,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 10,
-          "max_days": 10
+          "max_days": 10,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 5,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 5
         }
       },
       "keywords": "Cherry, tomatoes,tomato",
@@ -7022,11 +7662,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "coconut cream,coconut,cream,canned,can",
@@ -7042,7 +7684,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         }
       },
       "keywords": "coleslaw,homemade,homemade coleslaw,prepared,prepared coleslaw",
@@ -7058,11 +7701,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "refrigerated": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "pumpkin,pumpkin seed,pumpkin seeds,seed,seeds",
@@ -7078,7 +7723,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "sunflower,sunflower seed,sunflower seeds,seed,seeds",
@@ -7094,11 +7740,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": "parsley",
@@ -7114,7 +7762,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "sesame oil,sesame,oil",
@@ -7130,11 +7779,13 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         },
         "refrigerated": {
           "min_days": 28,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 28
         }
       },
       "keywords": "roasted nuts,roasted,nuts,roasted peanuts,roasted almonds,roasted cashews,almonds,cashews,peanuts",
@@ -7150,11 +7801,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         },
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "tuna packet,tuna,packet,retort,retort packaging",
@@ -7170,7 +7823,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         }
       },
       "keywords": "canned seafood,seafood,canned",
@@ -7186,7 +7840,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 28,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 28
         }
       },
       "keywords": "pimento cheese,pimento,cheese",
@@ -7202,11 +7857,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "frozen": {
           "min_days": 180,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 225
         }
       },
       "keywords": "bison whole,bison,whole",
@@ -7222,11 +7879,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "refrigerated": {
           "min_days": 21,
-          "max_days": 28
+          "max_days": 28,
+          "avg_days": 24
         }
       },
       "keywords": "creamy salad dressing,salad,dressing,salad dressing,creamy",
@@ -7242,7 +7901,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         }
       },
       "keywords": "boxed grits,grits,boxed,box",
@@ -7258,11 +7918,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 14
         },
         "frozen": {
           "min_days": 120,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 120
         }
       },
       "keywords": "cheese curd,cheese,curd,curds,cheese curds",
@@ -7278,11 +7940,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         }
       },
       "keywords": "vegetable soup,vegetable,soup",
@@ -7298,11 +7962,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "fresh chorizo,chorizo",
@@ -7318,7 +7984,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "bulgur",
@@ -7334,11 +8001,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "fresh brautwurst,brautwurst,fresh",
@@ -7354,7 +8023,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 4,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         }
       },
       "keywords": "edamame,fresh,fresh edamame,soybeans,soybean",
@@ -7370,42 +8040,11 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "breadcrumbs,breadcrumb",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Tomato Sauce",
-      "category": "Condiments, Sauces & Canned Goods",
-      "subcategory": "",
-      "default_expiration_days": 315,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "condiments_sauces",
-      "storage_methods": {
-        "pantry_unopened": {
-          "min_days": 270,
-          "max_days": 360
-        }
-      },
-      "keywords": "homemade tomato sauce,homemade sauce,homemade spaghetti sauce,spaghetti sauce,tomato sauce,homemade",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Barbecue Sauce",
-      "category": "Condiments, Sauces & Canned Goods",
-      "subcategory": "",
-      "default_expiration_days": 315,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "condiments_sauces",
-      "storage_methods": {
-        "pantry_unopened": {
-          "min_days": 270,
-          "max_days": 360
-        }
-      },
-      "keywords": "homemade barbecue sauce,homemade sauce,homemade BBQ sauce,BBQ sauce,barbecue sauce",
       "is_seed_data": true
     },
     {
@@ -7418,7 +8057,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 240
+          "max_days": 240,
+          "avg_days": 210
         }
       },
       "keywords": "ghee,clarified butter,clarified,butter",
@@ -7434,7 +8074,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "instant breakfast drinks,instant,breakfast,drinks,instant breakfast,instant drink,carnation,bottled instant breakfast drink,bottled instant breakfast,bottled breakfast",
@@ -7450,15 +8091,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         },
         "refrigerated": {
           "min_days": 90,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 90
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 270
+          "max_days": 270,
+          "avg_days": 270
         }
       },
       "keywords": "pine nuts,pine nut,pine,nut,nuts",
@@ -7474,11 +8118,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         },
         "frozen": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         }
       },
       "keywords": "coconut flour,coconut,flour",
@@ -7494,7 +8140,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         }
       },
       "keywords": "polenta,shelf stable,shelf stable polenta",
@@ -7510,7 +8157,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 270
         }
       },
       "keywords": "bars,bar,granola bars,granola bar,granola,cereal bars,cereal bar,nutrition bars,nutrition bar,energy bars,energy bar,health bars,health bar,fruit bars,fruit bar,snack bars,snack barsnack,,nut bars,nut bar,seed bars,seed bar,crunchy bars,crunchy bar,breakfast,breakfast bar,breakfast bars",
@@ -7526,11 +8174,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 360,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 360
         },
         "refrigerated": {
           "min_days": 1,
-          "max_days": 2
+          "max_days": 2,
+          "avg_days": 1
         }
       },
       "keywords": "coconut water,coconut,water",
@@ -7546,7 +8196,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 7
         }
       },
       "keywords": "celeriac,celery root,celery",
@@ -7562,11 +8213,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 2,
-          "max_days": 3
+          "max_days": 3,
+          "avg_days": 2
         },
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "apple cider,apple,cider",
@@ -7582,11 +8235,13 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 120,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 150
         },
         "refrigerated": {
           "min_days": 270,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 315
         }
       },
       "keywords": "yuzu juice,yuzu,juice",
@@ -7602,7 +8257,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         }
       },
       "keywords": "yuzu,yuzu fruit",
@@ -7618,7 +8274,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 40,
-          "max_days": 40
+          "max_days": 40,
+          "avg_days": 40
         }
       },
       "keywords": "pastrami",
@@ -7634,7 +8291,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": "avodaco oil,avocado,oil",
@@ -7650,7 +8308,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         }
       },
       "keywords": "balsamic vinegar,balsamic,vinegar",
@@ -7666,7 +8325,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         }
       },
       "keywords": "garlic aioli,aioli,garlic,mayonnaise,mayo,garlic mayo,garlic mayonnaise,mayo",
@@ -7682,11 +8342,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 4
+          "max_days": 4,
+          "avg_days": 3
         },
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": "anchovies,anchovy,canned anchovies",
@@ -7702,7 +8364,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 14,
-          "max_days": 21
+          "max_days": 21,
+          "avg_days": 17
         }
       },
       "keywords": "radicchio",
@@ -7718,11 +8381,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         },
         "frozen": {
           "min_days": 30,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 30
         }
       },
       "keywords": "prosciutto",
@@ -7738,7 +8403,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 5
         }
       },
       "keywords": "arugula,greens,salad greens,salad",
@@ -7754,7 +8420,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 28,
-          "max_days": 42
+          "max_days": 42,
+          "avg_days": 35
         }
       },
       "keywords": "sprouted mung beans,sprouted mung bean,sprout,mung beans,mung bean,mung,bean,mungbean,sprouts",
@@ -7770,15 +8437,18 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 150,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 165
         },
         "refrigerated": {
           "min_days": 150,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 165
         },
         "frozen": {
           "min_days": 330,
-          "max_days": 360
+          "max_days": 360,
+          "avg_days": 345
         }
       },
       "keywords": "croutons,crouton,bread",
@@ -8014,7 +8684,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 365,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 227
         }
       },
       "keywords": "90",
@@ -8030,7 +8701,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 365,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 227
         }
       },
       "keywords": "90",
@@ -8046,7 +8718,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 365,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 227
         }
       },
       "keywords": "90",
@@ -8062,53 +8735,11 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 730,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 455
         }
       },
       "keywords": "180",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Sesame Oil",
-      "category": "Manual Addition - Oils",
-      "subcategory": "",
-      "default_expiration_days": 365,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "oils_vinegars",
-      "storage_methods": {
-        "pantry_opened": {
-          "min_days": 365,
-          "max_days": 180
-        }
-      },
-      "keywords": "180",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Avocado Oil",
-      "category": "Manual Addition - Oils",
-      "subcategory": "",
-      "default_expiration_days": 365,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "oils_vinegars",
-      "storage_methods": {
-        "pantry_opened": {
-          "min_days": 365,
-          "max_days": 90
-        }
-      },
-      "keywords": "90",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Balsamic Vinegar",
-      "category": "Manual Addition - Oils",
-      "subcategory": "",
-      "default_expiration_days": 730,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "oils_vinegars",
-      "storage_methods": {},
-      "keywords": "balsamic vinegar,vinegar,balsamic",
       "is_seed_data": true
     },
     {
@@ -8242,7 +8873,8 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         }
       },
       "keywords": "matcha,green tea powder,tea",
@@ -8280,26 +8912,11 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 7,
-          "max_days": 14
+          "max_days": 14,
+          "avg_days": 10
         }
       },
       "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Potato Chips",
-      "category": "Manual Addition - Snacks",
-      "subcategory": "",
-      "default_expiration_days": 60,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "snacks",
-      "storage_methods": {
-        "pantry_opened": {
-          "min_days": 60,
-          "max_days": 7
-        }
-      },
-      "keywords": "14",
       "is_seed_data": true
     },
     {
@@ -8312,26 +8929,11 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 33
         }
       },
       "keywords": "14",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Pretzels",
-      "category": "Manual Addition - Snacks",
-      "subcategory": "",
-      "default_expiration_days": 90,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "snacks",
-      "storage_methods": {
-        "pantry_opened": {
-          "min_days": 90,
-          "max_days": 14
-        }
-      },
-      "keywords": "30",
       "is_seed_data": true
     },
     {
@@ -8346,22 +8948,6 @@
       "is_seed_data": true
     },
     {
-      "ingredient_name": "Crackers",
-      "category": "Manual Addition - Snacks",
-      "subcategory": "",
-      "default_expiration_days": 180,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "snacks",
-      "storage_methods": {
-        "pantry_opened": {
-          "min_days": 180,
-          "max_days": 30
-        }
-      },
-      "keywords": "60",
-      "is_seed_data": true
-    },
-    {
       "ingredient_name": "Goldfish Crackers",
       "category": "Manual Addition - Snacks",
       "subcategory": "",
@@ -8371,7 +8957,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 105
         }
       },
       "keywords": "60",
@@ -8387,7 +8974,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 105
         }
       },
       "keywords": "60",
@@ -8403,7 +8991,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 105
         }
       },
       "keywords": "60",
@@ -8419,7 +9008,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 180,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 120
         }
       },
       "keywords": "90",
@@ -8457,90 +9047,21 @@
       "storage_methods": {
         "frozen": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         },
         "pantry_unopened": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         },
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "nuts,mixed nuts,snacks",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Almonds",
-      "category": "Manual Addition - Snacks",
-      "subcategory": "",
-      "default_expiration_days": 270,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "nuts_dried_fruit",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 180,
-          "max_days": 365
-        },
-        "pantry_unopened": {
-          "min_days": 270,
-          "max_days": 270
-        },
-        "pantry_opened": {
-          "min_days": 90,
-          "max_days": 180
-        }
-      },
-      "keywords": "almonds,nuts",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Cashews",
-      "category": "Manual Addition - Snacks",
-      "subcategory": "",
-      "default_expiration_days": 270,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "nuts_dried_fruit",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 180,
-          "max_days": 365
-        },
-        "pantry_unopened": {
-          "min_days": 270,
-          "max_days": 270
-        },
-        "pantry_opened": {
-          "min_days": 90,
-          "max_days": 180
-        }
-      },
-      "keywords": "cashews,nuts",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Peanuts",
-      "category": "Manual Addition - Snacks",
-      "subcategory": "",
-      "default_expiration_days": 270,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "nuts_dried_fruit",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 180,
-          "max_days": 365
-        },
-        "pantry_unopened": {
-          "min_days": 270,
-          "max_days": 270
-        },
-        "pantry_opened": {
-          "min_days": 90,
-          "max_days": 180
-        }
-      },
-      "keywords": "peanuts,nuts",
       "is_seed_data": true
     },
     {
@@ -8564,11 +9085,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 365,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 547
         },
         "pantry_unopened": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -8594,17 +9117,6 @@
       "default_shelf_name": "sweeteners",
       "storage_methods": {},
       "keywords": "corn syrup,syrup,sweetener",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Molasses",
-      "category": "Manual Addition - Sweeteners",
-      "subcategory": "",
-      "default_expiration_days": 730,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "sweeteners",
-      "storage_methods": {},
-      "keywords": "molasses,sweetener",
       "is_seed_data": true
     },
     {
@@ -8738,11 +9250,13 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         },
         "pantry_unopened": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -8782,22 +9296,6 @@
       "is_seed_data": true
     },
     {
-      "ingredient_name": "Cereal",
-      "category": "Manual Addition - Breakfast",
-      "subcategory": "",
-      "default_expiration_days": 180,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "breakfast_cereals",
-      "storage_methods": {
-        "pantry_opened": {
-          "min_days": 180,
-          "max_days": 60
-        }
-      },
-      "keywords": "90",
-      "is_seed_data": true
-    },
-    {
       "ingredient_name": "Cornflakes",
       "category": "Manual Addition - Breakfast",
       "subcategory": "",
@@ -8807,7 +9305,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 365,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 212
         }
       },
       "keywords": "90",
@@ -8823,34 +9322,11 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 365,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 212
         }
       },
       "keywords": "90",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Granola",
-      "category": "Manual Addition - Breakfast",
-      "subcategory": "",
-      "default_expiration_days": 180,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "breakfast_cereals",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 90,
-          "max_days": 180
-        },
-        "pantry_unopened": {
-          "min_days": 180,
-          "max_days": 180
-        },
-        "pantry_opened": {
-          "min_days": 60,
-          "max_days": 90
-        }
-      },
-      "keywords": "granola,breakfast,cereal",
       "is_seed_data": true
     },
     {
@@ -8940,11 +9416,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -8960,11 +9438,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 365,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 547
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -8980,15 +9460,18 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 120,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 150
         },
         "pantry_unopened": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         },
         "pantry_opened": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": "bbq sauce,barbecue sauce,sauce,condiment",
@@ -9004,15 +9487,18 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         },
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "teriyaki,sauce,asian,condiment",
@@ -9028,11 +9514,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 365,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 547
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9048,58 +9536,11 @@
       "storage_methods": {
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Hoisin Sauce",
-      "category": "Manual Addition - Sauces",
-      "subcategory": "",
-      "default_expiration_days": 365,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "sauces_condiments",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 180,
-          "max_days": 365
-        },
-        "pantry_unopened": {
-          "min_days": 365,
-          "max_days": 365
-        },
-        "pantry_opened": {
-          "min_days": 60,
-          "max_days": 90
-        }
-      },
-      "keywords": "hoisin,sauce,asian,condiment",
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Oyster Sauce",
-      "category": "Manual Addition - Sauces",
-      "subcategory": "",
-      "default_expiration_days": 365,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "sauces_condiments",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 180,
-          "max_days": 365
-        },
-        "pantry_unopened": {
-          "min_days": 365,
-          "max_days": 365
-        },
-        "pantry_opened": {
-          "min_days": 60,
-          "max_days": 90
-        }
-      },
-      "keywords": "oyster sauce,sauce,asian,condiment",
       "is_seed_data": true
     },
     {
@@ -9112,7 +9553,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": null,
@@ -9128,7 +9570,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 30,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 45
         }
       },
       "keywords": null,
@@ -9144,7 +9587,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": null,
@@ -9160,7 +9604,8 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": null,
@@ -9176,11 +9621,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         },
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         }
       },
       "keywords": null,
@@ -9196,11 +9643,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9216,11 +9665,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9236,11 +9687,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9256,11 +9709,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9276,11 +9731,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9296,11 +9753,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9316,71 +9775,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 3,
-          "max_days": 5
+          "max_days": 5,
+          "avg_days": 4
         },
         "pantry_unopened": {
           "min_days": 730,
-          "max_days": 730
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Coconut Milk",
-      "category": "Manual Addition - Canned",
-      "subcategory": "",
-      "default_expiration_days": 730,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "canned_goods",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 5,
-          "max_days": 7
-        },
-        "pantry_unopened": {
-          "min_days": 730,
-          "max_days": 730
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Tomato Paste",
-      "category": "Manual Addition - Canned",
-      "subcategory": "",
-      "default_expiration_days": 540,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "canned_goods",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 5,
-          "max_days": 7
-        },
-        "pantry_unopened": {
-          "min_days": 540,
-          "max_days": 540
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Tomato Sauce",
-      "category": "Manual Addition - Canned",
-      "subcategory": "",
-      "default_expiration_days": 540,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "canned_goods",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 5,
-          "max_days": 7
-        },
-        "pantry_unopened": {
-          "min_days": 540,
-          "max_days": 540
+          "max_days": 730,
+          "avg_days": 730
         }
       },
       "keywords": null,
@@ -9396,86 +9797,16 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 5,
-          "max_days": 7
+          "max_days": 7,
+          "avg_days": 6
         },
         "pantry_unopened": {
           "min_days": 540,
-          "max_days": 540
+          "max_days": 540,
+          "avg_days": 540
         }
       },
       "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Salsa",
-      "category": "Manual Addition - Condiments",
-      "subcategory": "",
-      "default_expiration_days": 30,
-      "default_temperature_category": "refrigerated",
-      "default_shelf_name": "condiments_sauces",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 21,
-          "max_days": 30
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Hummus",
-      "category": "Manual Addition - Deli",
-      "subcategory": "",
-      "default_expiration_days": 7,
-      "default_temperature_category": "refrigerated",
-      "default_shelf_name": "deli_prepared",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 5,
-          "max_days": 7
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Guacamole",
-      "category": "Manual Addition - Deli",
-      "subcategory": "",
-      "default_expiration_days": 3,
-      "default_temperature_category": "refrigerated",
-      "default_shelf_name": "deli_prepared",
-      "storage_methods": {
-        "refrigerated": {
-          "min_days": 1,
-          "max_days": 3
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Peanut Butter",
-      "category": "Manual Addition - Pantry",
-      "subcategory": "",
-      "default_expiration_days": 365,
-      "default_temperature_category": "room_temperature",
-      "default_shelf_name": "pantry",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 180,
-          "max_days": 365
-        },
-        "pantry_unopened": {
-          "min_days": 365,
-          "max_days": 365
-        },
-        "pantry_opened": {
-          "min_days": 90,
-          "max_days": 180
-        }
-      },
-      "keywords": "peanut butter,nut butter,spread",
       "is_seed_data": true
     },
     {
@@ -9488,15 +9819,18 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         },
         "pantry_unopened": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         },
         "pantry_opened": {
           "min_days": 90,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 135
         }
       },
       "keywords": "almond butter,nut butter,spread",
@@ -9512,7 +9846,8 @@
       "storage_methods": {
         "pantry_opened": {
           "min_days": 365,
-          "max_days": 30
+          "max_days": 30,
+          "avg_days": 197
         }
       },
       "keywords": "60",
@@ -9528,11 +9863,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         },
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "jam,jelly,preserves,fruit spread",
@@ -9548,11 +9885,13 @@
       "storage_methods": {
         "refrigerated": {
           "min_days": 180,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 272
         },
         "pantry_opened": {
           "min_days": 60,
-          "max_days": 90
+          "max_days": 90,
+          "avg_days": 75
         }
       },
       "keywords": "jelly,jam,preserves,fruit spread",
@@ -9568,7 +9907,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9584,7 +9924,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9600,7 +9941,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 90,
-          "max_days": 120
+          "max_days": 120,
+          "avg_days": 105
         }
       },
       "keywords": null,
@@ -9616,7 +9958,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9632,7 +9975,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9648,7 +9992,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9664,7 +10009,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9680,23 +10026,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Ice Cream",
-      "category": "Manual Addition - Frozen",
-      "subcategory": "",
-      "default_expiration_days": 60,
-      "default_temperature_category": "frozen",
-      "default_shelf_name": "ice_cream_desserts",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 60,
-          "max_days": 60
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9712,7 +10043,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": null,
@@ -9728,7 +10060,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 60,
-          "max_days": 60
+          "max_days": 60,
+          "avg_days": 60
         }
       },
       "keywords": null,
@@ -9744,7 +10077,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": null,
@@ -9760,7 +10094,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9776,7 +10111,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 365,
-          "max_days": 365
+          "max_days": 365,
+          "avg_days": 365
         }
       },
       "keywords": null,
@@ -9792,7 +10128,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": null,
@@ -9808,23 +10145,8 @@
       "storage_methods": {
         "frozen": {
           "min_days": 180,
-          "max_days": 180
-        }
-      },
-      "keywords": null,
-      "is_seed_data": true
-    },
-    {
-      "ingredient_name": "Pie Crust",
-      "category": "Manual Addition - Frozen",
-      "subcategory": "",
-      "default_expiration_days": 180,
-      "default_temperature_category": "frozen",
-      "default_shelf_name": "frozen_breads_dough",
-      "storage_methods": {
-        "frozen": {
-          "min_days": 180,
-          "max_days": 180
+          "max_days": 180,
+          "avg_days": 180
         }
       },
       "keywords": null,
