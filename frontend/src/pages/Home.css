@@ -1,0 +1,347 @@
+/* ============================================
+   Home Page Styles — ShelfLife
+   ============================================ */
+
+/* --- Design Tokens --- */
+:root {
+  /* Warm palette */
+  --color-cream: #faf6f0;
+  --color-cream-dark: #f0e8da;
+  --color-terracotta: #c4785b;
+  --color-terracotta-light: #d4917a;
+  --color-rose: #e8c4c4;
+  --color-rose-light: #f5e0e0;
+  --color-warm-gray: #8a7e74;
+  --color-warm-brown: #6b5b4e;
+
+  /* Expiration status colors (no greens — warm palette only) */
+  --color-expired: #d32f2f;
+  --color-urgent: #e67e22;
+  --color-soon: #f0a858;
+  --color-fresh: #8a7e74;
+
+  /* Frosted glass — more translucent so background gradients show through */
+  --glass-bg: rgba(250, 246, 240, 0.45);
+  --glass-blur: blur(10px);
+  --glass-border: rgba(255, 255, 255, 0.35);
+
+  /* Layout */
+  --max-app-width: 780px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+/* --- Page Container --- */
+.home-page {
+  position: relative;
+}
+
+.home-page__content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-app-width);
+  margin: 0 auto;
+  padding: 12px 12px 32px;
+}
+
+/* --- Scroll Background (cross-fading fixed layer) --- */
+.scroll-bg {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  margin-bottom: -100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scroll-bg__img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.scroll-bg__img--active {
+  opacity: 1;
+}
+
+/* --- Top Shelf (Expiring Soon) --- */
+.top-shelf {
+  background: rgba(245, 224, 224, 0.7);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.top-shelf__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--color-warm-brown);
+}
+
+.top-shelf__scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top-shelf__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.top-shelf__scroll::-webkit-scrollbar-thumb {
+  background: var(--color-rose);
+  border-radius: 2px;
+}
+
+@media (min-width: 600px) {
+  .top-shelf__scroll {
+    flex-wrap: wrap;
+  }
+}
+
+.top-shelf__empty {
+  text-align: center;
+  padding: 12px 0;
+  color: var(--color-warm-gray);
+}
+
+/* --- Category Sections --- */
+.category-section {
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.category-section__title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
+  color: var(--color-warm-brown);
+}
+
+/* --- Shelf Cards (Frosted Glass) --- */
+.shelf-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .shelf-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.shelf-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+}
+
+.shelf-card__title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-warm-gray);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shelf-card__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* --- Ingredient Pills --- */
+.ingredient-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  scroll-snap-align: start;
+  user-select: none;
+}
+
+.ingredient-pill:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ingredient-pill--expiring {
+  border-color: var(--color-soon);
+  background: rgba(255, 245, 235, 0.7);
+}
+
+.ingredient-pill--expired {
+  border-color: var(--color-expired);
+  background: rgba(255, 235, 235, 0.7);
+}
+
+.ingredient-pill__name {
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-warm-brown);
+}
+
+.ingredient-pill__qty {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-warm-gray);
+}
+
+.ingredient-pill__days {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.ingredient-pill__days--fresh {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-gray);
+}
+
+.ingredient-pill__days--soon {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.ingredient-pill__days--urgent {
+  background: #fbe9e7;
+  color: #bf360c;
+}
+
+.ingredient-pill__days--expired {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* --- Expanded Pill Actions --- */
+.ingredient-pill__actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 2px;
+  animation: fadeSlideIn 0.15s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ingredient-pill__action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  padding: 0;
+}
+
+.ingredient-pill__action-btn:active {
+  transform: scale(0.9);
+}
+
+.ingredient-pill__action-btn--toss {
+  background: #ffebee;
+  color: var(--color-expired);
+}
+
+.ingredient-pill__action-btn--toss:hover {
+  background: #ffcdd2;
+}
+
+.ingredient-pill__action-btn--use {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-brown);
+}
+
+.ingredient-pill__action-btn--use:hover {
+  background: #e8dcc8;
+}
+
+/* --- Toss Sub-Options --- */
+.ingredient-pill__toss-options {
+  display: flex;
+  gap: 4px;
+  margin-left: 2px;
+  animation: fadeSlideIn 0.2s ease-out;
+}
+
+.ingredient-pill__toss-btn {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  background: #ffebee;
+  color: #c62828;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.15s ease;
+  min-height: 28px;
+}
+
+.ingredient-pill__toss-btn:hover {
+  background: #ffcdd2;
+}
+
+.ingredient-pill__toss-btn:active {
+  transform: scale(0.95);
+}
+
+/* --- Loading Skeletons --- */
+.skeleton-block {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream) 25%,
+    var(--color-cream-dark) 50%,
+    var(--color-cream) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

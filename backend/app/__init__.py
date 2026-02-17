@@ -36,7 +36,7 @@ def create_app(config_class=Config):
 
     # Create tables and seed on first run
     with app.app_context():
-        from app.models import IngredientLookup, InStock, Kitchen  # noqa: F401
+        from app.models import IngredientLookup, InStock, Kitchen, WasteTracker  # noqa: F401
 
         db.create_all()
 

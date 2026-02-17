@@ -1,12 +1,12 @@
 MAX_THRESHOLD = 7
 MIN_THRESHOLD = 1
-MAX_ITEMS = 10
+MAX_ITEMS = 12
 
 
 def compute_expiring_threshold(items):
     """Dynamically calculate the expiring-soon threshold for a list of InStock items.
 
-    Starts at 7 days, reduces by 1 until <= 10 items qualify or threshold hits 1.
+    Starts at 7 days, reduces by 1 until <= 12 items qualify or threshold hits 1.
     Returns (threshold_days, expiring_items) where expiring_items is sorted soonest-first.
     """
     threshold = MAX_THRESHOLD
