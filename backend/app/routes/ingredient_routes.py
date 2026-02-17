@@ -8,6 +8,7 @@ from app.models.in_stock import InStock
 from app.utils.expiration import parse_expiration
 from app.utils.shelves import get_shelf_sort_key, get_category_sort_key
 from app.utils.ingredients import expiration_for_storage, get_or_create_lookup
+from app.utils.expiring_soon import compute_expiring_threshold
 
 ingredients_bp = Blueprint("ingredients", __name__)
 
@@ -30,7 +31,11 @@ def list_ingredients(kitchen_key):
 
     items = InStock.query.filter_by(kitchen_key=kitchen_key).all()
     if not items:
-        return jsonify({}), 200
+        return jsonify({"expiring_soon_threshold": 7, "ingredients": {}}), 200
+
+    # Compute expiring-soon threshold so each item can be flagged
+    threshold, expiring_items = compute_expiring_threshold(items)
+    expiring_ids = {i.id for i in expiring_items}
 
     # Group by category then shelf
     buckets = {}
@@ -46,15 +51,39 @@ def list_ingredients(kitchen_key):
 
     # Build ordered response: categories then shelves in canonical order
     sorted_cats = sorted(buckets.keys(), key=get_category_sort_key)
-    result = OrderedDict()
+    ingredients = OrderedDict()
     for cat in sorted_cats:
         sorted_shelves = sorted(buckets[cat].keys(), key=get_shelf_sort_key)
         shelf_dict = OrderedDict()
         for shelf in sorted_shelves:
-            shelf_dict[shelf] = [i.to_dict() for i in buckets[cat][shelf]]
-        result[cat] = shelf_dict
+            shelf_dict[shelf] = [
+                {**i.to_dict(), "is_expiring_soon": i.id in expiring_ids}
+                for i in buckets[cat][shelf]
+            ]
+        ingredients[cat] = shelf_dict
 
-    return jsonify(result), 200
+    return jsonify({
+        "expiring_soon_threshold": threshold,
+        "ingredients": ingredients,
+    }), 200
+
+
+@ingredients_bp.route(
+    "/kitchen/<kitchen_key>/ingredients/expiring-soon", methods=["GET"]
+)
+def expiring_soon(kitchen_key):
+    kitchen = _get_kitchen_or_404(kitchen_key)
+    if not kitchen:
+        return jsonify({"error": "Kitchen not found"}), 404
+
+    items = InStock.query.filter_by(kitchen_key=kitchen_key).all()
+    threshold, expiring_items = compute_expiring_threshold(items)
+
+    return jsonify({
+        "threshold_days": threshold,
+        "count": len(expiring_items),
+        "items": [i.to_dict() for i in expiring_items],
+    }), 200
 
 
 @ingredients_bp.route("/kitchen/<kitchen_key>/ingredients", methods=["POST"])
