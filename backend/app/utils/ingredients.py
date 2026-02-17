@@ -3,9 +3,9 @@ from app.models.ingredient_lookup import IngredientLookup
 
 # Maps user-facing storage choice to the lookup table's min/max field pairs
 _STORAGE_FIELDS = {
-    "refrigerated": ("refrigerated_min_days", "refrigerated_max_days"),
-    "frozen": ("frozen_min_days", "frozen_max_days"),
-    "room_temperature": [
+    "Fridge": ("refrigerated_min_days", "refrigerated_max_days"),
+    "Freezer": ("frozen_min_days", "frozen_max_days"),
+    "Pantry": [
         ("pantry_unopened_min_days", "pantry_unopened_max_days"),
         ("pantry_opened_min_days", "pantry_opened_max_days"),
     ],

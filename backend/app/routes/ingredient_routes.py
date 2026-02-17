@@ -104,14 +104,14 @@ def add_ingredients(kitchen_key):
         if not name:
             continue
 
-        temp_category = item.get("temperature_category", "refrigerated")
+        temp_category = item.get("temperature_category", "Fridge")
         shelf_name = item.get("shelf_name")
         quantity = item.get("quantity", 1)
         notes = item.get("notes")
 
         lookup = get_or_create_lookup(
             name, temp_category,
-            shelf_name or "produce",
+            shelf_name or "Produce",
             item.get("expiration_days", 7),
         )
 
