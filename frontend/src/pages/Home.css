@@ -298,6 +298,36 @@
   background: #e8dcc8;
 }
 
+/* --- Toss Sub-Options --- */
+.ingredient-pill__toss-options {
+  display: flex;
+  gap: 4px;
+  margin-left: 2px;
+  animation: fadeSlideIn 0.2s ease-out;
+}
+
+.ingredient-pill__toss-btn {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  background: #ffebee;
+  color: #c62828;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.15s ease;
+  min-height: 28px;
+}
+
+.ingredient-pill__toss-btn:hover {
+  background: #ffcdd2;
+}
+
+.ingredient-pill__toss-btn:active {
+  transform: scale(0.95);
+}
+
 /* --- Loading Skeletons --- */
 .skeleton-block {
   background: linear-gradient(

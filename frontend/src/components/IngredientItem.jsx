@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CircularProgress from "@mui/material/CircularProgress";
 import "../pages/Home.css";
 
 function daysLabel(days) {
@@ -26,29 +27,61 @@ function pillClass(item) {
   return "ingredient-pill";
 }
 
-function IngredientItem({ item, onToss, onUseUp }) {
+const TOSS_OPTIONS = [
+  { label: "Tossed a bit", amount: 1 },
+  { label: "Tossed a bunch", amount: 2 },
+  { label: "Tossed it all", amount: 3 },
+];
+
+function IngredientItem({ item, onToss, onEaten }) {
   const [expanded, setExpanded] = useState(false);
+  const [showTossOptions, setShowTossOptions] = useState(false);
+  const [loading, setLoading] = useState(false);
   const days = item.days_until_expiration;
 
-  const handleToss = (e) => {
-    e.stopPropagation();
-    setExpanded(false);
-    onToss(item.id);
+  const handlePillClick = () => {
+    if (loading) return;
+    if (showTossOptions) {
+      setShowTossOptions(false);
+      setExpanded(false);
+    } else {
+      setExpanded(!expanded);
+    }
   };
 
-  const handleUseUp = (e) => {
+  const handleEaten = async (e) => {
     e.stopPropagation();
-    setExpanded(false);
-    onUseUp(item.id);
+    setLoading(true);
+    try {
+      await onEaten(item.id);
+    } catch {
+      setLoading(false);
+    }
+  };
+
+  const handleTossClick = (e) => {
+    e.stopPropagation();
+    setShowTossOptions(true);
+  };
+
+  const handleTossOption = async (e, amount) => {
+    e.stopPropagation();
+    setLoading(true);
+    try {
+      await onToss(item.id, amount);
+    } catch {
+      setLoading(false);
+      setShowTossOptions(false);
+    }
   };
 
   return (
     <span
       className={pillClass(item)}
-      onClick={() => setExpanded(!expanded)}
+      onClick={handlePillClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && setExpanded(!expanded)}
+      onKeyDown={(e) => e.key === "Enter" && handlePillClick()}
     >
       <span className="ingredient-pill__name">{item.ingredient_name}</span>
 
@@ -62,11 +95,17 @@ function IngredientItem({ item, onToss, onUseUp }) {
         {daysLabel(days)}
       </span>
 
-      {expanded && (
+      {loading && (
+        <span className="ingredient-pill__actions">
+          <CircularProgress size={16} sx={{ color: "var(--color-warm-gray)" }} />
+        </span>
+      )}
+
+      {expanded && !showTossOptions && !loading && (
         <span className="ingredient-pill__actions">
           <button
             className="ingredient-pill__action-btn ingredient-pill__action-btn--toss"
-            onClick={handleToss}
+            onClick={handleTossClick}
             title="Tossed"
             aria-label="Tossed"
           >
@@ -74,12 +113,26 @@ function IngredientItem({ item, onToss, onUseUp }) {
           </button>
           <button
             className="ingredient-pill__action-btn ingredient-pill__action-btn--use"
-            onClick={handleUseUp}
-            title="Used Up"
-            aria-label="Used Up"
+            onClick={handleEaten}
+            title="Eaten!"
+            aria-label="Eaten!"
           >
             <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
           </button>
+        </span>
+      )}
+
+      {showTossOptions && !loading && (
+        <span className="ingredient-pill__toss-options">
+          {TOSS_OPTIONS.map(({ label, amount }) => (
+            <button
+              key={amount}
+              className="ingredient-pill__toss-btn"
+              onClick={(e) => handleTossOption(e, amount)}
+            >
+              {label}
+            </button>
+          ))}
         </span>
       )}
     </span>

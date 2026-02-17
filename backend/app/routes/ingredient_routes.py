@@ -9,6 +9,7 @@ from app.utils.expiration import parse_expiration
 from app.utils.shelves import get_shelf_sort_key, get_category_sort_key
 from app.utils.ingredients import expiration_for_storage, get_or_create_lookup
 from app.utils.expiring_soon import compute_expiring_threshold
+from app.models.waste_tracker import WasteTracker
 
 ingredients_bp = Blueprint("ingredients", __name__)
 
@@ -21,6 +22,15 @@ def _get_kitchen_or_404(kitchen_key):
     kitchen.last_accessed = datetime.now(timezone.utc)
     db.session.commit()
     return kitchen
+
+
+def _get_or_create_tracker(kitchen_key):
+    """Get or create a waste tracker row for this kitchen."""
+    tracker = WasteTracker.query.filter_by(kitchen_key=kitchen_key).first()
+    if not tracker:
+        tracker = WasteTracker(kitchen_key=kitchen_key, eaten=0, tossed=0)
+        db.session.add(tracker)
+    return tracker
 
 
 @ingredients_bp.route("/kitchen/<kitchen_key>/ingredients", methods=["GET"])
@@ -207,6 +217,9 @@ def delete_ingredient(kitchen_key, item_id):
     if item is None or item.kitchen_key != kitchen_key:
         return jsonify({"error": "Item not found"}), 404
 
+    tracker = _get_or_create_tracker(kitchen_key)
+    tracker.eaten += 3
+
     db.session.delete(item)
     db.session.commit()
     return jsonify({"deleted": item_id}), 200
@@ -225,9 +238,12 @@ def toss_ingredient(kitchen_key, item_id):
         return jsonify({"error": "Item not found"}), 404
 
     data = request.get_json() or {}
-    amount = data.get("amount", "all")
-    if amount not in ("a_bit", "most", "all"):
-        return jsonify({"error": "amount must be a_bit, most, or all"}), 400
+    amount = data.get("amount", 3)
+    if amount not in (1, 2, 3):
+        return jsonify({"error": "amount must be 1, 2, or 3"}), 400
+
+    tracker = _get_or_create_tracker(kitchen_key)
+    tracker.tossed += amount
 
     toss_record = {
         "ingredient_name": item.ingredient_name,

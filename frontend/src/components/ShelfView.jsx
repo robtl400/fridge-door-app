@@ -38,7 +38,7 @@ function mergeWithDefaults(ingredients) {
   return result;
 }
 
-function ShelfView({ refreshKey, onDataChange, onCategoryChange }) {
+function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
   const { kitchenKey } = useKitchen();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -82,16 +82,30 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange }) {
     return () => observer.disconnect();
   }, [data, onCategoryChange]);
 
-  const handleToss = async (id) => {
-    await tossIngredient(kitchenKey, id);
-    loadData();
-    onDataChange?.();
+  const handleToss = async (id, amount) => {
+    try {
+      await tossIngredient(kitchenKey, id, amount);
+      showToast?.("Ingredient tracked and removed");
+      loadData();
+      onDataChange?.();
+    } catch (err) {
+      console.error("Toss error:", err);
+      showToast?.("Something went wrong. Please try again.", "error");
+      throw err;
+    }
   };
 
-  const handleUseUp = async (id) => {
-    await deleteIngredient(kitchenKey, id);
-    loadData();
-    onDataChange?.();
+  const handleEaten = async (id) => {
+    try {
+      await deleteIngredient(kitchenKey, id);
+      showToast?.("Ingredient removed!");
+      loadData();
+      onDataChange?.();
+    } catch (err) {
+      console.error("Eaten error:", err);
+      showToast?.("Something went wrong. Please try again.", "error");
+      throw err;
+    }
   };
 
   if (loading) {
@@ -138,7 +152,7 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange }) {
                           key={item.id}
                           item={item}
                           onToss={handleToss}
-                          onUseUp={handleUseUp}
+                          onEaten={handleEaten}
                         />
                       ))
                     ) : (

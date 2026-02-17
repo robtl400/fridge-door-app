@@ -1,4 +1,6 @@
 import { useState, useCallback } from 'react'
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
 import TopShelf from '../components/TopShelf'
 import ShelfView from '../components/ShelfView'
 import fridgeGradient from '../assets/Final Fridge Gradient.png'
@@ -15,7 +17,17 @@ const BACKGROUNDS = [
 function Home() {
   const [refreshKey, setRefreshKey] = useState(0)
   const [activeCategory, setActiveCategory] = useState('Fridge')
+  const [toast, setToast] = useState({ open: false, message: '', severity: 'success' })
   const triggerRefresh = useCallback(() => setRefreshKey((k) => k + 1), [])
+
+  const showToast = useCallback((message, severity = 'success') => {
+    setToast({ open: true, message, severity })
+  }, [])
+
+  const handleToastClose = (_, reason) => {
+    if (reason === 'clickaway') return
+    setToast((prev) => ({ ...prev, open: false }))
+  }
 
   return (
     <div className="home-page">
@@ -30,13 +42,30 @@ function Home() {
       </div>
 
       <div className="home-page__content">
-        <TopShelf refreshKey={refreshKey} onDataChange={triggerRefresh} />
+        <TopShelf refreshKey={refreshKey} onDataChange={triggerRefresh} showToast={showToast} />
         <ShelfView
           refreshKey={refreshKey}
           onDataChange={triggerRefresh}
           onCategoryChange={setActiveCategory}
+          showToast={showToast}
         />
       </div>
+
+      <Snackbar
+        open={toast.open}
+        autoHideDuration={2500}
+        onClose={handleToastClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert
+          onClose={handleToastClose}
+          severity={toast.severity}
+          variant="filled"
+          sx={{ width: '100%', borderRadius: '12px' }}
+        >
+          {toast.message}
+        </Alert>
+      </Snackbar>
     </div>
   )
 }

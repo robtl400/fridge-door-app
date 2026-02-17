@@ -6,7 +6,7 @@ import { fetchExpiringSoon, tossIngredient, deleteIngredient } from "../services
 import IngredientItem from "./IngredientItem";
 import "../pages/Home.css";
 
-function TopShelf({ refreshKey, onDataChange }) {
+function TopShelf({ refreshKey, onDataChange, showToast }) {
   const { kitchenKey } = useKitchen();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,16 +28,30 @@ function TopShelf({ refreshKey, onDataChange }) {
     loadData();
   }, [loadData, refreshKey]);
 
-  const handleToss = async (id) => {
-    await tossIngredient(kitchenKey, id);
-    loadData();
-    onDataChange?.();
+  const handleToss = async (id, amount) => {
+    try {
+      await tossIngredient(kitchenKey, id, amount);
+      showToast?.("Ingredient tracked and removed");
+      loadData();
+      onDataChange?.();
+    } catch (err) {
+      console.error("Toss error:", err);
+      showToast?.("Something went wrong. Please try again.", "error");
+      throw err;
+    }
   };
 
-  const handleUseUp = async (id) => {
-    await deleteIngredient(kitchenKey, id);
-    loadData();
-    onDataChange?.();
+  const handleEaten = async (id) => {
+    try {
+      await deleteIngredient(kitchenKey, id);
+      showToast?.("Ingredient removed!");
+      loadData();
+      onDataChange?.();
+    } catch (err) {
+      console.error("Eaten error:", err);
+      showToast?.("Something went wrong. Please try again.", "error");
+      throw err;
+    }
   };
 
   if (loading) {
@@ -79,7 +93,7 @@ function TopShelf({ refreshKey, onDataChange }) {
             key={item.id}
             item={{ ...item, is_expiring_soon: true }}
             onToss={handleToss}
-            onUseUp={handleUseUp}
+            onEaten={handleEaten}
           />
         ))}
       </div>

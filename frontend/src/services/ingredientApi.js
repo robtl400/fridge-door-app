@@ -46,7 +46,7 @@ export async function deleteIngredient(kitchenKey, id) {
   return res.json();
 }
 
-export async function tossIngredient(kitchenKey, id, amount = "all") {
+export async function tossIngredient(kitchenKey, id, amount = 3) {
   const res = await fetch(
     `${API_BASE}/kitchen/${kitchenKey}/ingredients/${id}/toss`,
     {
