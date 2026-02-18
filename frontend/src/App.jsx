@@ -9,11 +9,6 @@ import {
   Box,
   CircularProgress,
   Container,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
   Snackbar,
   Alert,
 } from '@mui/material'
@@ -25,6 +20,7 @@ import Home from './pages/Home'
 import KitchenSettings from './pages/KitchenSettings'
 import Welcome from './pages/Welcome'
 import AddItemsModal from './components/AddItemsModal'
+import SuggestRecipeModal from './components/SuggestRecipeModal'
 
 function AppContent() {
   const { kitchenKey, loading, error, retry } = useKitchen()
@@ -169,18 +165,12 @@ function AppContent() {
         onItemsAdded={handleItemsAdded}
       />
 
-      {/* Suggest Recipe stub modal */}
-      <Dialog open={suggestRecipeOpen} onClose={() => setSuggestRecipeOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Suggest Recipe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Recipe suggestions based on your ingredients coming soon.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setSuggestRecipeOpen(false)}>Close</Button>
-        </DialogActions>
-      </Dialog>
+      {/* Suggest Recipe Modal */}
+      <SuggestRecipeModal
+        open={suggestRecipeOpen}
+        onClose={() => setSuggestRecipeOpen(false)}
+        kitchenKey={kitchenKey}
+      />
 
       {/* Toast for items added */}
       <Snackbar
