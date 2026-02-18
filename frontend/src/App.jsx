@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import {
   AppBar,
@@ -14,6 +14,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
+  Snackbar,
+  Alert,
 } from '@mui/material'
 import SettingsIcon from '@mui/icons-material/Settings'
 import AddIcon from '@mui/icons-material/Add'
@@ -22,12 +24,29 @@ import { KitchenProvider, useKitchen } from './context/KitchenContext'
 import Home from './pages/Home'
 import KitchenSettings from './pages/KitchenSettings'
 import Welcome from './pages/Welcome'
+import AddItemsModal from './components/AddItemsModal'
 
 function AppContent() {
   const { kitchenKey, loading, error, retry } = useKitchen()
   const navigate = useNavigate()
   const [addItemsOpen, setAddItemsOpen] = useState(false)
   const [suggestRecipeOpen, setSuggestRecipeOpen] = useState(false)
+  const [addItemsRefresh, setAddItemsRefresh] = useState(0)
+  const [toast, setToast] = useState({ open: false, message: '', severity: 'success' })
+
+  const handleItemsAdded = useCallback((count) => {
+    setAddItemsRefresh((k) => k + 1)
+    setToast({
+      open: true,
+      message: `${count} item${count !== 1 ? 's' : ''} added!`,
+      severity: 'success',
+    })
+  }, [])
+
+  const handleToastClose = (_, reason) => {
+    if (reason === 'clickaway') return
+    setToast((prev) => ({ ...prev, open: false }))
+  }
 
   if (loading) {
     return (
@@ -68,7 +87,7 @@ function AppContent() {
   return (
     <Box sx={{
       minHeight: '100vh',
-      bgcolor: '#e8e0d4',
+      bgcolor: '#2a2a2a',
     }}>
       {/* Centered app shell with border */}
       <Box sx={{
@@ -86,7 +105,6 @@ function AppContent() {
         <AppBar
           position="sticky"
           sx={{ bgcolor: 'primary.main' }}
-          /* No elevation — our boxShadow override in theme handles it */
         >
           <Toolbar>
             <Typography
@@ -137,24 +155,19 @@ function AppContent() {
         <Box component="main" sx={{ flexGrow: 1 }}>
           <Welcome />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home refreshTrigger={addItemsRefresh} />} />
             <Route path="/settings" element={<KitchenSettings />} />
           </Routes>
         </Box>
       </Box>
 
-      {/* Add Items stub modal */}
-      <Dialog open={addItemsOpen} onClose={() => setAddItemsOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Add Items</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Item search and adding functionality coming soon.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setAddItemsOpen(false)}>Close</Button>
-        </DialogActions>
-      </Dialog>
+      {/* Add Items Modal */}
+      <AddItemsModal
+        open={addItemsOpen}
+        onClose={() => setAddItemsOpen(false)}
+        kitchenKey={kitchenKey}
+        onItemsAdded={handleItemsAdded}
+      />
 
       {/* Suggest Recipe stub modal */}
       <Dialog open={suggestRecipeOpen} onClose={() => setSuggestRecipeOpen(false)} maxWidth="sm" fullWidth>
@@ -168,6 +181,23 @@ function AppContent() {
           <Button onClick={() => setSuggestRecipeOpen(false)}>Close</Button>
         </DialogActions>
       </Dialog>
+
+      {/* Toast for items added */}
+      <Snackbar
+        open={toast.open}
+        autoHideDuration={2500}
+        onClose={handleToastClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert
+          onClose={handleToastClose}
+          severity={toast.severity}
+          variant="filled"
+          sx={{ width: '100%', borderRadius: '12px' }}
+        >
+          {toast.message}
+        </Alert>
+      </Snackbar>
     </Box>
   )
 }

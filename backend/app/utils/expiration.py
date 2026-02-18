@@ -6,11 +6,14 @@ def parse_expiration(value):
     """Parse flexible expiration input into a date object.
 
     Supported formats:
-        "5 days"  / "5 day"  / "5d"   -> today + 5 days
-        "2 weeks" / "2 week" / "2w"   -> today + 14 days
-        "2/20"                        -> Feb 20 of the current (or next) year
-        "2/20/26" / "2/20/2026"       -> Feb 20 2026
-        "2026-02-20"                  -> ISO date
+        5  / "5"                       -> today + 5 days
+        "5 days"  / "5 day"  / "5d"    -> today + 5 days
+        "2 weeks" / "2 week" / "2w"    -> today + 14 days
+        "3 months" / "3 month" / "3m"  -> today + 90 days
+        "1 year"  / "1 years" / "1y"   -> today + 365 days
+        "2/20"                         -> Feb 20 of the current (or next) year
+        "2/20/26" / "2/20/2026"        -> Feb 20 2026
+        "2026-02-20"                   -> ISO date
     """
     if isinstance(value, date):
         return value
@@ -19,12 +22,20 @@ def parse_expiration(value):
 
     s = str(value).strip().lower()
 
-    # Relative: "5 days", "5d", "2 weeks", "2w"
-    m = re.match(r"^(\d+)\s*(d|days?|w|weeks?)$", s)
+    # Bare number: "5" -> 5 days from today
+    if s.isdigit():
+        return date.today() + timedelta(days=int(s))
+
+    # Relative: "5 days", "5d", "2 weeks", "2w", "3 months", "3m", "1 year", "1y"
+    m = re.match(r"^(\d+)\s*(d|days?|w|weeks?|m|months?|y|years?)$", s)
     if m:
         n = int(m.group(1))
         unit = m.group(2)
-        if unit.startswith("w"):
+        if unit.startswith("y"):
+            n *= 365
+        elif unit.startswith("m"):
+            n *= 30
+        elif unit.startswith("w"):
             n *= 7
         return date.today() + timedelta(days=n)
 

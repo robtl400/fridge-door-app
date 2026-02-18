@@ -73,9 +73,10 @@
 
 /* --- Top Shelf (Expiring Soon) --- */
 .top-shelf {
-  background: rgba(245, 224, 224, 0.7);
+  background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 16px;
   margin-bottom: 16px;
@@ -91,26 +92,8 @@
 
 .top-shelf__scroll {
   display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.top-shelf__scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.top-shelf__scroll::-webkit-scrollbar-thumb {
-  background: var(--color-rose);
-  border-radius: 2px;
-}
-
-@media (min-width: 600px) {
-  .top-shelf__scroll {
-    flex-wrap: wrap;
-  }
+  flex-direction: column;
+  gap: 6px;
 }
 
 .top-shelf__empty {
@@ -166,24 +149,26 @@
 
 .shelf-card__items {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 6px;
 }
 
 /* --- Ingredient Pills --- */
 .ingredient-pill {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-pill);
-  padding: 6px 10px;
+  padding: 6px 12px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.875rem;
   scroll-snap-align: start;
   user-select: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ingredient-pill:hover {
@@ -202,8 +187,11 @@
 }
 
 .ingredient-pill__name {
+  flex: 1;
   font-weight: 500;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--color-warm-brown);
 }
 
@@ -266,14 +254,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
+  gap: 4px;
   height: 28px;
-  min-width: 28px;
-  border-radius: 50%;
+  border-radius: var(--radius-pill);
   border: none;
   cursor: pointer;
   transition: transform 0.15s ease;
-  padding: 0;
+  padding: 0 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
 }
 
 .ingredient-pill__action-btn:active {
