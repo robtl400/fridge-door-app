@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import TopShelf from '../components/TopShelf'
@@ -14,11 +14,16 @@ const BACKGROUNDS = [
   { category: 'Pantry', src: cabinetGradient },
 ]
 
-function Home() {
+function Home({ refreshTrigger }) {
   const [refreshKey, setRefreshKey] = useState(0)
   const [activeCategory, setActiveCategory] = useState('Fridge')
   const [toast, setToast] = useState({ open: false, message: '', severity: 'success' })
   const triggerRefresh = useCallback(() => setRefreshKey((k) => k + 1), [])
+
+  // Refresh when items are added from the modal
+  useEffect(() => {
+    if (refreshTrigger > 0) triggerRefresh()
+  }, [refreshTrigger, triggerRefresh])
 
   const showToast = useCallback((message, severity = 'success') => {
     setToast({ open: true, message, severity })

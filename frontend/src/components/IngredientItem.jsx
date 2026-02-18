@@ -106,18 +106,18 @@ function IngredientItem({ item, onToss, onEaten }) {
           <button
             className="ingredient-pill__action-btn ingredient-pill__action-btn--toss"
             onClick={handleTossClick}
-            title="Tossed"
             aria-label="Tossed"
           >
-            <DeleteOutlineIcon sx={{ fontSize: 16 }} />
+            <DeleteOutlineIcon sx={{ fontSize: 14 }} />
+            Tossed
           </button>
           <button
             className="ingredient-pill__action-btn ingredient-pill__action-btn--use"
             onClick={handleEaten}
-            title="Eaten!"
             aria-label="Eaten!"
           >
-            <CheckCircleOutlineIcon sx={{ fontSize: 16 }} />
+            <CheckCircleOutlineIcon sx={{ fontSize: 14 }} />
+            Eaten!
           </button>
         </span>
       )}

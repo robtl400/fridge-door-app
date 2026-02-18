@@ -69,7 +69,7 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
 
   if (!data || data.count === 0) {
     return (
-      <div className="top-shelf" style={{ background: "rgba(240, 232, 218, 0.6)" }}>
+      <div className="top-shelf">
         <div className="top-shelf__empty">
           <Typography variant="body1">Nothing expiring soon!</Typography>
         </div>
