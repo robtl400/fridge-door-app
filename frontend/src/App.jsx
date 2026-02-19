@@ -10,6 +10,7 @@ import {
   Snackbar,
   Alert,
 } from '@mui/material'
+import { useToast } from './hooks/useToast'
 import SettingsIcon from '@mui/icons-material/Settings'
 import AddIcon from '@mui/icons-material/Add'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
@@ -20,27 +21,20 @@ import Welcome from './pages/Welcome'
 import AddItemsModal from './components/AddItemsModal'
 import SuggestRecipeModal from './components/SuggestRecipeModal'
 
+const OUTER_BG = '#1e2a1e'
+
 function AppContent() {
   const { kitchenKey, loading, error, retry, needsOnboarding } = useKitchen()
   const navigate = useNavigate()
   const [addItemsOpen, setAddItemsOpen] = useState(false)
   const [suggestRecipeOpen, setSuggestRecipeOpen] = useState(false)
   const [addItemsRefresh, setAddItemsRefresh] = useState(0)
-  const [toast, setToast] = useState({ open: false, message: '', severity: 'success' })
+  const { toast, showToast, handleToastClose } = useToast()
 
   const handleItemsAdded = useCallback((count) => {
     setAddItemsRefresh((k) => k + 1)
-    setToast({
-      open: true,
-      message: `${count} item${count !== 1 ? 's' : ''} added!`,
-      severity: 'success',
-    })
-  }, [])
-
-  const handleToastClose = (_, reason) => {
-    if (reason === 'clickaway') return
-    setToast((prev) => ({ ...prev, open: false }))
-  }
+    showToast(`${count} item${count !== 1 ? 's' : ''} added!`)
+  }, [showToast])
 
   if (loading) {
     return (
@@ -79,7 +73,7 @@ function AppContent() {
   // No kitchen key yet — show only the Welcome onboarding dialog
   if (!kitchenKey && needsOnboarding) {
     return (
-      <Box sx={{ minHeight: '100vh', bgcolor: '#1e2a1e' }}>
+      <Box sx={{ minHeight: '100vh', bgcolor: OUTER_BG }}>
         <Welcome />
       </Box>
     )
@@ -90,7 +84,7 @@ function AppContent() {
   return (
     <Box sx={{
       minHeight: '100vh',
-      bgcolor: '#1e2a1e',
+      bgcolor: OUTER_BG,
     }}>
       {/* Centered app shell */}
       <Box sx={{

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import SearchIcon from '@mui/icons-material/Search'
@@ -6,7 +6,10 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { fetchExpiringSoon, fetchIngredients } from '../services/ingredientApi'
 import { suggestRecipe } from '../services/recipeApi'
 import { daysLabel, daysClass } from '../utils/dateFormat'
+import { toTitleCase } from '../utils/stringUtils'
+import { flattenInventory } from '../utils/inventoryUtils'
 import RecipeDisplay from './RecipeDisplay'
+import { useOutsideClick } from '../hooks/useOutsideClick'
 import './SuggestRecipeModal.css'
 
 const DIETARY_OPTIONS = [
@@ -43,23 +46,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
   const searchContainerRef = useRef(null)
   const dropdownRef = useRef(null)
 
-  function flattenInventory(data) {
-    const items = []
-    const seen = new Set()
-    const categories = data.ingredients || {}
-    for (const category of Object.values(categories)) {
-      for (const shelfItems of Object.values(category)) {
-        for (const item of shelfItems) {
-          if (!seen.has(item.ingredient_name)) {
-            seen.add(item.ingredient_name)
-            items.push(item)
-          }
-        }
-      }
-    }
-    return items
-  }
-
   // Fetch data when modal opens
   useEffect(() => {
     if (!open || !kitchenKey) return
@@ -93,8 +79,8 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
           setSupplementalItems(supplement)
         }
       })
-      .catch((err) => {
-        if (!cancelled) console.error('Failed to load ingredients:', err)
+      .catch(() => {
+        // Failed to load ingredients — modal will show empty state
       })
       .finally(() => {
         if (!cancelled) setDataLoading(false)
@@ -123,20 +109,8 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
   }, [open])
 
   // Close dropdown on outside click
-  useEffect(() => {
-    const handleClick = (e) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target) &&
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(e.target)
-      ) {
-        setShowDropdown(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
-  }, [])
+  const closeDropdown = useCallback(() => setShowDropdown(false), [])
+  useOutsideClick([dropdownRef, searchContainerRef], closeDropdown)
 
   const toggleIngredient = (name) => {
     setCheckedNames((prev) => {
@@ -206,10 +180,7 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     const name = searchQuery.trim()
     if (!name) return
 
-    const titleCased = name.replace(
-      /\b\w+/g,
-      (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
-    )
+    const titleCased = toTitleCase(name)
 
     if (!customIngredients.includes(titleCased)) {
       setCustomIngredients((prev) => [...prev, titleCased])
@@ -334,7 +305,7 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
             <div className="suggest-recipe-content">
               {dataLoading ? (
                 <div className="suggest-recipe-loading">
-                  <CircularProgress size={28} sx={{ color: 'var(--color-terracotta)' }} />
+                  <CircularProgress size={28} sx={{ color: 'var(--color-forest)' }} />
                 </div>
               ) : (
                 <>
@@ -569,7 +540,7 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
         {view === 'loading' && (
           <div className="suggest-recipe-content">
             <div className="suggest-recipe-loading">
-              <CircularProgress size={36} sx={{ color: 'var(--color-terracotta)' }} />
+              <CircularProgress size={36} sx={{ color: 'var(--color-forest)' }} />
               <span className="suggest-recipe-loading__text">
                 Generating your recipe...
               </span>
@@ -607,9 +578,8 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
               {error}
             </div>
             <button
-              className="suggest-recipe-submit-btn"
+              className="suggest-recipe-submit-btn suggest-recipe-submit-btn--retry"
               onClick={() => setView('select')}
-              style={{ margin: '0 0 16px' }}
             >
               Try Again
             </button>

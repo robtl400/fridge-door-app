@@ -1,42 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Typography } from "@mui/material";
 import { useKitchen } from "../context/KitchenContext";
-import { fetchIngredients, tossIngredient, deleteIngredient, updateIngredient } from "../services/ingredientApi";
+import { fetchIngredients } from "../services/ingredientApi";
+import { useIngredientActions } from "../hooks/useIngredientActions";
 import IngredientItem from "./IngredientItem";
+import { mergeWithDefaults } from "../utils/inventoryUtils";
 import "../pages/Home.css";
-
-const DEFAULT_SHELVES = {
-  Fridge: ["Produce", "Dairy", "Meat", "Beverages"],
-  Freezer: ["Frozen Fruits & Veggies", "Frozen Meals"],
-  Pantry: ["Breakfast & Cereals", "Grains & Rice", "Baking Essentials", "Spices"],
-};
-
-function mergeWithDefaults(ingredients) {
-  const result = {};
-
-  for (const [category, defaults] of Object.entries(DEFAULT_SHELVES)) {
-    const userShelves = ingredients[category] || {};
-    const userShelfNames = Object.keys(userShelves);
-
-    result[category] = { ...userShelves };
-
-    if (userShelfNames.length < defaults.length) {
-      const needed = defaults.length - userShelfNames.length;
-      const available = defaults.filter((d) => !userShelfNames.includes(d));
-      for (const shelfName of available.slice(0, needed)) {
-        result[category][shelfName] = [];
-      }
-    }
-  }
-
-  for (const category of Object.keys(ingredients)) {
-    if (!result[category]) {
-      result[category] = ingredients[category];
-    }
-  }
-
-  return result;
-}
 
 function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
   const { kitchenKey } = useKitchen();
@@ -49,8 +18,8 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
     try {
       const result = await fetchIngredients(kitchenKey);
       setData(result);
-    } catch (err) {
-      console.error("ShelfView fetch error:", err);
+    } catch {
+      // Fetch error — shelves will show empty state
     } finally {
       setLoading(false);
     }
@@ -82,46 +51,8 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
     return () => observer.disconnect();
   }, [data, onCategoryChange]);
 
-  const handleToss = async (id, amount) => {
-    try {
-      await tossIngredient(kitchenKey, id, amount);
-      showToast?.("Ingredient tracked and removed");
-      loadData();
-      onDataChange?.();
-    } catch (err) {
-      console.error("Toss error:", err);
-      showToast?.("Something went wrong. Please try again.", "error");
-      throw err;
-    }
-  };
-
-  const handleQuantityChange = async (id, newQuantity) => {
-    await updateIngredient(kitchenKey, id, { quantity: newQuantity });
-  };
-
-  const handleEaten = async (id) => {
-    try {
-      await deleteIngredient(kitchenKey, id);
-      showToast?.("Ingredient removed!");
-      loadData();
-      onDataChange?.();
-    } catch (err) {
-      console.error("Eaten error:", err);
-      showToast?.("Something went wrong. Please try again.", "error");
-      throw err;
-    }
-  };
-
-  const handleUpdate = async (id, data) => {
-    try {
-      await updateIngredient(kitchenKey, id, data);
-      loadData();
-      onDataChange?.();
-    } catch (err) {
-      console.error("Update error:", err);
-      showToast?.("Failed to update. Please try again.", "error");
-    }
-  };
+  const { handleToss, handleEaten, handleQuantityChange, handleUpdate } =
+    useIngredientActions(kitchenKey, loadData, onDataChange, showToast);
 
   if (loading) {
     return (

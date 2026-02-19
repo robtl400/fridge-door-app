@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,26 +6,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { searchLookup, getLookupDetails } from "../services/lookupApi";
 import { addIngredients, fetchIngredients } from "../services/ingredientApi";
 import { daysLabel } from "../utils/dateFormat";
+import { SHELVES_BY_CATEGORY, CATEGORIES } from "../utils/constants";
+import { toTitleCase } from "../utils/stringUtils";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 import "./AddItemsModal.css";
-
-const SHELVES_BY_CATEGORY = {
-  Fridge: [
-    "Produce", "Dairy", "Eggs", "Meat", "Deli & Prepared",
-    "Beverages", "Condiments & Sauces", "Fresh Herbs",
-  ],
-  Freezer: [
-    "Ice Cream & Desserts", "Frozen Meals", "Frozen Proteins",
-    "Frozen Fruits & Veggies", "Frozen Breads & Dough", "Frozen Snacks",
-  ],
-  Pantry: [
-    "Breakfast & Cereals", "Grains & Rice", "Pasta & Noodles",
-    "Baking Essentials", "Baking Mixes", "Canned Goods",
-    "Sauces & Condiments", "Oils & Vinegars", "Spices",
-    "Coffee & Tea", "Snacks", "Nuts & Dried Fruit", "Sweeteners", "Pantry",
-  ],
-};
-
-const CATEGORIES = ["Fridge", "Freezer", "Pantry"];
 
 const TEMP_CATEGORY_MAP = {
   refrigerated: "Fridge",
@@ -65,13 +49,6 @@ function calculateExpiration(lookupData, tempCategory) {
   }
 
   return lookupData?.default_expiration_days || 7;
-}
-
-function toTitleCase(str) {
-  return str.replace(
-    /\b\w+/g,
-    (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-  );
 }
 
 let itemIdCounter = 0;
@@ -135,8 +112,8 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
         setSuggestions(filtered);
         setShowDropdown(true);
         setHighlightedIndex(-1);
-      } catch (err) {
-        console.error("Search error:", err);
+      } catch {
+        // Search failed — keep previous suggestions
       } finally {
         setIsSearching(false);
       }
@@ -146,20 +123,8 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
   }, [searchQuery, inStockNames]);
 
   // Close dropdown on outside click
-  useEffect(() => {
-    const handleClick = (e) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target) &&
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(e.target)
-      ) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  const closeDropdown = useCallback(() => setShowDropdown(false), []);
+  useOutsideClick([dropdownRef, searchContainerRef], closeDropdown);
 
   // Reset state when modal closes
   useEffect(() => {
@@ -360,8 +325,7 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       await addIngredients(kitchenKey, payload);
       onItemsAdded?.(items.length);
       onClose();
-    } catch (err) {
-      console.error("Submit error:", err);
+    } catch {
       setErrors((prev) => ({
         ...prev,
         _form: "Failed to add items. Please try again.",

@@ -1,17 +1,9 @@
-const API_BASE = "/api";
+import { apiGet } from "./apiClient";
 
-export async function searchLookup(query) {
-  const res = await fetch(
-    `${API_BASE}/lookup/search?q=${encodeURIComponent(query)}`
-  );
-  if (!res.ok) throw new Error("Search failed");
-  return res.json();
+export function searchLookup(query) {
+  return apiGet(`/lookup/search?q=${encodeURIComponent(query)}`);
 }
 
-export async function getLookupDetails(ingredientName) {
-  const res = await fetch(
-    `${API_BASE}/lookup/${encodeURIComponent(ingredientName)}`
-  );
-  if (!res.ok) return null;
-  return res.json();
+export function getLookupDetails(ingredientName) {
+  return apiGet(`/lookup/${encodeURIComponent(ingredientName)}`).catch(() => null);
 }

@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { Typography } from "@mui/material";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { useKitchen } from "../context/KitchenContext";
-import { fetchExpiringSoon, tossIngredient, deleteIngredient, updateIngredient } from "../services/ingredientApi";
+import { fetchExpiringSoon } from "../services/ingredientApi";
+import { useIngredientActions } from "../hooks/useIngredientActions";
 import IngredientItem from "./IngredientItem";
 import "../pages/Home.css";
 
@@ -16,8 +17,8 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
     try {
       const result = await fetchExpiringSoon(kitchenKey);
       setData(result);
-    } catch (err) {
-      console.error("TopShelf fetch error:", err);
+    } catch {
+      // Fetch error — shelf will show empty state
     } finally {
       setLoading(false);
     }
@@ -28,46 +29,8 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
     loadData();
   }, [loadData, refreshKey]);
 
-  const handleToss = async (id, amount) => {
-    try {
-      await tossIngredient(kitchenKey, id, amount);
-      showToast?.("Ingredient tracked and removed");
-      loadData();
-      onDataChange?.();
-    } catch (err) {
-      console.error("Toss error:", err);
-      showToast?.("Something went wrong. Please try again.", "error");
-      throw err;
-    }
-  };
-
-  const handleQuantityChange = async (id, newQuantity) => {
-    await updateIngredient(kitchenKey, id, { quantity: newQuantity });
-  };
-
-  const handleEaten = async (id) => {
-    try {
-      await deleteIngredient(kitchenKey, id);
-      showToast?.("Ingredient removed!");
-      loadData();
-      onDataChange?.();
-    } catch (err) {
-      console.error("Eaten error:", err);
-      showToast?.("Something went wrong. Please try again.", "error");
-      throw err;
-    }
-  };
-
-  const handleUpdate = async (id, data) => {
-    try {
-      await updateIngredient(kitchenKey, id, data);
-      loadData();
-      onDataChange?.();
-    } catch (err) {
-      console.error("Update error:", err);
-      showToast?.("Failed to update. Please try again.", "error");
-    }
-  };
+  const { handleToss, handleEaten, handleQuantityChange, handleUpdate } =
+    useIngredientActions(kitchenKey, loadData, onDataChange, showToast);
 
   if (loading) {
     return (

@@ -1,7 +1,10 @@
 import json
+import logging
 import os
 from app import db
 from app.models.ingredient_lookup import IngredientLookup
+
+logger = logging.getLogger(__name__)
 
 
 def seed_ingredient_lookup():
@@ -42,4 +45,4 @@ def seed_ingredient_lookup():
         db.session.add(record)
 
     db.session.commit()
-    print(f"Seeded {len(data['ingredients'])} ingredients into ingredient_lookup.")
+    logger.info("Seeded %d ingredients into ingredient_lookup.", len(data["ingredients"]))

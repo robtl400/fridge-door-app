@@ -7,8 +7,8 @@
   /* Refined earth-tone palette */
   --color-cream: #f5f0e8;
   --color-cream-dark: #e8dfd0;
-  --color-terracotta: #2d5a3d;          /* forest green */
-  --color-terracotta-light: #4a7c5c;    /* forest light */
+  --color-forest: #2d5a3d;          /* forest green */
+  --color-forest-light: #4a7c5c;    /* forest light */
   --color-rose: #8a9a7b;               /* sage */
   --color-rose-light: #b89b5e;          /* muted gold */
   --color-warm-gray: #7a6555;           /* bark-light */
@@ -424,7 +424,7 @@
 }
 
 .ingredient-pill__edit-input:focus {
-  border-color: var(--color-terracotta);
+  border-color: var(--color-forest);
 }
 
 .ingredient-pill__edit-input--name {
@@ -448,7 +448,7 @@
 }
 
 .ingredient-pill__edit-select:focus {
-  border-color: var(--color-terracotta);
+  border-color: var(--color-forest);
 }
 
 .ingredient-pill__action-stack {

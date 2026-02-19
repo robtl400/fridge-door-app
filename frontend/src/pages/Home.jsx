@@ -3,6 +3,7 @@ import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import TopShelf from '../components/TopShelf'
 import ShelfView from '../components/ShelfView'
+import { useToast } from '../hooks/useToast'
 import fridgeGradient from '../assets/Final Fridge Gradient.png'
 import freezerGradient from '../assets/Final Freezer Gradient.png'
 import cabinetGradient from '../assets/Final Cabinet Gradient.png'
@@ -17,22 +18,13 @@ const BACKGROUNDS = [
 function Home({ refreshTrigger, blurContent }) {
   const [refreshKey, setRefreshKey] = useState(0)
   const [activeCategory, setActiveCategory] = useState('Fridge')
-  const [toast, setToast] = useState({ open: false, message: '', severity: 'success' })
+  const { toast, showToast, handleToastClose } = useToast()
   const triggerRefresh = useCallback(() => setRefreshKey((k) => k + 1), [])
 
   // Refresh when items are added from the modal
   useEffect(() => {
     if (refreshTrigger > 0) triggerRefresh()
   }, [refreshTrigger, triggerRefresh])
-
-  const showToast = useCallback((message, severity = 'success') => {
-    setToast({ open: true, message, severity })
-  }, [])
-
-  const handleToastClose = (_, reason) => {
-    if (reason === 'clickaway') return
-    setToast((prev) => ({ ...prev, open: false }))
-  }
 
   return (
     <div className="home-page">
