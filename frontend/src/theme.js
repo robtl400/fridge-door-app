@@ -7,29 +7,30 @@ import '@fontsource/nunito/700.css'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#c4785b',       // terracotta
+      main: '#2d5a3d',       // forest green
+      light: '#4a7c5c',      // forest light
       contrastText: '#fff',
     },
     secondary: {
-      main: '#8a7e74',       // warm gray
+      main: '#8a9a7b',       // sage
     },
     background: {
-      default: '#faf6f0',    // cream
+      default: '#f5f0e8',    // parchment
       paper: '#fff',
     },
     text: {
-      primary: '#4a3f35',    // warm dark brown
-      secondary: '#8a7e74',  // warm gray
+      primary: '#5c4a3a',    // bark
+      secondary: '#7a6555',  // bark-light
     },
     warning: {
-      main: '#e67e22',
-      light: '#f5e0e0',      // rose light (used for TopShelf)
+      main: '#d4742c',       // burnt orange
+      light: '#fbe8d4',      // light amber
     },
     error: {
-      main: '#d32f2f',
+      main: '#c0392b',       // deep warm red
     },
     success: {
-      main: '#8a7e74',
+      main: '#2d5a3d',       // forest green
     },
   },
   typography: {
@@ -66,13 +67,6 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 999,
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
         },
       },
     },

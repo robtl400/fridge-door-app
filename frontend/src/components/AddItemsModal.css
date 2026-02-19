@@ -22,9 +22,9 @@
 
 /* --- Modal Container --- */
 .add-items-modal {
-  background: rgba(250, 246, 240, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass-bg-heavy);
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
   border-radius: 20px;
   width: 100%;
   max-width: 850px;
@@ -159,8 +159,8 @@
 .add-items-error {
   margin: 0 16px 8px;
   padding: 8px 12px;
-  background: #ffebee;
-  color: #c62828;
+  background: rgba(192, 57, 43, 0.08);
+  color: #a02f24;
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
   flex-shrink: 0;

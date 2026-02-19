@@ -1,8 +1,6 @@
 import { useState, useCallback } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import {
-  AppBar,
-  Toolbar,
   Typography,
   Button,
   IconButton,
@@ -81,7 +79,7 @@ function AppContent() {
   // No kitchen key yet — show only the Welcome onboarding dialog
   if (!kitchenKey && needsOnboarding) {
     return (
-      <Box sx={{ minHeight: '100vh', bgcolor: '#2a2a2a' }}>
+      <Box sx={{ minHeight: '100vh', bgcolor: '#1e2a1e' }}>
         <Welcome />
       </Box>
     )
@@ -92,7 +90,7 @@ function AppContent() {
   return (
     <Box sx={{
       minHeight: '100vh',
-      bgcolor: '#2a2a2a',
+      bgcolor: '#1e2a1e',
     }}>
       {/* Centered app shell */}
       <Box sx={{
@@ -107,60 +105,89 @@ function AppContent() {
         flexDirection: 'column',
         position: 'relative',
       }}>
-        <AppBar
-          position="sticky"
-          sx={{ bgcolor: 'primary.main' }}
+        {/* Floating glass navigation bar */}
+        <Box
+          component="nav"
+          sx={{
+            position: 'sticky',
+            top: 12,
+            mx: 2,
+            mb: 1,
+            zIndex: 1100,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            px: 2.5,
+            py: 1.25,
+            borderRadius: '16px',
+            background: 'rgba(245, 240, 232, 0.45)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255, 255, 255, 0.30)',
+            boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03)',
+          }}
         >
-          <Toolbar>
-            <Box
-              onClick={() => { navigate('/'); setAddItemsRefresh((k) => k + 1); }}
-              sx={{ display: 'flex', alignItems: 'baseline', cursor: 'pointer', userSelect: 'none' }}
+          <Box
+            onClick={() => { navigate('/'); setAddItemsRefresh((k) => k + 1); }}
+            sx={{ display: 'flex', alignItems: 'baseline', cursor: 'pointer', userSelect: 'none' }}
+          >
+            <Typography variant="h6" component="div" fontWeight={700} sx={{ color: 'text.primary' }}>
+              ShelfLife
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{ ml: 1, opacity: 0.6, fontStyle: 'italic', color: 'text.secondary', display: { xs: 'none', sm: 'inline' } }}
             >
-              <Typography variant="h6" component="div" fontWeight={700}>
-                ShelfLife
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{ ml: 1, opacity: 0.8, fontStyle: 'italic', display: { xs: 'none', sm: 'inline' } }}
-              >
-                Shelves for Life
-              </Typography>
-            </Box>
-            <Box sx={{ flexGrow: 1 }} />
-            <Button
-              color="inherit"
-              startIcon={<AddIcon />}
-              onClick={() => setAddItemsOpen(true)}
-              sx={{ minHeight: 44, mr: 0.5 }}
-            >
-              Add Items
-            </Button>
-            <Button
-              color="inherit"
-              startIcon={<RestaurantIcon />}
-              onClick={() => setSuggestRecipeOpen(true)}
-              sx={{ minHeight: 44, mr: 0.5, display: { xs: 'none', sm: 'inline-flex' } }}
-            >
-              Suggest Recipe
-            </Button>
-            <IconButton
-              color="inherit"
-              onClick={() => setSuggestRecipeOpen(true)}
-              aria-label="Suggest Recipe"
-              sx={{ minWidth: 44, minHeight: 44, display: { xs: 'inline-flex', sm: 'none' } }}
-            >
-              <RestaurantIcon />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              onClick={() => navigate('/settings')}
-              aria-label="Settings"
-              sx={{ minWidth: 44, minHeight: 44 }}
-            >
-              <SettingsIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
+              Shelves for Life
+            </Typography>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Button
+            startIcon={<AddIcon />}
+            onClick={() => setAddItemsOpen(true)}
+            sx={{
+              minHeight: 40,
+              mr: 0.5,
+              color: 'primary.main',
+              bgcolor: 'rgba(45, 90, 61, 0.08)',
+              '&:hover': { bgcolor: 'rgba(45, 90, 61, 0.15)' },
+              fontWeight: 600,
+              borderRadius: '12px',
+            }}
+          >
+            Add Items
+          </Button>
+          <Button
+            startIcon={<RestaurantIcon />}
+            onClick={() => setSuggestRecipeOpen(true)}
+            sx={{
+              minHeight: 40,
+              mr: 0.5,
+              color: 'primary.main',
+              bgcolor: 'rgba(45, 90, 61, 0.08)',
+              '&:hover': { bgcolor: 'rgba(45, 90, 61, 0.15)' },
+              fontWeight: 600,
+              borderRadius: '12px',
+              display: { xs: 'none', sm: 'inline-flex' },
+            }}
+          >
+            Find Recipe
+          </Button>
+          <IconButton
+            onClick={() => setSuggestRecipeOpen(true)}
+            aria-label="Find Recipe"
+            sx={{ minWidth: 40, minHeight: 40, color: 'primary.main', display: { xs: 'inline-flex', sm: 'none' } }}
+          >
+            <RestaurantIcon />
+          </IconButton>
+          <IconButton
+            onClick={() => navigate('/settings')}
+            aria-label="Settings"
+            sx={{ minWidth: 40, minHeight: 40, color: 'text.secondary' }}
+          >
+            <SettingsIcon />
+          </IconButton>
+        </Box>
 
         <Box component="main" sx={{ flexGrow: 1 }}>
           <Routes>
