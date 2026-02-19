@@ -103,7 +103,7 @@
 }
 
 .recipe-display__ingredient--in-stock .recipe-display__ingredient-icon {
-  color: #4caf50;
+  color: #2d5a3d;
 }
 
 .recipe-display__ingredient--need-buy {
@@ -173,7 +173,7 @@
 
 .recipe-display__tag {
   padding: 3px 10px;
-  background: rgba(196, 120, 91, 0.1);
+  background: rgba(45, 90, 61, 0.08);
   color: var(--color-terracotta);
   border-radius: var(--radius-pill);
   font-size: 0.7rem;

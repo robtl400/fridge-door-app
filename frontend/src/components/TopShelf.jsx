@@ -95,7 +95,7 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
   return (
     <div className="top-shelf">
       <div className="top-shelf__header">
-        <WarningAmberIcon sx={{ fontSize: 20, color: "#c4785b" }} />
+        <WarningAmberIcon sx={{ fontSize: 20, color: "primary.main" }} />
         <Typography variant="subtitle2" fontWeight={700} color="text.primary">
           {data.count} item{data.count !== 1 ? "s" : ""} expiring within{" "}
           {data.threshold_days} day{data.threshold_days !== 1 ? "s" : ""}
