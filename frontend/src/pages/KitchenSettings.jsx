@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ShareIcon from "@mui/icons-material/Share";
-import { useKitchen, getRecentKitchens } from "../context/KitchenContext";
+import { useKitchen } from "../context/KitchenContext";
 import { updateKitchenName } from "../services/kitchenApi";
 
 function KitchenSettings() {
@@ -29,8 +29,8 @@ function KitchenSettings() {
   const [nameInput, setNameInput] = useState(kitchenInfo?.name || "");
   const [nameSaved, setNameSaved] = useState(false);
   const [confirmDialog, setConfirmDialog] = useState(null); // "switch" | "new" | null
-
-  const recentKitchens = getRecentKitchens().filter((k) => k !== kitchenKey);
+  const [newUsername, setNewUsername] = useState("");
+  const [newUsernameError, setNewUsernameError] = useState("");
 
   const handleCopy = async () => {
     try {
@@ -38,7 +38,6 @@ function KitchenSettings() {
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
     } catch {
-      // Fallback for older browsers
       const textarea = document.createElement("textarea");
       textarea.value = kitchenKey;
       document.body.appendChild(textarea);
@@ -73,7 +72,9 @@ function KitchenSettings() {
   };
 
   const handleCreateNew = async () => {
-    await createNewKitchen();
+    if (newUsername.trim() && !newUsernameError) {
+      await createNewKitchen(newUsername.trim());
+    }
     setConfirmDialog(null);
   };
 
@@ -84,11 +85,31 @@ function KitchenSettings() {
     setTimeout(() => setNameSaved(false), 2000);
   };
 
+  const handleNewUsernameChange = (e) => {
+    const val = e.target.value.slice(0, 8);
+    setNewUsername(val);
+    if (val && !val.match(/^[a-zA-Z0-9]+$/)) {
+      setNewUsernameError("Letters and numbers only");
+    } else {
+      setNewUsernameError("");
+    }
+  };
+
   return (
     <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom>
         Kitchen Settings
       </Typography>
+
+      {/* Username */}
+      <Paper sx={{ p: 3, mb: 3 }}>
+        <Typography variant="subtitle2" color="text.secondary">
+          Your Username
+        </Typography>
+        <Typography variant="h6" component="p" sx={{ my: 1 }}>
+          {kitchenInfo?.username || "(legacy kitchen)"}
+        </Typography>
+      </Paper>
 
       {/* Current Kitchen Key */}
       <Paper sx={{ p: 3, mb: 3 }}>
@@ -156,13 +177,16 @@ function KitchenSettings() {
       {/* Switch Kitchen */}
       <Paper sx={{ p: 3, mb: 3 }}>
         <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-          Enter a Different Key
+          Switch Kitchens
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
+          Enter another kitchen key to switch. Make sure to save your current key before switching!
         </Typography>
         <Box sx={{ display: "flex", gap: 1, alignItems: "flex-start" }}>
           <TextField
             size="small"
             fullWidth
-            placeholder="kitchen_abc123"
+            placeholder="Enter a kitchen key"
             value={switchInput}
             onChange={(e) => {
               setSwitchInput(e.target.value);
@@ -183,24 +207,6 @@ function KitchenSettings() {
             {switchError}
           </Alert>
         )}
-
-        {recentKitchens.length > 0 && (
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="caption" color="text.secondary">
-              Recent kitchens:
-            </Typography>
-            {recentKitchens.map((key) => (
-              <Button
-                key={key}
-                size="small"
-                sx={{ display: "block", fontFamily: "monospace", textTransform: "none" }}
-                onClick={() => setSwitchInput(key)}
-              >
-                {key}
-              </Button>
-            ))}
-          </Box>
-        )}
       </Paper>
 
       {/* Create New Kitchen */}
@@ -209,8 +215,8 @@ function KitchenSettings() {
           Start Fresh
         </Typography>
         <Typography variant="body2" sx={{ mb: 1 }}>
-          Create a new empty kitchen. You can always switch back to this one
-          using your current key.
+          Create a new empty kitchen. Save your current key first — you&apos;ll need it
+          to return to this kitchen.
         </Typography>
         <Button
           variant="outlined"
@@ -248,15 +254,29 @@ function KitchenSettings() {
       >
         <DialogTitle>Create New Kitchen?</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            This will create a brand new empty kitchen. To access your current
-            pantry again, you&apos;ll need your current key:{" "}
-            <strong>{kitchenKey}</strong>
+          <DialogContentText sx={{ mb: 2 }}>
+            This will create a brand new empty kitchen. Save your current key
+            to return later: <strong>{kitchenKey}</strong>
           </DialogContentText>
+          <TextField
+            fullWidth
+            label="Username for new kitchen"
+            placeholder="e.g. robert12"
+            value={newUsername}
+            onChange={handleNewUsernameChange}
+            error={!!newUsernameError}
+            helperText={newUsernameError || `${newUsername.length}/8 characters`}
+            slotProps={{ htmlInput: { maxLength: 8 } }}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setConfirmDialog(null)}>Cancel</Button>
-          <Button onClick={handleCreateNew} variant="contained" color="warning">
+          <Button
+            onClick={handleCreateNew}
+            variant="contained"
+            color="warning"
+            disabled={!newUsername.trim() || !!newUsernameError}
+          >
             Create New
           </Button>
         </DialogActions>

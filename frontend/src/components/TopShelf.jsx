@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Typography } from "@mui/material";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { useKitchen } from "../context/KitchenContext";
-import { fetchExpiringSoon, tossIngredient, deleteIngredient } from "../services/ingredientApi";
+import { fetchExpiringSoon, tossIngredient, deleteIngredient, updateIngredient } from "../services/ingredientApi";
 import IngredientItem from "./IngredientItem";
 import "../pages/Home.css";
 
@@ -41,6 +41,10 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
     }
   };
 
+  const handleQuantityChange = async (id, newQuantity) => {
+    await updateIngredient(kitchenKey, id, { quantity: newQuantity });
+  };
+
   const handleEaten = async (id) => {
     try {
       await deleteIngredient(kitchenKey, id);
@@ -51,6 +55,17 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
       console.error("Eaten error:", err);
       showToast?.("Something went wrong. Please try again.", "error");
       throw err;
+    }
+  };
+
+  const handleUpdate = async (id, data) => {
+    try {
+      await updateIngredient(kitchenKey, id, data);
+      loadData();
+      onDataChange?.();
+    } catch (err) {
+      console.error("Update error:", err);
+      showToast?.("Failed to update. Please try again.", "error");
     }
   };
 
@@ -94,6 +109,8 @@ function TopShelf({ refreshKey, onDataChange, showToast }) {
             item={{ ...item, is_expiring_soon: true }}
             onToss={handleToss}
             onEaten={handleEaten}
+            onQuantityChange={handleQuantityChange}
+            onUpdate={handleUpdate}
           />
         ))}
       </div>

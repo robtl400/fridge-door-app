@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Typography } from "@mui/material";
 import { useKitchen } from "../context/KitchenContext";
-import { fetchIngredients, tossIngredient, deleteIngredient } from "../services/ingredientApi";
+import { fetchIngredients, tossIngredient, deleteIngredient, updateIngredient } from "../services/ingredientApi";
 import IngredientItem from "./IngredientItem";
 import "../pages/Home.css";
 
@@ -95,6 +95,10 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
     }
   };
 
+  const handleQuantityChange = async (id, newQuantity) => {
+    await updateIngredient(kitchenKey, id, { quantity: newQuantity });
+  };
+
   const handleEaten = async (id) => {
     try {
       await deleteIngredient(kitchenKey, id);
@@ -105,6 +109,17 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
       console.error("Eaten error:", err);
       showToast?.("Something went wrong. Please try again.", "error");
       throw err;
+    }
+  };
+
+  const handleUpdate = async (id, data) => {
+    try {
+      await updateIngredient(kitchenKey, id, data);
+      loadData();
+      onDataChange?.();
+    } catch (err) {
+      console.error("Update error:", err);
+      showToast?.("Failed to update. Please try again.", "error");
     }
   };
 
@@ -153,6 +168,8 @@ function ShelfView({ refreshKey, onDataChange, onCategoryChange, showToast }) {
                           item={item}
                           onToss={handleToss}
                           onEaten={handleEaten}
+                          onQuantityChange={handleQuantityChange}
+                          onUpdate={handleUpdate}
                         />
                       ))
                     ) : (

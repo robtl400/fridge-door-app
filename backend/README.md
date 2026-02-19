@@ -1,4 +1,4 @@
-# Fridge Door — Backend
+# ShelfLife — Backend
 
 Flask API server with SQLite database.
 

@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import CircularProgress from '@mui/material/CircularProgress'
 import { fetchExpiringSoon, fetchIngredients } from '../services/ingredientApi'
 import { suggestRecipe } from '../services/recipeApi'
+import { daysLabel, daysClass } from '../utils/dateFormat'
 import RecipeDisplay from './RecipeDisplay'
 import './SuggestRecipeModal.css'
 
@@ -17,39 +18,31 @@ const DIETARY_OPTIONS = [
 ]
 
 function SuggestRecipeModal({ open, onClose, kitchenKey }) {
-  // View state: "select" | "loading" | "result" | "error"
   const [view, setView] = useState('select')
 
-  // Ingredient data
   const [expiringItems, setExpiringItems] = useState([])
   const [allItems, setAllItems] = useState([])
+  const [supplementalItems, setSupplementalItems] = useState([])
   const [dataLoading, setDataLoading] = useState(false)
 
-  // Selections
   const [checkedNames, setCheckedNames] = useState(new Set())
   const [customIngredients, setCustomIngredients] = useState([])
 
-  // Search
   const [searchQuery, setSearchQuery] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
 
-  // Dietary restrictions
   const [dietaryRestrictions, setDietaryRestrictions] = useState(new Set())
   const [otherRestriction, setOtherRestriction] = useState('')
 
-  // Result
   const [recipe, setRecipe] = useState(null)
   const [error, setError] = useState(null)
 
-  // Refs for the last submission (for "Try Another")
   const lastSubmission = useRef(null)
-
   const searchInputRef = useRef(null)
   const searchContainerRef = useRef(null)
   const dropdownRef = useRef(null)
 
-  // Flatten the nested ingredients response into a flat array of unique names
   function flattenInventory(data) {
     const items = []
     const seen = new Set()
@@ -83,12 +76,22 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
 
         const expItems = expiringData.items || []
         setExpiringItems(expItems)
-        setAllItems(flattenInventory(inventoryData))
+        const inventory = flattenInventory(inventoryData)
+        setAllItems(inventory)
 
         // Pre-check first 3 expiring items
         const preChecked = new Set()
         expItems.slice(0, 3).forEach((item) => preChecked.add(item.ingredient_name))
         setCheckedNames(preChecked)
+
+        // If fewer than 5 expiring items, supplement from inventory (unchecked)
+        if (expItems.length < 5) {
+          const expiringNames = new Set(expItems.map((e) => e.ingredient_name))
+          const supplement = inventory
+            .filter((item) => !expiringNames.has(item.ingredient_name))
+            .slice(0, 5 - expItems.length)
+          setSupplementalItems(supplement)
+        }
       })
       .catch((err) => {
         if (!cancelled) console.error('Failed to load ingredients:', err)
@@ -106,6 +109,7 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
       setView('select')
       setExpiringItems([])
       setAllItems([])
+      setSupplementalItems([])
       setCheckedNames(new Set())
       setCustomIngredients([])
       setSearchQuery('')
@@ -134,7 +138,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     return () => document.removeEventListener('mousedown', handleClick)
   }, [])
 
-  // Toggle an ingredient checkbox
   const toggleIngredient = (name) => {
     setCheckedNames((prev) => {
       const next = new Set(prev)
@@ -147,7 +150,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     })
   }
 
-  // Toggle dietary restriction
   const toggleDietary = (restriction) => {
     setDietaryRestrictions((prev) => {
       const next = new Set(prev)
@@ -160,7 +162,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     })
   }
 
-  // Remove a custom ingredient
   const removeCustom = (name) => {
     setCustomIngredients((prev) => prev.filter((n) => n !== name))
     setCheckedNames((prev) => {
@@ -181,12 +182,10 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
       )
     : []
 
-  // Check if the typed query matches any inventory item
   const queryMatchesInventory = searchQuery.trim() && allItems.some(
     (item) => item.ingredient_name.toLowerCase() === searchQuery.trim().toLowerCase()
   )
 
-  // Show dropdown when there are results or a custom option
   useEffect(() => {
     if (searchQuery.trim() && (searchResults.length > 0 || !queryMatchesInventory)) {
       setShowDropdown(true)
@@ -196,7 +195,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     }
   }, [searchQuery, searchResults.length, queryMatchesInventory])
 
-  // Add inventory item from search
   const addFromSearch = (item) => {
     setCheckedNames((prev) => new Set(prev).add(item.ingredient_name))
     setSearchQuery('')
@@ -204,12 +202,10 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     searchInputRef.current?.focus()
   }
 
-  // Add custom ingredient
   const addCustom = () => {
     const name = searchQuery.trim()
     if (!name) return
 
-    // Title-case the custom ingredient
     const titleCased = name.replace(
       /\b\w+/g,
       (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
@@ -224,7 +220,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     searchInputRef.current?.focus()
   }
 
-  // Keyboard navigation for search dropdown
   const handleKeyDown = (e) => {
     const totalItems = searchResults.length + (searchQuery.trim() && !queryMatchesInventory ? 1 : 0)
 
@@ -258,12 +253,8 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     }
   }
 
-  // Collect all selected ingredients
-  const getSelectedIngredients = () => {
-    return [...checkedNames]
-  }
+  const getSelectedIngredients = () => [...checkedNames]
 
-  // Collect dietary restrictions
   const getDietaryRestrictions = () => {
     const restrictions = [...dietaryRestrictions]
     if (otherRestriction.trim()) {
@@ -274,7 +265,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
 
   const totalSelected = checkedNames.size
 
-  // Submit recipe request
   const handleSubmit = async () => {
     const ingredients = getSelectedIngredients()
     if (ingredients.length === 0) return
@@ -299,7 +289,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
     }
   }
 
-  // Try another recipe with same selections
   const handleTryAnother = async () => {
     if (!lastSubmission.current) return
 
@@ -349,7 +338,110 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
                 </div>
               ) : (
                 <>
-                  {/* Search bar for additional ingredients */}
+                  {/* Recipe should use (moved to TOP, renamed) */}
+                  <div className="suggest-recipe-section">
+                    <div className="suggest-recipe-section__title">
+                      Recipe should use
+                    </div>
+
+                    {expiringItems.length === 0 && allItems.length === 0 ? (
+                      <div className="suggest-recipe-empty">
+                        No ingredients in your kitchen yet. Add items first!
+                      </div>
+                    ) : (
+                      <div className="suggest-recipe-checkbox-list">
+                        {/* Expiring items */}
+                        {expiringItems.map((item) => (
+                          <label
+                            key={`exp-${item.id}`}
+                            className="suggest-recipe-checkbox"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checkedNames.has(item.ingredient_name)}
+                              onChange={() => toggleIngredient(item.ingredient_name)}
+                            />
+                            <span className="suggest-recipe-checkbox__label suggest-recipe-checkbox__label--expiring">
+                              {item.ingredient_name}
+                              <span className={`suggest-recipe-checkbox__days suggest-recipe-checkbox__days--${daysClass(item.days_until_expiration)}`}>
+                                {daysLabel(item.days_until_expiration)}
+                              </span>
+                            </span>
+                          </label>
+                        ))}
+
+                        {/* Supplemental in-stock items when < 5 expiring */}
+                        {supplementalItems.length > 0 && (
+                          <>
+                            <div className="suggest-recipe-section__subtitle">
+                              Also in your kitchen
+                            </div>
+                            {supplementalItems.map((item) => (
+                              <label
+                                key={`supp-${item.ingredient_name}`}
+                                className="suggest-recipe-checkbox"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={checkedNames.has(item.ingredient_name)}
+                                  onChange={() => toggleIngredient(item.ingredient_name)}
+                                />
+                                <span className="suggest-recipe-checkbox__label">
+                                  {item.ingredient_name}
+                                  <span className={`suggest-recipe-checkbox__days suggest-recipe-checkbox__days--${daysClass(item.days_until_expiration)}`}>
+                                    {daysLabel(item.days_until_expiration)}
+                                  </span>
+                                </span>
+                              </label>
+                            ))}
+                          </>
+                        )}
+
+                        {/* Non-expiring inventory items added via search */}
+                        {[...checkedNames]
+                          .filter(
+                            (name) =>
+                              !expiringItems.some((e) => e.ingredient_name === name) &&
+                              !supplementalItems.some((s) => s.ingredient_name === name) &&
+                              !customIngredients.includes(name)
+                          )
+                          .map((name) => (
+                            <label
+                              key={`inv-${name}`}
+                              className="suggest-recipe-checkbox"
+                            >
+                              <input
+                                type="checkbox"
+                                checked={true}
+                                onChange={() => toggleIngredient(name)}
+                              />
+                              <span className="suggest-recipe-checkbox__label">
+                                {name}
+                              </span>
+                            </label>
+                          ))}
+
+                        {/* Custom ingredients as checkboxes */}
+                        {customIngredients.map((name) => (
+                          <label
+                            key={`custom-${name}`}
+                            className="suggest-recipe-checkbox"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checkedNames.has(name)}
+                              onChange={() => toggleIngredient(name)}
+                            />
+                            <span className="suggest-recipe-checkbox__label">
+                              {name}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Additional Ingredients (search, moved BELOW) */}
                   <div className="suggest-recipe-section">
                     <div className="suggest-recipe-section__title">
                       Additional Ingredients
@@ -383,7 +475,10 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
                               onClick={() => addFromSearch(item)}
                               onMouseEnter={() => setHighlightedIndex(i)}
                             >
-                              {item.ingredient_name}
+                              <span>{item.ingredient_name}</span>
+                              <span className={`suggest-recipe-dropdown__days suggest-recipe-dropdown__days--${daysClass(item.days_until_expiration)}`}>
+                                {daysLabel(item.days_until_expiration)}
+                              </span>
                             </button>
                           ))}
                           {searchQuery.trim() && !queryMatchesInventory && (
@@ -419,85 +514,6 @@ function SuggestRecipeModal({ open, onClose, kitchenKey }) {
                               &times;
                             </button>
                           </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Recipe Must Have section */}
-                  <div className="suggest-recipe-section">
-                    <div className="suggest-recipe-section__title">
-                      Recipe Must Have
-                    </div>
-
-                    {expiringItems.length === 0 && allItems.length === 0 ? (
-                      <div className="suggest-recipe-empty">
-                        No ingredients in your kitchen yet. Add items first!
-                      </div>
-                    ) : (
-                      <div className="suggest-recipe-checkbox-list">
-                        {/* Expiring items first */}
-                        {expiringItems.map((item) => (
-                          <label
-                            key={`exp-${item.id}`}
-                            className="suggest-recipe-checkbox"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={checkedNames.has(item.ingredient_name)}
-                              onChange={() => toggleIngredient(item.ingredient_name)}
-                            />
-                            <span className="suggest-recipe-checkbox__label suggest-recipe-checkbox__label--expiring">
-                              {item.ingredient_name}
-                              <span className="suggest-recipe-checkbox__days">
-                                {item.days_until_expiration <= 0
-                                  ? 'Expired'
-                                  : item.days_until_expiration === 1
-                                    ? '1 day left'
-                                    : `${item.days_until_expiration} days left`}
-                              </span>
-                            </span>
-                          </label>
-                        ))}
-
-                        {/* Non-expiring inventory items added via search */}
-                        {[...checkedNames]
-                          .filter(
-                            (name) =>
-                              !expiringItems.some((e) => e.ingredient_name === name) &&
-                              !customIngredients.includes(name)
-                          )
-                          .map((name) => (
-                            <label
-                              key={`inv-${name}`}
-                              className="suggest-recipe-checkbox"
-                            >
-                              <input
-                                type="checkbox"
-                                checked={true}
-                                onChange={() => toggleIngredient(name)}
-                              />
-                              <span className="suggest-recipe-checkbox__label">
-                                {name}
-                              </span>
-                            </label>
-                          ))}
-
-                        {/* Custom ingredients as checkboxes */}
-                        {customIngredients.map((name) => (
-                          <label
-                            key={`custom-${name}`}
-                            className="suggest-recipe-checkbox"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={checkedNames.has(name)}
-                              onChange={() => toggleIngredient(name)}
-                            />
-                            <span className="suggest-recipe-checkbox__label">
-                              {name}
-                            </span>
-                          </label>
                         ))}
                       </div>
                     )}

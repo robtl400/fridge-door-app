@@ -7,9 +7,10 @@ class Kitchen(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     kitchen_key = db.Column(
-        db.String(20), unique=True, nullable=False, index=True
+        db.String(30), unique=True, nullable=False, index=True
     )
     name = db.Column(db.String(255), nullable=True)
+    username = db.Column(db.String(8), nullable=True)
     created_at = db.Column(
         db.DateTime, default=lambda: datetime.now(timezone.utc)
     )
@@ -24,6 +25,7 @@ class Kitchen(db.Model):
         return {
             "kitchen_key": self.kitchen_key,
             "name": self.name,
+            "username": self.username,
             "created_at": self.created_at.isoformat()
             if self.created_at
             else None,

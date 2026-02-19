@@ -14,7 +14,7 @@ const BACKGROUNDS = [
   { category: 'Pantry', src: cabinetGradient },
 ]
 
-function Home({ refreshTrigger }) {
+function Home({ refreshTrigger, blurContent }) {
   const [refreshKey, setRefreshKey] = useState(0)
   const [activeCategory, setActiveCategory] = useState('Fridge')
   const [toast, setToast] = useState({ open: false, message: '', severity: 'success' })
@@ -46,7 +46,7 @@ function Home({ refreshTrigger }) {
         ))}
       </div>
 
-      <div className="home-page__content">
+      <div className={`home-page__content ${blurContent ? 'home-page__content--blurred' : ''}`}>
         <TopShelf refreshKey={refreshKey} onDataChange={triggerRefresh} showToast={showToast} />
         <ShelfView
           refreshKey={refreshKey}

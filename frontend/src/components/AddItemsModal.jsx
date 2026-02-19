@@ -4,7 +4,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import CircularProgress from "@mui/material/CircularProgress";
 import { searchLookup, getLookupDetails } from "../services/lookupApi";
-import { addIngredients } from "../services/ingredientApi";
+import { addIngredients, fetchIngredients } from "../services/ingredientApi";
+import { daysLabel } from "../utils/dateFormat";
 import "./AddItemsModal.css";
 
 const SHELVES_BY_CATEGORY = {
@@ -26,7 +27,6 @@ const SHELVES_BY_CATEGORY = {
 
 const CATEGORIES = ["Fridge", "Freezer", "Pantry"];
 
-// Seed data uses lowercase temp categories; normalize to display values
 const TEMP_CATEGORY_MAP = {
   refrigerated: "Fridge",
   frozen: "Freezer",
@@ -40,7 +40,6 @@ function normalizeTempCategory(raw) {
   return TEMP_CATEGORY_MAP[raw] || "Fridge";
 }
 
-// Mirrors backend expiration_for_storage() logic
 function calculateExpiration(lookupData, tempCategory) {
   if (!lookupData?.storage_methods) {
     return lookupData?.default_expiration_days || 7;
@@ -87,10 +86,35 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
   const [items, setItems] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [inStockNames, setInStockNames] = useState(new Set());
 
   const searchInputRef = useRef(null);
   const dropdownRef = useRef(null);
   const searchContainerRef = useRef(null);
+
+  // Fetch in-stock ingredient names when modal opens
+  useEffect(() => {
+    if (!open || !kitchenKey) return;
+    async function loadInStock() {
+      try {
+        const data = await fetchIngredients(kitchenKey);
+        const names = new Set();
+        if (data.ingredients) {
+          for (const cat of Object.values(data.ingredients)) {
+            for (const shelf of Object.values(cat)) {
+              for (const item of shelf) {
+                names.add(item.ingredient_name.toLowerCase());
+              }
+            }
+          }
+        }
+        setInStockNames(names);
+      } catch {
+        // Non-critical — autocomplete just won't filter
+      }
+    }
+    loadInStock();
+  }, [open, kitchenKey]);
 
   // Debounced search (300ms)
   useEffect(() => {
@@ -104,7 +128,11 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       setIsSearching(true);
       try {
         const results = await searchLookup(searchQuery);
-        setSuggestions(results);
+        // Filter out already in-stock items
+        const filtered = results.filter(
+          (r) => !inStockNames.has(r.ingredient_name.toLowerCase())
+        );
+        setSuggestions(filtered);
         setShowDropdown(true);
         setHighlightedIndex(-1);
       } catch (err) {
@@ -115,7 +143,7 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchQuery]);
+  }, [searchQuery, inStockNames]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -141,6 +169,7 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       setShowDropdown(false);
       setItems([]);
       setErrors({});
+      setInStockNames(new Set());
     }
   }, [open]);
 
@@ -156,7 +185,6 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
     setSuggestions([]);
     setShowDropdown(false);
 
-    // Fetch full details for storage-specific expiration recalculation
     let fullData = null;
     try {
       fullData = await getLookupDetails(searchResult.ingredient_name);
@@ -183,7 +211,7 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       lookupData: fullData,
     };
 
-    setItems((prev) => [...prev, newItem]);
+    setItems((prev) => [newItem, ...prev]);
     setErrors((prev) => {
       const next = { ...prev };
       delete next[newItem.id];
@@ -211,7 +239,7 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       lookupData: null,
     };
 
-    setItems((prev) => [...prev, newItem]);
+    setItems((prev) => [newItem, ...prev]);
     searchInputRef.current?.focus();
   };
 
@@ -230,7 +258,6 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
         if (item.id !== itemId) return item;
         const updated = { ...item, [field]: value };
 
-        // Auto-recalculate expiration when temp category changes
         if (field === "temperatureCategory" && item.lookupData) {
           updated.expiration = String(
             calculateExpiration(item.lookupData, value)
@@ -243,7 +270,6 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       })
     );
 
-    // Clear field-level error
     setErrors((prev) => {
       const itemErrors = prev[itemId];
       if (!itemErrors) return prev;
@@ -252,17 +278,6 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       if (Object.keys(next[itemId]).length === 0) delete next[itemId];
       return next;
     });
-  };
-
-  const handleQuantityChange = (itemId, delta) => {
-    setItems((prev) =>
-      prev.map((item) => {
-        if (item.id !== itemId) return item;
-        const current = item.quantity || 0;
-        const next = current + delta;
-        return { ...item, quantity: next < 1 ? null : next };
-      })
-    );
   };
 
   const handleKeyDown = (e) => {
@@ -274,22 +289,24 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
       return;
     }
 
+    // Dropdown indices: 0 = custom item, 1..N = suggestions
+    const totalItems = suggestions.length + 1;
+
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setHighlightedIndex((prev) =>
-        prev < suggestions.length ? prev + 1 : prev
+        prev < totalItems - 1 ? prev + 1 : prev
       );
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : 0));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (highlightedIndex >= 0 && highlightedIndex < suggestions.length) {
-        addItemFromLookup(suggestions[highlightedIndex]);
-      } else if (highlightedIndex === suggestions.length) {
+      if (highlightedIndex === 0 || highlightedIndex === -1) {
+        // Custom item (top) or no selection — add as custom
         addCustomItem();
-      } else {
-        addItemFromLookup(suggestions[0]);
+      } else if (highlightedIndex > 0 && highlightedIndex <= suggestions.length) {
+        addItemFromLookup(suggestions[highlightedIndex - 1]);
       }
     } else if (e.key === "Escape") {
       setShowDropdown(false);
@@ -412,41 +429,40 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
 
           {showDropdown && (
             <div className="add-items-dropdown" ref={dropdownRef}>
+              {/* Custom item option at the TOP */}
+              {searchQuery.trim() && (
+                <button
+                  className={`add-items-dropdown__item add-items-dropdown__item--custom ${
+                    highlightedIndex === 0
+                      ? "add-items-dropdown__item--active"
+                      : ""
+                  }`}
+                  onClick={addCustomItem}
+                  onMouseEnter={() => setHighlightedIndex(0)}
+                >
+                  Add &ldquo;{searchQuery.trim()}&rdquo; as custom item
+                </button>
+              )}
               {suggestions.map((s, i) => (
                 <button
                   key={s.ingredient_name}
                   className={`add-items-dropdown__item ${
-                    i === highlightedIndex
+                    i + 1 === highlightedIndex
                       ? "add-items-dropdown__item--active"
                       : ""
                   }`}
                   onClick={() => addItemFromLookup(s)}
-                  onMouseEnter={() => setHighlightedIndex(i)}
+                  onMouseEnter={() => setHighlightedIndex(i + 1)}
                 >
                   <span className="add-items-dropdown__name">
                     {s.ingredient_name}
                   </span>
                   <span className="add-items-dropdown__meta">
-                    {s.default_expiration_days}d &middot;{" "}
+                    {daysLabel(s.default_expiration_days)} &middot;{" "}
                     {normalizeTempCategory(s.default_temperature_category)}
                   </span>
                 </button>
               ))}
-              {searchQuery.trim() && (
-                <button
-                  className={`add-items-dropdown__item add-items-dropdown__item--custom ${
-                    highlightedIndex === suggestions.length
-                      ? "add-items-dropdown__item--active"
-                      : ""
-                  }`}
-                  onClick={addCustomItem}
-                  onMouseEnter={() =>
-                    setHighlightedIndex(suggestions.length)
-                  }
-                >
-                  Add &ldquo;{searchQuery.trim()}&rdquo; as custom item
-                </button>
-              )}
             </div>
           )}
         </div>
@@ -473,108 +489,64 @@ function AddItemsModal({ open, onClose, kitchenKey, onItemsAdded }) {
                 errors[item.id] ? "add-items-card--error" : ""
               }`}
             >
-              {/* Row 1: Quantity, Name, Remove */}
-              <div className="add-items-card__row1">
-                <div className="add-items-qty">
-                  <button
-                    className="add-items-qty__btn"
-                    onClick={() => handleQuantityChange(item.id, -1)}
-                    aria-label="Decrease quantity"
-                  >
-                    &minus;
-                  </button>
-                  <span className="add-items-qty__value">
-                    {item.quantity ?? "\u2013"}
-                  </span>
-                  <button
-                    className="add-items-qty__btn"
-                    onClick={() => handleQuantityChange(item.id, 1)}
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
-                </div>
-                <span className="add-items-card__name">
-                  {item.ingredientName}
-                </span>
-                <button
-                  className="add-items-card__remove"
-                  onClick={() => removeItem(item.id)}
-                  aria-label={`Remove ${item.ingredientName}`}
-                >
-                  &times;
-                </button>
-              </div>
+              <span className="add-items-card__name">
+                {item.ingredientName}
+              </span>
 
-              {/* Row 2: Expiration, Category, Shelf */}
-              <div className="add-items-card__row2">
-                <div className="add-items-field">
-                  <label className="add-items-field__label">Expires</label>
-                  <input
-                    type="text"
-                    className={`add-items-field__input ${
-                      errors[item.id]?.expiration
-                        ? "add-items-field__input--error"
-                        : ""
-                    }`}
-                    value={item.expiration}
-                    onChange={(e) =>
-                      updateItem(item.id, "expiration", e.target.value)
-                    }
-                    placeholder="7, 2/20"
-                  />
-                </div>
+              <input
+                type="text"
+                className={`add-items-card__field add-items-card__field--exp ${
+                  errors[item.id]?.expiration ? "add-items-card__field--error" : ""
+                }`}
+                value={item.expiration}
+                onChange={(e) =>
+                  updateItem(item.id, "expiration", e.target.value)
+                }
+                placeholder="7d"
+                title={daysLabel(parseInt(item.expiration))}
+              />
 
-                <div className="add-items-field">
-                  <label className="add-items-field__label">Storage</label>
-                  <select
-                    className="add-items-field__select"
-                    value={item.temperatureCategory}
-                    onChange={(e) =>
-                      updateItem(
-                        item.id,
-                        "temperatureCategory",
-                        e.target.value
-                      )
-                    }
-                  >
-                    {CATEGORIES.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <select
+                className="add-items-card__field add-items-card__field--cat"
+                value={item.temperatureCategory}
+                onChange={(e) =>
+                  updateItem(item.id, "temperatureCategory", e.target.value)
+                }
+              >
+                {CATEGORIES.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
 
-                <div className="add-items-field">
-                  <label className="add-items-field__label">Shelf</label>
-                  <input
-                    type="text"
-                    className={`add-items-field__input ${
-                      errors[item.id]?.shelfName
-                        ? "add-items-field__input--error"
-                        : ""
-                    }`}
-                    value={item.shelfName}
-                    onChange={(e) =>
-                      updateItem(item.id, "shelfName", e.target.value)
-                    }
-                    list={`shelf-opts-${item.id}`}
-                    placeholder="Shelf name"
-                  />
-                  <datalist id={`shelf-opts-${item.id}`}>
-                    {(
-                      SHELVES_BY_CATEGORY[item.temperatureCategory] || []
-                    ).map((s) => (
-                      <option key={s} value={s} />
-                    ))}
-                  </datalist>
-                </div>
-              </div>
+              <input
+                type="text"
+                className={`add-items-card__field add-items-card__field--shelf ${
+                  errors[item.id]?.shelfName ? "add-items-card__field--error" : ""
+                }`}
+                value={item.shelfName}
+                onChange={(e) =>
+                  updateItem(item.id, "shelfName", e.target.value)
+                }
+                list={`shelf-opts-${item.id}`}
+                placeholder="Shelf"
+              />
+              <datalist id={`shelf-opts-${item.id}`}>
+                {(SHELVES_BY_CATEGORY[item.temperatureCategory] || []).map((s) => (
+                  <option key={s} value={s} />
+                ))}
+              </datalist>
+
+              <button
+                className="add-items-card__remove"
+                onClick={() => removeItem(item.id)}
+                aria-label={`Remove ${item.ingredientName}`}
+              >
+                &times;
+              </button>
             </div>
           ))}
 
-          {items.length > 3 && addButton}
+          {items.length > 0 && addButton}
         </div>
       </div>
     </div>

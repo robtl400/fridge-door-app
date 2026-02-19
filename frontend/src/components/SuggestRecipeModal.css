@@ -231,10 +231,73 @@
 .suggest-recipe-checkbox__days {
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--color-urgent);
-  background: rgba(230, 126, 34, 0.1);
   padding: 1px 8px;
   border-radius: var(--radius-pill);
+}
+
+.suggest-recipe-checkbox__days--fresh {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-gray);
+}
+
+.suggest-recipe-checkbox__days--soon {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.suggest-recipe-checkbox__days--urgent {
+  background: #fbe9e7;
+  color: #bf360c;
+}
+
+.suggest-recipe-checkbox__days--expired {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* --- Section Subtitle --- */
+.suggest-recipe-section__subtitle {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-warm-gray);
+  margin: 10px 0 6px;
+  padding-left: 4px;
+}
+
+/* --- Dropdown Expiration Pills --- */
+.suggest-recipe-dropdown__item {
+  justify-content: space-between;
+}
+
+.suggest-recipe-dropdown__days {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.suggest-recipe-dropdown__days--fresh {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-gray);
+}
+
+.suggest-recipe-dropdown__days--soon {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.suggest-recipe-dropdown__days--urgent {
+  background: #fbe9e7;
+  color: #bf360c;
+}
+
+.suggest-recipe-dropdown__days--expired {
+  background: #ffebee;
+  color: #c62828;
 }
 
 /* --- Custom Ingredient Chips --- */
@@ -444,28 +507,40 @@
 
 /* --- Print Styles --- */
 @media print {
+  /* Hide everything in the app */
+  body > #root > * {
+    display: none !important;
+  }
+
+  /* Show only the recipe modal */
   .suggest-recipe-backdrop {
-    position: static;
-    background: none;
-    padding: 0;
+    display: block !important;
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+    animation: none !important;
   }
 
   .suggest-recipe-modal {
-    max-height: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    border-radius: 0;
-    background: white;
+    max-width: none !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+    animation: none !important;
   }
 
   .suggest-recipe-header,
   .suggest-recipe-actions,
   .suggest-recipe-footer {
-    display: none;
+    display: none !important;
   }
 
   .suggest-recipe-content {
-    overflow: visible;
+    overflow: visible !important;
+    padding: 0 !important;
   }
 }
 
