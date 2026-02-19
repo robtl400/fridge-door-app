@@ -1,0 +1,205 @@
+/* ============================================
+   Recipe Display — ShelfLife
+   ============================================ */
+
+.recipe-display {
+  padding: 0 4px;
+}
+
+/* --- Header --- */
+.recipe-display__name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-warm-brown);
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.recipe-display__description {
+  font-size: 0.95rem;
+  color: var(--color-warm-gray);
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.recipe-display__attribution {
+  font-size: 0.8rem;
+  color: var(--color-warm-gray);
+  font-style: italic;
+  margin: 0 0 16px;
+}
+
+.recipe-display__attribution a {
+  color: var(--color-terracotta);
+  text-decoration: none;
+}
+
+.recipe-display__attribution a:hover {
+  text-decoration: underline;
+}
+
+/* --- Meta Row (pills) --- */
+.recipe-display__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.recipe-display__meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: var(--color-cream-dark);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-warm-brown);
+  white-space: nowrap;
+}
+
+.recipe-display__meta-pill span {
+  font-weight: 400;
+  color: var(--color-warm-gray);
+}
+
+/* --- Section Headers --- */
+.recipe-display__section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-warm-brown);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* --- Ingredients List --- */
+.recipe-display__ingredients {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.recipe-display__ingredient {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: var(--color-warm-brown);
+  line-height: 1.4;
+}
+
+.recipe-display__ingredient-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  margin-top: 1px;
+}
+
+.recipe-display__ingredient--in-stock .recipe-display__ingredient-icon {
+  color: #4caf50;
+}
+
+.recipe-display__ingredient--need-buy {
+  font-style: italic;
+  color: var(--color-warm-gray);
+}
+
+.recipe-display__ingredient--need-buy .recipe-display__ingredient-icon {
+  color: var(--color-terracotta);
+}
+
+.recipe-display__need-buy-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-terracotta);
+  margin-left: 4px;
+}
+
+/* --- Instructions --- */
+.recipe-display__instructions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  counter-reset: step-counter;
+}
+
+.recipe-display__step {
+  counter-increment: step-counter;
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.recipe-display__step:last-child {
+  border-bottom: none;
+}
+
+.recipe-display__step-number {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--color-terracotta);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.recipe-display__step-text {
+  font-size: 0.9rem;
+  color: var(--color-warm-brown);
+  line-height: 1.6;
+}
+
+/* --- Tags --- */
+.recipe-display__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.recipe-display__tag {
+  padding: 3px 10px;
+  background: rgba(196, 120, 91, 0.1);
+  color: var(--color-terracotta);
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* --- Print Styles --- */
+@media print {
+  .recipe-display {
+    padding: 20px;
+    background: white;
+    max-width: 100%;
+  }
+
+  .recipe-display__meta-pill {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+  }
+
+  .recipe-display__step-number {
+    background: #333;
+  }
+
+  .recipe-display__tag {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+  }
+}

@@ -9,11 +9,6 @@ import {
   Box,
   CircularProgress,
   Container,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
   Snackbar,
   Alert,
 } from '@mui/material'
@@ -25,9 +20,10 @@ import Home from './pages/Home'
 import KitchenSettings from './pages/KitchenSettings'
 import Welcome from './pages/Welcome'
 import AddItemsModal from './components/AddItemsModal'
+import SuggestRecipeModal from './components/SuggestRecipeModal'
 
 function AppContent() {
-  const { kitchenKey, loading, error, retry } = useKitchen()
+  const { kitchenKey, loading, error, retry, needsOnboarding } = useKitchen()
   const navigate = useNavigate()
   const [addItemsOpen, setAddItemsOpen] = useState(false)
   const [suggestRecipeOpen, setSuggestRecipeOpen] = useState(false)
@@ -82,6 +78,15 @@ function AppContent() {
     )
   }
 
+  // No kitchen key yet — show only the Welcome onboarding dialog
+  if (!kitchenKey && needsOnboarding) {
+    return (
+      <Box sx={{ minHeight: '100vh', bgcolor: '#2a2a2a' }}>
+        <Welcome />
+      </Box>
+    )
+  }
+
   if (!kitchenKey) return null
 
   return (
@@ -89,15 +94,15 @@ function AppContent() {
       minHeight: '100vh',
       bgcolor: '#2a2a2a',
     }}>
-      {/* Centered app shell with border */}
+      {/* Centered app shell */}
       <Box sx={{
         maxWidth: 900,
         mx: 'auto',
         minHeight: '100vh',
         bgcolor: 'transparent',
-        borderLeft: { sm: '1px solid #d7ccc8' },
-        borderRight: { sm: '1px solid #d7ccc8' },
-        boxShadow: { sm: '0 0 24px rgba(0,0,0,0.06)' },
+        borderRadius: { sm: '24px' },
+        boxShadow: { sm: '0 0 30px rgba(0,0,0,0.12)' },
+        overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
@@ -107,15 +112,20 @@ function AppContent() {
           sx={{ bgcolor: 'primary.main' }}
         >
           <Toolbar>
-            <Typography
-              variant="h6"
-              component="div"
-              fontWeight={700}
-              sx={{ cursor: 'pointer' }}
-              onClick={() => navigate('/')}
+            <Box
+              onClick={() => { navigate('/'); setAddItemsRefresh((k) => k + 1); }}
+              sx={{ display: 'flex', alignItems: 'baseline', cursor: 'pointer', userSelect: 'none' }}
             >
-              ShelfLife
-            </Typography>
+              <Typography variant="h6" component="div" fontWeight={700}>
+                ShelfLife
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{ ml: 1, opacity: 0.8, fontStyle: 'italic', display: { xs: 'none', sm: 'inline' } }}
+              >
+                Shelves for Life
+              </Typography>
+            </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Button
               color="inherit"
@@ -153,9 +163,8 @@ function AppContent() {
         </AppBar>
 
         <Box component="main" sx={{ flexGrow: 1 }}>
-          <Welcome />
           <Routes>
-            <Route path="/" element={<Home refreshTrigger={addItemsRefresh} />} />
+            <Route path="/" element={<Home refreshTrigger={addItemsRefresh} blurContent={addItemsOpen} />} />
             <Route path="/settings" element={<KitchenSettings />} />
           </Routes>
         </Box>
@@ -169,18 +178,12 @@ function AppContent() {
         onItemsAdded={handleItemsAdded}
       />
 
-      {/* Suggest Recipe stub modal */}
-      <Dialog open={suggestRecipeOpen} onClose={() => setSuggestRecipeOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Suggest Recipe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Recipe suggestions based on your ingredients coming soon.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setSuggestRecipeOpen(false)}>Close</Button>
-        </DialogActions>
-      </Dialog>
+      {/* Suggest Recipe Modal */}
+      <SuggestRecipeModal
+        open={suggestRecipeOpen}
+        onClose={() => setSuggestRecipeOpen(false)}
+        kitchenKey={kitchenKey}
+      />
 
       {/* Toast for items added */}
       <Snackbar

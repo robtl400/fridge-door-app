@@ -6,7 +6,7 @@ class WasteTracker(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     kitchen_key = db.Column(
-        db.String(20),
+        db.String(30),
         db.ForeignKey("kitchens.kitchen_key"),
         nullable=False,
         unique=True,

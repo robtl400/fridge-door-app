@@ -1,10 +1,13 @@
 const API_BASE = "/api";
 
-export async function createKitchen(name = null) {
+export async function createKitchen({ username = null, name = null } = {}) {
+  const body = {};
+  if (username) body.username = username;
+  if (name) body.name = name;
   const res = await fetch(`${API_BASE}/kitchens`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(name ? { name } : {}),
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error("Failed to create kitchen");
   return res.json();

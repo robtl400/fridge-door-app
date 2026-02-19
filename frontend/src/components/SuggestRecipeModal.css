@@ -1,0 +1,561 @@
+/* ============================================
+   Suggest Recipe Modal — ShelfLife
+   ============================================ */
+
+/* --- Backdrop --- */
+.suggest-recipe-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  animation: suggestRecipeFadeIn 0.2s ease-out;
+}
+
+@keyframes suggestRecipeFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Modal Container --- */
+.suggest-recipe-modal {
+  background: rgba(250, 246, 240, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  animation: suggestRecipeSlideUp 0.25s ease-out;
+  overflow: hidden;
+}
+
+@keyframes suggestRecipeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Header --- */
+.suggest-recipe-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  flex-shrink: 0;
+}
+
+.suggest-recipe-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-warm-brown);
+  margin: 0;
+}
+
+/* --- Scrollable Content --- */
+.suggest-recipe-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 16px;
+}
+
+/* --- Section --- */
+.suggest-recipe-section {
+  margin-bottom: 20px;
+}
+
+.suggest-recipe-section__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-warm-gray);
+  margin: 0 0 10px;
+}
+
+/* --- Search --- */
+.suggest-recipe-search-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.suggest-recipe-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  transition: border-color 0.2s;
+}
+
+.suggest-recipe-search:focus-within {
+  border-color: var(--color-terracotta);
+}
+
+.suggest-recipe-search__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: var(--color-warm-brown);
+  font-family: inherit;
+  min-width: 0;
+}
+
+.suggest-recipe-search__input::placeholder {
+  color: var(--color-warm-gray);
+}
+
+/* --- Search Dropdown --- */
+.suggest-recipe-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  animation: suggestRecipeFadeIn 0.15s ease-out;
+}
+
+.suggest-recipe-dropdown__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  min-height: 44px;
+  color: var(--color-warm-brown);
+  transition: background 0.1s;
+}
+
+.suggest-recipe-dropdown__item:hover,
+.suggest-recipe-dropdown__item--active {
+  background: var(--color-cream-dark);
+}
+
+.suggest-recipe-dropdown__item--custom {
+  color: var(--color-terracotta);
+  font-weight: 500;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* --- Checkbox List --- */
+.suggest-recipe-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.suggest-recipe-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  min-height: 44px;
+  transition: background 0.15s;
+  user-select: none;
+}
+
+.suggest-recipe-checkbox:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.suggest-recipe-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--color-warm-gray);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s;
+}
+
+.suggest-recipe-checkbox input[type="checkbox"]:checked {
+  background: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+}
+
+.suggest-recipe-checkbox input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.suggest-recipe-checkbox__label {
+  font-size: 0.9rem;
+  color: var(--color-warm-brown);
+  font-weight: 500;
+}
+
+.suggest-recipe-checkbox__label--expiring {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.suggest-recipe-checkbox__days {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.suggest-recipe-checkbox__days--fresh {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-gray);
+}
+
+.suggest-recipe-checkbox__days--soon {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.suggest-recipe-checkbox__days--urgent {
+  background: #fbe9e7;
+  color: #bf360c;
+}
+
+.suggest-recipe-checkbox__days--expired {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* --- Section Subtitle --- */
+.suggest-recipe-section__subtitle {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-warm-gray);
+  margin: 10px 0 6px;
+  padding-left: 4px;
+}
+
+/* --- Dropdown Expiration Pills --- */
+.suggest-recipe-dropdown__item {
+  justify-content: space-between;
+}
+
+.suggest-recipe-dropdown__days {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.suggest-recipe-dropdown__days--fresh {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-gray);
+}
+
+.suggest-recipe-dropdown__days--soon {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.suggest-recipe-dropdown__days--urgent {
+  background: #fbe9e7;
+  color: #bf360c;
+}
+
+.suggest-recipe-dropdown__days--expired {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* --- Custom Ingredient Chips --- */
+.suggest-recipe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.suggest-recipe-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px 4px 12px;
+  background: rgba(196, 120, 91, 0.12);
+  color: var(--color-terracotta);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.suggest-recipe-chip__remove {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: none;
+  background: transparent;
+  color: var(--color-terracotta);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s;
+  padding: 0;
+}
+
+.suggest-recipe-chip__remove:hover {
+  background: rgba(196, 120, 91, 0.2);
+}
+
+/* --- Dietary Restrictions --- */
+.suggest-recipe-dietary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.suggest-recipe-dietary-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-warm-brown);
+  cursor: pointer;
+  min-height: 40px;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.suggest-recipe-dietary-pill:hover {
+  border-color: var(--color-terracotta-light);
+}
+
+.suggest-recipe-dietary-pill--active {
+  background: rgba(196, 120, 91, 0.12);
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+}
+
+.suggest-recipe-other-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 16px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--color-warm-brown);
+  outline: none;
+  min-height: 40px;
+  transition: border-color 0.2s;
+}
+
+.suggest-recipe-other-input:focus {
+  border-color: var(--color-terracotta);
+}
+
+.suggest-recipe-other-input::placeholder {
+  color: var(--color-warm-gray);
+}
+
+/* --- Submit Button --- */
+.suggest-recipe-footer {
+  padding: 12px 16px;
+  flex-shrink: 0;
+}
+
+.suggest-recipe-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-terracotta);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 48px;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.suggest-recipe-submit-btn:hover:not(:disabled) {
+  background: var(--color-terracotta-light);
+}
+
+.suggest-recipe-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Loading State --- */
+.suggest-recipe-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.suggest-recipe-loading__text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-warm-brown);
+}
+
+/* --- Error State --- */
+.suggest-recipe-error {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  background: #ffebee;
+  color: #c62828;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --- Result Actions --- */
+.suggest-recipe-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  flex-shrink: 0;
+}
+
+.suggest-recipe-action-btn {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background 0.2s;
+}
+
+.suggest-recipe-action-btn--primary {
+  background: var(--color-terracotta);
+  color: white;
+}
+
+.suggest-recipe-action-btn--primary:hover {
+  background: var(--color-terracotta-light);
+}
+
+.suggest-recipe-action-btn--secondary {
+  background: var(--color-cream-dark);
+  color: var(--color-warm-brown);
+}
+
+.suggest-recipe-action-btn--secondary:hover {
+  background: rgba(240, 232, 218, 0.8);
+}
+
+/* --- Empty State --- */
+.suggest-recipe-empty {
+  text-align: center;
+  color: var(--color-warm-gray);
+  padding: 16px;
+  font-size: 0.85rem;
+}
+
+/* --- Print Styles --- */
+@media print {
+  /* Hide everything in the app */
+  body > #root > * {
+    display: none !important;
+  }
+
+  /* Show only the recipe modal */
+  .suggest-recipe-backdrop {
+    display: block !important;
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+    animation: none !important;
+  }
+
+  .suggest-recipe-modal {
+    max-width: none !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+    animation: none !important;
+  }
+
+  .suggest-recipe-header,
+  .suggest-recipe-actions,
+  .suggest-recipe-footer {
+    display: none !important;
+  }
+
+  .suggest-recipe-content {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 400px) {
+  .suggest-recipe-dietary {
+    gap: 6px;
+  }
+
+  .suggest-recipe-dietary-pill {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .suggest-recipe-actions {
+    flex-direction: column;
+  }
+}

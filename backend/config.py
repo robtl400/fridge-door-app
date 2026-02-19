@@ -10,3 +10,4 @@ class Config:
         "DATABASE_URL", "sqlite:///fridge_door.db"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")

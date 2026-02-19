@@ -10,18 +10,26 @@ kitchen_bp = Blueprint("kitchens", __name__)
 @kitchen_bp.route("/kitchens", methods=["POST"])
 def create_kitchen():
     """Create a new kitchen with a unique key. No auth required."""
+    data = request.get_json() or {}
+
+    username = data.get("username")
+    if username:
+        username = username.strip()[:8]
+        if not username.isalnum():
+            return jsonify({"error": "Username must be alphanumeric (letters and numbers only)"}), 400
+
     # Generate a unique key (retry on the rare collision)
     for _ in range(10):
-        key = generate_kitchen_key()
+        key = generate_kitchen_key(username=username)
         if not Kitchen.query.filter_by(kitchen_key=key).first():
             break
     else:
         return jsonify({"error": "Could not generate unique key"}), 500
 
-    data = request.get_json() or {}
     kitchen = Kitchen(
         kitchen_key=key,
         name=data.get("name"),
+        username=username,
     )
     db.session.add(kitchen)
     db.session.commit()

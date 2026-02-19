@@ -1,4 +1,4 @@
-# Fridge Door
+# ShelfLife
 
 A full-stack app for tracking what's in your fridge, freezer, and pantry — with shelf-life awareness powered by USDA data.
 

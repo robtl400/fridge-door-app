@@ -19,7 +19,7 @@ class InStock(db.Model):
 
     # Every item belongs to a kitchen
     kitchen_key = db.Column(
-        db.String(20), db.ForeignKey("kitchens.kitchen_key"), nullable=False
+        db.String(30), db.ForeignKey("kitchens.kitchen_key"), nullable=False
     )
 
     # Link back to lookup table (optional — user may add custom items)

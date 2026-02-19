@@ -51,6 +51,7 @@ export function KitchenProvider({ children }) {
   const [kitchenKey, setKitchenKey] = useState(null);
   const [kitchenInfo, setKitchenInfo] = useState(null);
   const [isNewKitchen, setIsNewKitchen] = useState(false);
+  const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -89,23 +90,29 @@ export function KitchenProvider({ children }) {
         }
       }
 
-      // No valid key found — create a new kitchen
-      try {
-        const info = await createKitchen();
-        setKitchenKey(info.kitchen_key);
-        setKitchenInfo(info);
-        storeKey(info.kitchen_key);
-        addToRecent(info.kitchen_key);
-        setIsNewKitchen(true);
-      } catch {
-        setError("create_failed");
-      }
-
+      // No valid key found — show onboarding to collect username
+      setNeedsOnboarding(true);
       setLoading(false);
     }
 
     init();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const createKitchenWithUsername = useCallback(async (username) => {
+    try {
+      const info = await createKitchen({ username });
+      setKitchenKey(info.kitchen_key);
+      setKitchenInfo(info);
+      storeKey(info.kitchen_key);
+      addToRecent(info.kitchen_key);
+      setIsNewKitchen(true);
+      setNeedsOnboarding(false);
+      return info;
+    } catch {
+      setError("create_failed");
+      return null;
+    }
+  }, []);
 
   const switchKitchen = useCallback(async (newKey) => {
     const info = await verifyKitchen(newKey);
@@ -115,11 +122,12 @@ export function KitchenProvider({ children }) {
     storeKey(newKey);
     addToRecent(newKey);
     setIsNewKitchen(false);
+    setNeedsOnboarding(false);
     return true;
   }, []);
 
-  const createNewKitchen = useCallback(async () => {
-    const info = await createKitchen();
+  const createNewKitchen = useCallback(async (username) => {
+    const info = await createKitchen({ username });
     setKitchenKey(info.kitchen_key);
     setKitchenInfo(info);
     storeKey(info.kitchen_key);
@@ -145,10 +153,12 @@ export function KitchenProvider({ children }) {
         kitchenKey,
         kitchenInfo,
         isNewKitchen,
+        needsOnboarding,
         loading,
         error,
         switchKitchen,
         createNewKitchen,
+        createKitchenWithUsername,
         dismissWelcome,
         retry,
       }}

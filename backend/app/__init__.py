@@ -28,11 +28,13 @@ def create_app(config_class=Config):
     from app.routes.lookup_routes import lookup_bp
     from app.routes.ingredient_routes import ingredients_bp
     from app.routes.kitchen_routes import kitchen_bp
+    from app.routes.recipe_routes import recipe_bp
 
     app.register_blueprint(api_bp, url_prefix="/api")
     app.register_blueprint(lookup_bp, url_prefix="/api")
     app.register_blueprint(ingredients_bp, url_prefix="/api")
     app.register_blueprint(kitchen_bp, url_prefix="/api")
+    app.register_blueprint(recipe_bp, url_prefix="/api")
 
     # Create tables and seed on first run
     with app.app_context():

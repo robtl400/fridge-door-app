@@ -21,8 +21,8 @@
   --color-fresh: #8a7e74;
 
   /* Frosted glass — more translucent so background gradients show through */
-  --glass-bg: rgba(250, 246, 240, 0.45);
-  --glass-blur: blur(10px);
+  --glass-bg: rgba(250, 246, 240, 0.28);
+  --glass-blur: blur(8px);
   --glass-border: rgba(255, 255, 255, 0.35);
 
   /* Layout */
@@ -44,6 +44,13 @@
   max-width: var(--max-app-width);
   margin: 0 auto;
   padding: 12px 12px 32px;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.home-page__content--blurred {
+  filter: blur(6px);
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* --- Scroll Background (cross-fading fixed layer) --- */
@@ -201,6 +208,57 @@
   color: var(--color-warm-gray);
 }
 
+.ingredient-pill__qty-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 4px;
+  margin-left: -4px;
+}
+
+.ingredient-pill__qty-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 10px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-warm-gray);
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+  transition: background 0.15s ease;
+}
+
+.ingredient-pill__qty-arrow:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.ingredient-pill__qty-arrow:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.ingredient-pill__qty-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.ingredient-pill__qty-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cream-dark, rgba(0, 0, 0, 0.06));
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-warm-brown);
+  line-height: 1;
+}
+
 .ingredient-pill__days {
   display: inline-flex;
   align-items: center;
@@ -272,21 +330,21 @@
 }
 
 .ingredient-pill__action-btn--toss {
-  background: #ffebee;
+  background: rgba(255, 255, 255, 0.6);
   color: var(--color-expired);
 }
 
 .ingredient-pill__action-btn--toss:hover {
-  background: #ffcdd2;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .ingredient-pill__action-btn--use {
-  background: var(--color-cream-dark);
-  color: var(--color-warm-brown);
+  background: #c8e6c9;
+  color: #2e7d32;
 }
 
 .ingredient-pill__action-btn--use:hover {
-  background: #e8dcc8;
+  background: #a5d6a7;
 }
 
 /* --- Toss Sub-Options --- */
@@ -319,6 +377,82 @@
   transform: scale(0.95);
 }
 
+/* --- Expanded Pill Editing --- */
+.ingredient-pill--editing {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  gap: 8px;
+  cursor: default;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ingredient-pill__edit-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.ingredient-pill__edit-fields {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.ingredient-pill__edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-warm-brown);
+  outline: none;
+  min-height: 30px;
+  transition: border-color 0.2s;
+}
+
+.ingredient-pill__edit-input:focus {
+  border-color: var(--color-terracotta);
+}
+
+.ingredient-pill__edit-input--name {
+  flex: 2;
+  font-weight: 600;
+}
+
+.ingredient-pill__edit-select {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-warm-brown);
+  outline: none;
+  min-height: 30px;
+  cursor: pointer;
+}
+
+.ingredient-pill__edit-select:focus {
+  border-color: var(--color-terracotta);
+}
+
+.ingredient-pill__action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 /* --- Loading Skeletons --- */
 .skeleton-block {
   background: linear-gradient(
@@ -335,4 +469,12 @@
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+/* --- Print: hide home page so only recipe modal prints --- */
+@media print {
+  .home-page,
+  .scroll-bg {
+    display: none !important;
+  }
 }
