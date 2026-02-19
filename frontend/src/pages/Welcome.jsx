@@ -12,13 +12,14 @@ import {
 } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useKitchen } from "../context/KitchenContext";
+import { validateUsername, USERNAME_MAX_LENGTH } from "../utils/validation";
 
 function Welcome() {
   const {
     kitchenKey,
     isNewKitchen,
     needsOnboarding,
-    createKitchenWithUsername,
+    createNewKitchen,
     dismissWelcome,
   } = useKitchen();
 
@@ -32,19 +33,15 @@ function Welcome() {
   if (!needsOnboarding && !isNewKitchen) return null;
 
   const handleUsernameChange = (e) => {
-    const val = e.target.value.slice(0, 8);
-    setUsername(val);
-    if (val && !val.match(/^[a-zA-Z0-9]+$/)) {
-      setUsernameError("Letters and numbers only");
-    } else {
-      setUsernameError("");
-    }
+    const { value, error } = validateUsername(e.target.value);
+    setUsername(value);
+    setUsernameError(error);
   };
 
   const handleCreate = async () => {
     if (!username.trim() || usernameError) return;
     setCreating(true);
-    const result = await createKitchenWithUsername(username.trim());
+    const result = await createNewKitchen(username.trim());
     setCreating(false);
     if (result) {
       setStep("created");
@@ -77,8 +74,8 @@ function Welcome() {
             value={username}
             onChange={handleUsernameChange}
             error={!!usernameError}
-            helperText={usernameError || `${username.length}/8 characters`}
-            slotProps={{ htmlInput: { maxLength: 8 } }}
+            helperText={usernameError || `${username.length}/${USERNAME_MAX_LENGTH} characters`}
+            slotProps={{ htmlInput: { maxLength: USERNAME_MAX_LENGTH } }}
             autoFocus
             onKeyDown={(e) => {
               if (e.key === "Enter") handleCreate();

@@ -98,7 +98,7 @@ export function KitchenProvider({ children }) {
     init();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const createKitchenWithUsername = useCallback(async (username) => {
+  const createNewKitchen = useCallback(async (username) => {
     try {
       const info = await createKitchen({ username });
       setKitchenKey(info.kitchen_key);
@@ -115,25 +115,19 @@ export function KitchenProvider({ children }) {
   }, []);
 
   const switchKitchen = useCallback(async (newKey) => {
-    const info = await verifyKitchen(newKey);
-    if (!info) return false;
-    setKitchenKey(newKey);
-    setKitchenInfo(info);
-    storeKey(newKey);
-    addToRecent(newKey);
-    setIsNewKitchen(false);
-    setNeedsOnboarding(false);
-    return true;
-  }, []);
-
-  const createNewKitchen = useCallback(async (username) => {
-    const info = await createKitchen({ username });
-    setKitchenKey(info.kitchen_key);
-    setKitchenInfo(info);
-    storeKey(info.kitchen_key);
-    addToRecent(info.kitchen_key);
-    setIsNewKitchen(true);
-    return info.kitchen_key;
+    try {
+      const info = await verifyKitchen(newKey);
+      if (!info) return false;
+      setKitchenKey(newKey);
+      setKitchenInfo(info);
+      storeKey(newKey);
+      addToRecent(newKey);
+      setIsNewKitchen(false);
+      setNeedsOnboarding(false);
+      return true;
+    } catch {
+      return false;
+    }
   }, []);
 
   const dismissWelcome = useCallback(() => {
@@ -158,7 +152,6 @@ export function KitchenProvider({ children }) {
         error,
         switchKitchen,
         createNewKitchen,
-        createKitchenWithUsername,
         dismissWelcome,
         retry,
       }}

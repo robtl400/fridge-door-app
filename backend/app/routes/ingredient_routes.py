@@ -1,27 +1,16 @@
 from flask import Blueprint, jsonify, request
-from datetime import date, timedelta, datetime, timezone
-from collections import OrderedDict
+from datetime import date, timedelta
 from app import db
-from app.models.kitchen import Kitchen
 from app.models.ingredient_lookup import IngredientLookup
 from app.models.in_stock import InStock
 from app.utils.expiration import parse_expiration
 from app.utils.shelves import get_shelf_sort_key, get_category_sort_key
 from app.utils.ingredients import expiration_for_storage, get_or_create_lookup
 from app.utils.expiring_soon import compute_expiring_threshold
+from app.utils.kitchen_helpers import get_kitchen_or_404
 from app.models.waste_tracker import WasteTracker
 
 ingredients_bp = Blueprint("ingredients", __name__)
-
-
-def _get_kitchen_or_404(kitchen_key):
-    """Look up kitchen by key, update last_accessed, or return None."""
-    kitchen = Kitchen.query.filter_by(kitchen_key=kitchen_key).first()
-    if not kitchen:
-        return None
-    kitchen.last_accessed = datetime.now(timezone.utc)
-    db.session.commit()
-    return kitchen
 
 
 def _get_or_create_tracker(kitchen_key):
@@ -35,7 +24,7 @@ def _get_or_create_tracker(kitchen_key):
 
 @ingredients_bp.route("/kitchen/<kitchen_key>/ingredients", methods=["GET"])
 def list_ingredients(kitchen_key):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -61,10 +50,10 @@ def list_ingredients(kitchen_key):
 
     # Build ordered response: categories then shelves in canonical order
     sorted_cats = sorted(buckets.keys(), key=get_category_sort_key)
-    ingredients = OrderedDict()
+    ingredients = {}
     for cat in sorted_cats:
         sorted_shelves = sorted(buckets[cat].keys(), key=get_shelf_sort_key)
-        shelf_dict = OrderedDict()
+        shelf_dict = {}
         for shelf in sorted_shelves:
             shelf_dict[shelf] = [
                 {**i.to_dict(), "is_expiring_soon": i.id in expiring_ids}
@@ -82,7 +71,7 @@ def list_ingredients(kitchen_key):
     "/kitchen/<kitchen_key>/ingredients/expiring-soon", methods=["GET"]
 )
 def expiring_soon(kitchen_key):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -98,7 +87,7 @@ def expiring_soon(kitchen_key):
 
 @ingredients_bp.route("/kitchen/<kitchen_key>/ingredients", methods=["POST"])
 def add_ingredients(kitchen_key):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -162,7 +151,7 @@ def add_ingredients(kitchen_key):
     "/kitchen/<kitchen_key>/ingredients/<int:item_id>", methods=["PUT"]
 )
 def update_ingredient(kitchen_key, item_id):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -209,7 +198,7 @@ def update_ingredient(kitchen_key, item_id):
     "/kitchen/<kitchen_key>/ingredients/<int:item_id>", methods=["DELETE"]
 )
 def delete_ingredient(kitchen_key, item_id):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -218,6 +207,7 @@ def delete_ingredient(kitchen_key, item_id):
         return jsonify({"error": "Item not found"}), 404
 
     tracker = _get_or_create_tracker(kitchen_key)
+    # Full item consumed: award maximum points (same 1-3 scale as toss amounts)
     tracker.eaten += 3
 
     db.session.delete(item)
@@ -229,7 +219,7 @@ def delete_ingredient(kitchen_key, item_id):
     "/kitchen/<kitchen_key>/ingredients/<int:item_id>/toss", methods=["PATCH"]
 )
 def toss_ingredient(kitchen_key, item_id):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -239,6 +229,7 @@ def toss_ingredient(kitchen_key, item_id):
 
     data = request.get_json() or {}
     amount = data.get("amount", 3)
+    # Toss severity: 1 = "tossed a bit", 2 = "tossed a bunch", 3 = "tossed it all"
     if amount not in (1, 2, 3):
         return jsonify({"error": "amount must be 1, 2, or 3"}), 400
 

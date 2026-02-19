@@ -21,7 +21,7 @@ cp .env.example .env
 python app.py
 ```
 
-The server runs at **http://localhost:5000**.
+The server runs at **http://localhost:5001**.
 
 On first start the `ingredient_lookup` table is populated with 525 seed ingredients from `app/seed_data/shelf_life_complete_seed_data.json`.
 
@@ -32,6 +32,14 @@ On first start the `ingredient_lookup` table is populated with 525 seed ingredie
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/api/health` | Returns `{"status": "ok"}` |
+
+### Kitchens
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/kitchens` | Create a new kitchen |
+| GET | `/api/kitchens/<key>` | Verify / fetch kitchen info |
+| PUT | `/api/kitchens/<key>` | Update kitchen name |
 
 ### Lookup (ingredient reference data)
 
@@ -45,15 +53,24 @@ On first start the `ingredient_lookup` table is populated with 525 seed ingredie
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/api/ingredients` | List all in-stock, grouped by category and shelf |
-| POST | `/api/ingredients` | Bulk add items (array or single object) |
-| PUT | `/api/ingredients/<id>` | Update an item (recalculates expiration on storage change) |
-| DELETE | `/api/ingredients/<id>` | Remove an item |
-| PATCH | `/api/ingredients/<id>/toss` | Record waste amount then remove |
+| GET | `/api/kitchen/<key>/ingredients` | List all in-stock, grouped by category and shelf |
+| GET | `/api/kitchen/<key>/ingredients/expiring-soon` | List items expiring soon |
+| POST | `/api/kitchen/<key>/ingredients` | Bulk add items (array or single object) |
+| PUT | `/api/kitchen/<key>/ingredients/<id>` | Update an item (recalculates expiration on storage change) |
+| DELETE | `/api/kitchen/<key>/ingredients/<id>` | Remove an item |
+| PATCH | `/api/kitchen/<key>/ingredients/<id>/toss` | Record waste amount then remove |
+
+### Recipes
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/kitchen/<key>/recipes/suggest` | Generate a recipe suggestion via Gemini AI |
 
 ## Database
 
-SQLite file is created at `instance/fridge_door.db`. Two tables:
+SQLite file is created at `instance/fridge_door.db`. Four tables:
 
 - **ingredient_lookup** — 525 seed ingredients + user-added items
-- **in_stock** — items currently in the user's fridge/pantry
+- **in_stock** — items currently in the user's kitchen
+- **kitchens** — kitchen identity and metadata
+- **waste_tracker** — eaten/tossed counts per kitchen

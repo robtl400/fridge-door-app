@@ -1,26 +1,18 @@
+import logging
+
 from flask import Blueprint, jsonify, request
-from datetime import datetime, timezone
-from app import db
-from app.models.kitchen import Kitchen
 from app.models.in_stock import InStock
 from app.utils.gemini import generate_recipe
+from app.utils.kitchen_helpers import get_kitchen_or_404
+
+logger = logging.getLogger(__name__)
 
 recipe_bp = Blueprint("recipes", __name__)
 
 
-def _get_kitchen_or_404(kitchen_key):
-    """Look up kitchen by key, update last_accessed, or return None."""
-    kitchen = Kitchen.query.filter_by(kitchen_key=kitchen_key).first()
-    if not kitchen:
-        return None
-    kitchen.last_accessed = datetime.now(timezone.utc)
-    db.session.commit()
-    return kitchen
-
-
 @recipe_bp.route("/kitchen/<kitchen_key>/recipes/suggest", methods=["POST"])
 def suggest_recipe(kitchen_key):
-    kitchen = _get_kitchen_or_404(kitchen_key)
+    kitchen = get_kitchen_or_404(kitchen_key)
     if not kitchen:
         return jsonify({"error": "Kitchen not found"}), 404
 
@@ -48,8 +40,7 @@ def suggest_recipe(kitchen_key):
     except ValueError as e:
         return jsonify({"error": str(e)}), 503
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        logger.exception("Recipe generation failed")
         error_msg = str(e).lower()
         if "429" in error_msg or "rate" in error_msg or "quota" in error_msg:
             return jsonify({
@@ -58,5 +49,4 @@ def suggest_recipe(kitchen_key):
             }), 429
         return jsonify({
             "error": "Failed to generate recipe. Please try again.",
-            "detail": str(e),
         }), 502

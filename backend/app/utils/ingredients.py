@@ -21,7 +21,7 @@ def expiration_for_storage(lookup, temp_category):
     if fields is None:
         return lookup.default_expiration_days
 
-    # room_temperature has two fallback pairs (unopened, then opened)
+    # Pantry has two fallback pairs (unopened, then opened)
     pairs = fields if isinstance(fields, list) else [fields]
 
     for min_field, max_field in pairs:

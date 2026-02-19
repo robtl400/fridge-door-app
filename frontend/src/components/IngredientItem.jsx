@@ -5,26 +5,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CircularProgress from "@mui/material/CircularProgress";
 import { daysLabel, daysClass } from "../utils/dateFormat";
+import { SHELVES_BY_CATEGORY, CATEGORIES } from "../utils/constants";
 import "../pages/Home.css";
-
-const CATEGORIES = ["Fridge", "Freezer", "Pantry"];
-
-const SHELVES_BY_CATEGORY = {
-  Fridge: [
-    "Produce", "Dairy", "Eggs", "Meat", "Deli & Prepared",
-    "Beverages", "Condiments & Sauces", "Fresh Herbs",
-  ],
-  Freezer: [
-    "Ice Cream & Desserts", "Frozen Meals", "Frozen Proteins",
-    "Frozen Fruits & Veggies", "Frozen Breads & Dough", "Frozen Snacks",
-  ],
-  Pantry: [
-    "Breakfast & Cereals", "Grains & Rice", "Pasta & Noodles",
-    "Baking Essentials", "Baking Mixes", "Canned Goods",
-    "Sauces & Condiments", "Oils & Vinegars", "Spices",
-    "Coffee & Tea", "Snacks", "Nuts & Dried Fruit", "Sweeteners", "Pantry",
-  ],
-};
 
 function pillClass(item, editing) {
   const days = item.days_until_expiration;

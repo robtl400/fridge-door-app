@@ -18,6 +18,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ShareIcon from "@mui/icons-material/Share";
 import { useKitchen } from "../context/KitchenContext";
 import { updateKitchenName } from "../services/kitchenApi";
+import { validateUsername, USERNAME_MAX_LENGTH } from "../utils/validation";
 
 function KitchenSettings() {
   const { kitchenKey, kitchenInfo, switchKitchen, createNewKitchen } =
@@ -86,13 +87,9 @@ function KitchenSettings() {
   };
 
   const handleNewUsernameChange = (e) => {
-    const val = e.target.value.slice(0, 8);
-    setNewUsername(val);
-    if (val && !val.match(/^[a-zA-Z0-9]+$/)) {
-      setNewUsernameError("Letters and numbers only");
-    } else {
-      setNewUsernameError("");
-    }
+    const { value, error } = validateUsername(e.target.value);
+    setNewUsername(value);
+    setNewUsernameError(error);
   };
 
   return (
@@ -265,8 +262,8 @@ function KitchenSettings() {
             value={newUsername}
             onChange={handleNewUsernameChange}
             error={!!newUsernameError}
-            helperText={newUsernameError || `${newUsername.length}/8 characters`}
-            slotProps={{ htmlInput: { maxLength: 8 } }}
+            helperText={newUsernameError || `${newUsername.length}/${USERNAME_MAX_LENGTH} characters`}
+            slotProps={{ htmlInput: { maxLength: USERNAME_MAX_LENGTH } }}
           />
         </DialogContent>
         <DialogActions>

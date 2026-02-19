@@ -82,7 +82,7 @@
 }
 
 .add-items-search:focus-within {
-  border-color: var(--color-terracotta);
+  border-color: var(--color-forest);
 }
 
 .add-items-search__input {
@@ -138,7 +138,7 @@
 }
 
 .add-items-dropdown__item--custom {
-  color: var(--color-terracotta);
+  color: var(--color-forest);
   font-weight: 500;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -190,7 +190,7 @@
   margin: 8px 0;
   border: none;
   border-radius: var(--radius-pill);
-  background: var(--color-terracotta);
+  background: var(--color-forest);
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -201,7 +201,7 @@
 }
 
 .add-items-submit-btn:hover:not(:disabled) {
-  background: var(--color-terracotta-light);
+  background: var(--color-forest-light);
 }
 
 .add-items-submit-btn:disabled {
@@ -254,7 +254,7 @@
 }
 
 .add-items-card__field:focus {
-  border-color: var(--color-terracotta);
+  border-color: var(--color-forest);
 }
 
 .add-items-card__field--error {

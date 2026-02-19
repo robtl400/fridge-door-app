@@ -102,7 +102,7 @@
 }
 
 .suggest-recipe-search:focus-within {
-  border-color: var(--color-terracotta);
+  border-color: var(--color-forest);
 }
 
 .suggest-recipe-search__input {
@@ -158,7 +158,7 @@
 }
 
 .suggest-recipe-dropdown__item--custom {
-  color: var(--color-terracotta);
+  color: var(--color-forest);
   font-weight: 500;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -201,8 +201,8 @@
 }
 
 .suggest-recipe-checkbox input[type="checkbox"]:checked {
-  background: var(--color-terracotta);
-  border-color: var(--color-terracotta);
+  background: var(--color-forest);
+  border-color: var(--color-forest);
 }
 
 .suggest-recipe-checkbox input[type="checkbox"]:checked::after {
@@ -314,7 +314,7 @@
   gap: 4px;
   padding: 4px 10px 4px 12px;
   background: rgba(45, 90, 61, 0.10);
-  color: var(--color-terracotta);
+  color: var(--color-forest);
   border-radius: var(--radius-pill);
   font-size: 0.8rem;
   font-weight: 500;
@@ -326,7 +326,7 @@
   min-width: 18px;
   border: none;
   background: transparent;
-  color: var(--color-terracotta);
+  color: var(--color-forest);
   cursor: pointer;
   font-size: 0.9rem;
   display: flex;
@@ -365,13 +365,13 @@
 }
 
 .suggest-recipe-dietary-pill:hover {
-  border-color: var(--color-terracotta-light);
+  border-color: var(--color-forest-light);
 }
 
 .suggest-recipe-dietary-pill--active {
   background: rgba(45, 90, 61, 0.10);
-  border-color: var(--color-terracotta);
-  color: var(--color-terracotta);
+  border-color: var(--color-forest);
+  color: var(--color-forest);
 }
 
 .suggest-recipe-other-input {
@@ -390,7 +390,7 @@
 }
 
 .suggest-recipe-other-input:focus {
-  border-color: var(--color-terracotta);
+  border-color: var(--color-forest);
 }
 
 .suggest-recipe-other-input::placeholder {
@@ -412,7 +412,7 @@
   padding: 12px;
   border: none;
   border-radius: var(--radius-pill);
-  background: var(--color-terracotta);
+  background: var(--color-forest);
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -423,12 +423,16 @@
 }
 
 .suggest-recipe-submit-btn:hover:not(:disabled) {
-  background: var(--color-terracotta-light);
+  background: var(--color-forest-light);
 }
 
 .suggest-recipe-submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.suggest-recipe-submit-btn--retry {
+  margin: 0 0 16px;
 }
 
 /* --- Loading State --- */
@@ -480,12 +484,12 @@
 }
 
 .suggest-recipe-action-btn--primary {
-  background: var(--color-terracotta);
+  background: var(--color-forest);
   color: white;
 }
 
 .suggest-recipe-action-btn--primary:hover {
-  background: var(--color-terracotta-light);
+  background: var(--color-forest-light);
 }
 
 .suggest-recipe-action-btn--secondary {
