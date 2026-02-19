@@ -35,7 +35,7 @@ cp .env.example .env
 python app.py
 ```
 
-Runs at **http://localhost:5000**. Creates the database and seeds 525 ingredients on first start.
+Runs at **http://localhost:5001**. Creates the database and seeds 525 ingredients on first start.
 
 ### Frontend
 
